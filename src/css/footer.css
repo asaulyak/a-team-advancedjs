@@ -1,16 +1,22 @@
+/* footer */
 .footer {
   padding: 40px 0 10px;
 
   color: var(--primary);
   background-color: var(--dark);
+
+  font-size: 14px;
+  line-height: 1.29;
 }
 
+/* footer logo */
 .footer-logo {
   display: inline-block;
 
   margin-bottom: 20px;
 }
 
+/* footer slogan */
 .footer-slogan {
   display: block;
 
@@ -22,6 +28,7 @@
   letter-spacing: -0.02em;
 }
 
+/* footer social list */
 .footer .social-list {
   margin-bottom: 40px;
 }
@@ -29,4 +36,75 @@
   border-radius: 10px;
   width: 40px;
   height: 40px;
+}
+
+/* footer subscribe form */
+.subscribe {
+  margin-bottom: 120px;
+}
+
+.subscribe-slogan {
+  display: block;
+
+  margin-bottom: 20px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.29;
+}
+
+.subscribe-label {
+  position: relative;
+}
+.subscribe-label-text {
+  position: absolute;
+  top: 0;
+  left: 14px;
+  color: rgba(244, 244, 244, 0.6);
+}
+.subscribe-item {
+  width: 100%;
+  min-height: 42px;
+
+  border-radius: 30px;
+}
+
+.subscribe-input {
+  margin-bottom: 20px;
+  padding-left: 65px;
+
+  border: 1px solid currentColor;
+
+  color: var(--primary);
+  background-color: transparent;
+}
+
+.subscribe-button {
+  border: none;
+
+  background-color: var(--primary);
+}
+
+/* footer copyright */
+
+.copyright {
+  color: #c6cdd1;
+}
+.copyright-text {
+  margin-bottom: 10px;
+}
+.copyright-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.copyright-list {
+  display: flex;
+}
+.copyrigth-item:first-child {
+  margin-right: 8px;
+}
+.copyrigth-item:first-child::after {
+  content: '/';
+  margin-left: 8px;
 }
