@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build --base=/a-team-advancedjs/",
     "preview": "vite preview",
-    "prepare": "husky"
+    "prepare": "husky || true"
   },
   "devDependencies": {
     "glob": "^8.1.0",
