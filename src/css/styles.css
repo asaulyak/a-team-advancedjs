@@ -5,7 +5,9 @@
   |============================
 */
 @import '../../node_modules/modern-normalize/modern-normalize.css';
+@import url('./variables');
 @import url('./reset.css');
+@import url('./container.css');
 @import url('./header.css');
 @import url('./footer.css');
 
@@ -15,8 +17,8 @@
   line-height: 24px;
   font-weight: 400;
 
-  color: #242424;
-  background-color: #f4f4f4;
+  color: var(--black-cl);
+  background-color: var(--light-cl);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

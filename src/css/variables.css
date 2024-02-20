@@ -1,0 +1,28 @@
+:root {
+  --black-cl: #242424;
+  --soft-black-cl: rgba(36, 36, 36, 0.6); /*242424 0.6*/
+  --super-soft-black-cl: rgba(36, 36, 36, 0.5); /*242424 0.5*/
+  --ultra-soft-black-cl: rgba(36, 36, 36, 0.4); /*242424 0.4*/
+
+  --white-cl: #ffffff;
+
+  --gray-cl: #d4d4d4;
+  --soft-gray-cl: rgb(239, 237, 232, 0.2); /*EFEDE8 0.2*/
+  --blue-gray-cl: #c6cdd1;
+
+  --orange-color: #eea10c;
+
+  --light-cl: #f4f4f4;
+  --soft-light-cl: rgba(244, 244, 244, 0.6); /*F4F4F4 0.6*/
+  --middle-soft-light-cl: rgba(244, 244, 244, 0.4); /*F4F4F4 0.4*/
+  --super-soft-light-cl: rgba(244, 244, 244, 0.2); /*F4F4F4 0.2*/
+  --ultra-soft-light-cl: rgba(244, 244, 244, 0.1); /*F4F4F4 0.1*/
+
+  --overlay-bg-cl: rgb(4, 4, 4, 0.4); /*040404 0.4*/
+  --soft-overlay-bg-cl: rgb(4, 4, 4, 0.2); /*040404 0.2*/
+
+  --img-overlay-cl: rgb(17, 17, 17, 0.5); /*111111 0.5*/
+
+  --animation-fast: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --animation-reveal: 500ms cubic-bezier(0.22, -0.03, 0.36, 1.4);
+}
