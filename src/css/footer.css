@@ -1,2 +1,12 @@
 footer {
+  padding: 40px 0 10px;
+
+  color: var(--primary);
+  background-color: var(--dark);
+}
+
+.footer-logo {
+  display: inline-block;
+
+  margin-bottom: 20px;
 }
