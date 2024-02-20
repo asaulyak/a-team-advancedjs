@@ -37,6 +37,12 @@ export function getExercises() {
     .then(response => preparePaginatedResponse(response));
 }
 
-export function getQuote() {
-  return axios.get(`${API_BASE_URL}/quote`);
+export async function getQuote() {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/quote`);
+    return response.data; 
+  } catch (error) {
+    console.error(error);
+    return null; 
+  }
 }
