@@ -6,8 +6,10 @@
 */
 @import '../../node_modules/modern-normalize/modern-normalize.css';
 @import url('./reset.css');
+@import url('./variables.css');
 @import url('./header.css');
 @import url('./footer.css');
+@import url('./social-list.css');
 
 :root {
   font-family: 'DM Sans', Helvetica, Arial, sans-serif;
@@ -15,8 +17,8 @@
   line-height: 24px;
   font-weight: 400;
 
-  color: #242424;
-  background-color: #f4f4f4;
+  color: var(--dark);
+  background-color: var(--primary);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -24,7 +26,9 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-
+body.fixed{
+  overflow: hidden;
+}
 .visually-hidden {
   position: absolute;
   margin: -1px;
@@ -37,4 +41,39 @@
   clip: rect(0 0 0 0);
   clip-path: inset(100%);
   -webkit-clip-path: inset(100%);
+}
+
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+
+@media only screen and (min-width: 370px) {
+  .container {
+    max-width: 375px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+  }
 }
