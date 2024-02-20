@@ -1,4 +1,4 @@
-footer {
+.footer {
   padding: 40px 0 10px;
 
   color: var(--primary);
@@ -9,4 +9,24 @@ footer {
   display: inline-block;
 
   margin-bottom: 20px;
+}
+
+.footer-slogan {
+  display: block;
+
+  margin-bottom: 20px;
+
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.16;
+  letter-spacing: -0.02em;
+}
+
+.footer .social-list {
+  margin-bottom: 40px;
+}
+.footer .social-link {
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
 }
