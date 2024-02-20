@@ -4,9 +4,10 @@
   | default @import url()
   |============================
 */
+@import '../../node_modules/modern-normalize/modern-normalize.css';
 @import url('./reset.css');
-@import url('./vite-promo.css');
 @import url('./header.css');
+@import url('./footer.css');
 
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
