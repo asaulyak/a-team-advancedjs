@@ -1,15 +1,4 @@
 /* footer */
-main {
-  background-color: tomato;
-}
-.box {
-  background-color: blue;
-  border: 10px solid #000000;
-  height: 250px;
-}
-.box:hover {
-  display: none;
-}
 .footer {
   position: relative;
   padding: 40px 0 10px;
