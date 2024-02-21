@@ -1,6 +1,23 @@
 @import '../../node_modules/modern-normalize/modern-normalize.css';
 @import url('./fonts.css');
 
+.heading {
+  margin-bottom: 20px;
+  font-size: 2em;
+  text-align: center;
+  text-transform: uppercase;
+}
+.description {
+  text-transform: uppercase;
+}
+
+.additional-text {
+  text-transform: uppercase;
+}
+.text-upper {
+  text-transform: uppercase;
+}
+
 .container {
   max-width: 100%;
   margin: 0 auto;
@@ -28,18 +45,4 @@
   .container {
     max-width: 1440px;
   }
-}
-
-.heading {
-  margin-bottom: 20px;
-  font-size: 2em;
-  text-align: center;
-}
-
-.main {
-  padding: 40px 30px;
-}
-
-p {
-  padding: 5px;
 }
