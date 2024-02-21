@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -12,8 +12,10 @@
       rel="stylesheet"
     />
     
-    <script type="module" crossorigin src="/a-team-advancedjs/assets/main-f69586ae.js"></script>
-    <link rel="stylesheet" href="/a-team-advancedjs/assets/main-5db05954.css">
+    <script type="module" crossorigin src="/a-team-advancedjs/assets/vendor-af062a2d.js"></script>
+    <script type="module" crossorigin src="/a-team-advancedjs/assets/main-91d054b4.js"></script>
+    <link rel="stylesheet" href="/a-team-advancedjs/assets/main-206458eb.css">
+    <link rel="stylesheet" href="/a-team-advancedjs/assets/vendor-e5212ee8.css">
   </head>
   <body>
     <header class="header">
@@ -171,13 +173,13 @@
 
     </main>
     <!-- FOOTER -->
-<footer class="footer">
+<footer class="footer footer-fixed" id="footer">
   <div class="container">
     <div class="footer-wrapper">
       <!-- footer thumb -->
       <div class="footer-thumb">
         <!-- footer logo -->
-        <a href="./" class="footer-logo logo link">
+        <a href="./index.html" class="footer-logo logo link">
           <svg class="logo-icon" width="132" height="24">
             <use href="/a-team-advancedjs/assets/icons-3b191f36.svg#icon-logo"></use>
           </svg>
@@ -242,6 +244,7 @@
             <input
               class="subscribe-input subscribe-item"
               type="text"
+              name="email"
               pattern="^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
               required
             />
@@ -269,7 +272,7 @@
         <li class="copyrigth-item">
           <a
             class="copyright-link"
-            href="./privacy-policy.html"
+            href="./terms.html"
             target="_blank"
             aria-label="terms of service link"
             >Terms of Service</a
