@@ -1,0 +1,5 @@
+:root {
+  --dark: #242424;
+  --primary: #f4f4f4;
+  --animation-fast: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
