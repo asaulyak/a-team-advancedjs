@@ -41,6 +41,10 @@ export function getQuote() {
   return axios.get(`${API_BASE_URL}/quote`);
 }
 
+export function sendSubscribe(body) {
+  return axios.post(`${API_BASE_URL}/subscription`, body);
+}
+
 export function getSubCategoriesByCategory({ category, page = 1, limit = 12 }) {
   return axios
     .get(
