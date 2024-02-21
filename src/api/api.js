@@ -40,3 +40,7 @@ export function getExercises() {
 export function getQuote() {
   return axios.get(`${API_BASE_URL}/quote`);
 }
+
+export function sendSubscribe(body) {
+  return axios.post(`${API_BASE_URL}/subscription`, body);
+}
