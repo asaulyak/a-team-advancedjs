@@ -40,3 +40,25 @@ export function getExercises() {
 export function getQuote() {
   return axios.get(`${API_BASE_URL}/quote`);
 }
+
+export function getSubCategoriesByCategory({ category, page = 1, limit = 12 }) {
+  return axios
+    .get(
+      `${API_BASE_URL}/filters?filter=${category}&page=${page}&limit=${limit}`
+    )
+    .then(response => preparePaginatedResponse(response));
+}
+
+export function getExercisesByCategory({
+  category,
+  subCategory,
+  keyword = 'pull',
+  page = 1,
+  limit = 10,
+}) {
+  return axios
+    .get(
+      `${API_BASE_URL}/exercises?${[category]}=${subCategory}&keyword=${keyword}&page=${page}&limit=${limit}`
+    )
+    .then(response => preparePaginatedResponse(response));
+}
