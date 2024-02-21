@@ -1,6 +1,5 @@
 /* footer */
 .footer {
-  position: relative;
   padding: 40px 0 10px;
 
   color: var(--primary);
@@ -9,12 +8,7 @@
   font-size: 14px;
   line-height: 1.29;
 }
-.footer-fixed {
-  position: fixed;
-  width: 100%;
-  left: 0;
-  bottom: 0;
-}
+
 @media screen and (min-width: 768px) {
   .footer {
     padding: 64px 0 16px;
