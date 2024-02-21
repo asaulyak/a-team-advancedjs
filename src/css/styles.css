@@ -12,6 +12,7 @@
 @import url('./footer.css');
 @import url('./social-list.css');
 @import url('./hero.css');
+@import url('./categories-list.css');
 
 body.fixed {
   overflow: hidden;
