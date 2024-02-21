@@ -146,7 +146,7 @@
   top: 50%;
   left: 14px;
   transform: translateY(-50%);
-  color: rgba(244, 244, 244, 0.6);
+  color: var(--soft-light-cl);
 }
 @media screen and (min-width: 768px) {
   .subscribe-label-text {
@@ -194,7 +194,7 @@
 /* footer copyright */
 
 .copyright {
-  color: #c6cdd1;
+  color: var(--blue-gray-cl);
   letter-spacing: -0.02em;
   display: flex;
   justify-content: space-between;
