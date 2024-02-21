@@ -5,6 +5,7 @@
   |============================
 */
 @import '../../node_modules/modern-normalize/modern-normalize.css';
+@import url('./foonts.css');
 @import url('./reset.css');
 @import url('./variables.css');
 @import url('./header.css');
@@ -12,21 +13,6 @@
 @import url('./social-list.css');
 @import url('./hero.css');
 
-:root {
-  font-family: 'DM Sans', Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
-
-  color: var(--dark);
-  background-color: var(--primary);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
 body.fixed {
   overflow: hidden;
 }

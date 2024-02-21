@@ -6,6 +6,19 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.logo {
+  transform: scale(1);
+  transition: transform var(--animation-fast);
+}
+.logo:hover,
+.logo:focus {
+  transform: scale(1.05);
+}
+.logo-icon {
+  fill: currentColor;
+}
+
 .header-nav {
   display: none;
   background-color: var(--dark);
