@@ -19,18 +19,15 @@
 
 .title-wraper {
   margin-bottom: 20px;
-  /* display: flex; */
 }
 
 .hero-tittle-icon {
-  /* display: block; */
   width: 38px;
   height: 38px;
 }
 .hero-section-image-container {
   border-radius: 30px;
   overflow: hidden;
-  /* height: min-content; */
   margin-bottom: 20px;
 }
 
@@ -47,20 +44,11 @@
   }
 }
 
-.hero-section-image {
-  /* height: 100%; */
-}
-
-.hero-section-content {
-}
-
 .hero-section-title {
   font-weight: 400;
   font-size: 38px;
   line-height: 1.16;
   letter-spacing: -0.02em;
-
-  /* text-align: end; */
 }
 @media screen and (min-width: 768px) {
   .hero-section-title {
@@ -100,7 +88,6 @@
     font-size: 18px;
     max-width: 528px;
     margin-bottom: 32px;
-    /* letter-spacing: 0.02em; */
   }
 }
 
