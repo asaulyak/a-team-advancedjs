@@ -10,6 +10,7 @@
 @import url('./header.css');
 @import url('./footer.css');
 @import url('./social-list.css');
+@import url('./exercise-list.css');
 
 :root {
   font-family: 'DM Sans', Helvetica, Arial, sans-serif;
@@ -26,7 +27,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-body.fixed{
+body.fixed {
   overflow: hidden;
 }
 .visually-hidden {
@@ -49,7 +50,6 @@ body.fixed{
   padding-left: 15px;
   padding-right: 15px;
 }
-
 
 @media only screen and (min-width: 370px) {
   .container {
