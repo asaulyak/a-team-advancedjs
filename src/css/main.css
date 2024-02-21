@@ -1,0 +1,14 @@
+main {
+  min-height: calc(100vh - 79px - 595px);
+}
+@media screen and (min-width: 768px) {
+  main {
+    min-height: calc(100vh - 100px - 534px);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  main {
+    min-height: calc(100vh - 108px - 328px);
+  }
+}
