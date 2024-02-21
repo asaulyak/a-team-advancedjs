@@ -1,5 +1,17 @@
 /* footer */
+main {
+  background-color: tomato;
+}
+.box {
+  background-color: blue;
+  border: 10px solid #000000;
+  height: 250px;
+}
+.box:hover {
+  display: none;
+}
 .footer {
+  position: relative;
   padding: 40px 0 10px;
 
   color: var(--primary);
@@ -7,6 +19,12 @@
 
   font-size: 14px;
   line-height: 1.29;
+}
+.footer-fixed {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
 }
 @media screen and (min-width: 768px) {
   .footer {
