@@ -1,4 +1,4 @@
-import * as exerciseList from './exerciseList/exerciseList';
+import { getExerciseList } from './exerciseList/exerciseList';
 
 // burger menu
 (() => {
@@ -41,7 +41,7 @@ import * as exerciseList from './exerciseList/exerciseList';
 
 // Main entry point
 function start() {
-  exerciseList.getExerciseList();
+  getExerciseList();
 }
 
 // Execution starts here

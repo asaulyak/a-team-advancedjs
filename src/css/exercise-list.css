@@ -12,7 +12,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 20px;
+  gap: 20px;
 }
 
 .exercise-card {
@@ -80,9 +80,16 @@
   font-size: 20px;
 }
 
+.exercise-card-title-text {
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .exercise-card-info {
   display: flex;
-  gap: 10px;
+  justify-content: space-between;
 }
 
 .exercise-card-info-element {
@@ -93,6 +100,19 @@
 
 .exercise-card-info-element-heading {
   color: rgba(36, 36, 36, 0.4);
+  white-space: nowrap;
 }
 
-/* .exercise-card-info-element-content {} */
+.exercise-card-info-element-content-no-overflow {
+  max-width: 38px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.exercise-card-info-element-content-target-no-overflow {
+  max-width: 25px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
