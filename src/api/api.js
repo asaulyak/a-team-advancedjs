@@ -42,5 +42,7 @@ export function getQuote() {
 }
 
 export function sendSubscribe(body) {
-  return axios.post(`${API_BASE_URL}/subscription`, body);
+  return axios
+    .post(`${API_BASE_URL}/subscription`, body)
+    .then(response => response.data);
 }

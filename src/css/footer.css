@@ -197,9 +197,21 @@
 }
 
 .subscribe-button {
+  position: relative;
   border: none;
 
   background-color: var(--primary);
+}
+.subscribe-button:disabled {
+  transform: scale(1);
+  cursor: default;
+}
+/* spiner */
+.footer .spinner {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(-50% -50%);
 }
 
 /* footer copyright */
