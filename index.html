@@ -13,8 +13,8 @@
     />
     
     <script type="module" crossorigin src="/a-team-advancedjs/assets/vendor-af062a2d.js"></script>
-    <script type="module" crossorigin src="/a-team-advancedjs/assets/main-56535047.js"></script>
-    <link rel="stylesheet" href="/a-team-advancedjs/assets/main-5085d242.css">
+    <script type="module" crossorigin src="/a-team-advancedjs/assets/main-801a8638.js"></script>
+    <link rel="stylesheet" href="/a-team-advancedjs/assets/main-d9cf4994.css">
     <link rel="stylesheet" href="/a-team-advancedjs/assets/vendor-e5212ee8.css">
   </head>
   <body>
@@ -318,8 +318,16 @@
               autocomplete="email"
             />
           </label>
-          <button class="subscribe-button subscribe-item" type="submit">
-            Send
+          <button
+            class="subscribe-button subscribe-item"
+            name="subscribeBtn"
+            type="submit"
+          >
+            <span class="subscribe-button-text">Send</span>
+            <span
+              class="spinner visually-hidden"
+              id="js-subscribe-spinner"
+            ></span>
           </button>
         </form>
       </div>
