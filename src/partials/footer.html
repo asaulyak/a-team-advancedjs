@@ -76,8 +76,16 @@
               autocomplete="email"
             />
           </label>
-          <button class="subscribe-button subscribe-item" type="submit">
-            Send
+          <button
+            class="subscribe-button subscribe-item"
+            name="subscribeBtn"
+            type="submit"
+          >
+            <span class="subscribe-button-text">Send</span>
+            <span
+              class="spinner visually-hidden"
+              id="js-subscribe-spinner"
+            ></span>
           </button>
         </form>
       </div>
