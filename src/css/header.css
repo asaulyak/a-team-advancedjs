@@ -70,7 +70,7 @@
   height: 100%;
   width: 100%;
 
-  background-color: var(--soft-black);
+  background-color: rgb(4, 4, 4, 0.4);
 
   transition:
     opacity var(--animation-fast),
@@ -152,7 +152,7 @@
   }
 }
 
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 1440px) {
   .header {
     padding: 28px 0;
   }
