@@ -6,10 +6,10 @@ const modalExercises = document.querySelector('.modal-exercises');
 const overlay = document.querySelector('.overlay');
 const listItem = document.querySelector('.js-list');
 
-const exerciseData = await getExercisesById(exerciseID); // TO DO:get data-id from start btn to continue
+// const exerciseData = await getExercisesById(exerciseID); // TO DO:get data-id from start btn to continue
 
-const markup = createMarkup(exerciseData);
-updateModal(markup);
+// const markup = createMarkup(exerciseData);
+// updateModal(markup);
 
 function openModalExercises() {
   modalExercises.classList.remove('visually-hidden');
