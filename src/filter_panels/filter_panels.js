@@ -6,8 +6,24 @@ import {
 import { storage } from '../storage/storage';
 const section = document.querySelector('.filter_panel');
 const exercises_title = `<h2 class="exercises-title">Exercises</h2>`;
-const form_buttons = `<div class="category-elements"><form class="search-form "><input class="form-input" type="text" placeholder="Search" /><button class="search-button"type="button"aria-label="search button"></button></form><ul class="category-list_buttons"><li><button class="category-button"type="button" id="Muscles"aria-label="category button">Muscles</button></li><li><button class="category-button active" type="button" id="Body parts"aria-label=" category button">Body parts</button></li><li><button class="category-button"type="button"id="Equipment"aria-label="category button">Equipment</button></li></ul></div>`;
+const form_buttons = `
+<div class="category-elements">
+  <form class="search-form">
+    <input class="form-input" type="text" placeholder="Search" />
+    <button class="search-button"type="button"aria-label="search button">
+    </button>
+  </form>
+  <ul class="category-list_buttons">
+    <li><button class="category-button"type="button" id="Muscles"aria-label="category button">Muscles</button>
+    </li><li><button class="category-button active" type="button" id="Body parts"aria-label=" category button">Body parts</button>
+    </li><li><button class="category-button"type="button"id="Equipment"aria-label="category button">Equipment</button>
+    </li>
+  </ul>
+</div>`;
 
+if (!section) {
+  return;
+}
 section.insertAdjacentHTML('afterbegin', `${exercises_title}${form_buttons}`);
 const elements = {
   title: document.querySelector('.exercises-title'),
