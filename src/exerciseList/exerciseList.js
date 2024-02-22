@@ -1,28 +1,41 @@
 import { getExercises } from '../api/api';
+import { renderPagination } from '../pagination/pagination';
 
 export function getExerciseList() {
-  // listLocation.insertAdjacentHTML('afterbegin', createBlockMarkupArr());
-
-  console.log(populateExerciseCards());
+  populateExerciseCards();
 }
 
 const listLocation = document.querySelector('#exerciseList');
+const paginationContainer = document.querySelector('.tui-pagination');
+let page = 1;
+let itemsLimit = 10;
+
+console.log(paginationContainer);
+
+renderPagination({
+  container: paginationContainer,
+  data: await fetchExercises(page, itemsLimit),
+  onUpdate: async page => {
+    const newData = await fetchExercises(page, itemsLimit);
+    populateExerciseCards(newData.results);
+  },
+});
 
 async function populateExerciseCards() {
-  const data = await fetchExercises();
+  const data = await fetchExercises(page, itemsLimit);
 
   const exerciseInfo = data.results;
 
-  console.log(exerciseInfo);
-
-  listLocation.insertAdjacentHTML(
-    'afterbegin',
-    createBlockMarkupArr(exerciseInfo)
-  );
+  if (exerciseInfo.length) {
+    listLocation.insertAdjacentHTML(
+      'afterbegin',
+      createBlockMarkupArr(exerciseInfo)
+    );
+  }
 }
 
-async function fetchExercises() {
-  const response = await getExercises();
+async function fetchExercises(page, limit) {
+  const response = await getExercises(page, limit);
 
   if (!response.statusText === 'OK') {
     throw new Error(response.statusText);
@@ -35,7 +48,7 @@ function createBlockMarkupArr(arr) {
   console.log(arr);
   return arr
     .map(
-      ({ bodyPart, burnedCalories, time, name, rating, target }) => `
+      ({ _id, bodyPart, burnedCalories, time, name, rating, target }) => `
         <div class="exercise-card">
           <div class="exercise-card-top">
             <div class="exercise-card-top-info">
@@ -47,10 +60,13 @@ function createBlockMarkupArr(arr) {
                 </svg>
               </div>
             </div>
-            <button class="exercise-card-button remove-button-formatting">
+            <button
+              class="exercise-card-button js-start-btn remove-button-formatting"
+              data-id=${_id}
+            >
               start
               <svg class="exercise-card-icon" width="16" height="16">
-                <use href="./image/icons.svg#icon-arrow"></use>
+                <use href="./image/icons.svg#icon-exercise-arrow"></use>
               </svg>
             </button>
           </div>

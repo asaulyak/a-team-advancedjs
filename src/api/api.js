@@ -21,7 +21,7 @@ const API_BASE_URL = 'https://your-energy.b.goit.study/api';
  * }
  */
 function preparePaginatedResponse(paginatedResponse) {
-  const { page, perPage, totalPages } = paginatedResponse;
+  const { page, perPage, totalPages } = paginatedResponse.data;
 
   return {
     ...paginatedResponse,
@@ -31,14 +31,14 @@ function preparePaginatedResponse(paginatedResponse) {
   };
 }
 
-export function getExercises() {
+export function getExercises(page = 1, limit = 12) {
   return axios
-    .get(`${API_BASE_URL}/exercises`)
+    .get(`${API_BASE_URL}/exercises?page=${page}&limit=${limit}`)
     .then(response => preparePaginatedResponse(response));
 }
 
 export function getQuote() {
-  return axios.get(`${API_BASE_URL}/quote`);
+  return axios.get(`${API_BASE_URL}/quote`).then(response => response.data);
 }
 
 export function sendSubscribe(body) {
