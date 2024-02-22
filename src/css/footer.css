@@ -1,2 +1,257 @@
-footer {
+/* footer */
+.footer {
+  padding: 40px 0 10px;
+
+  color: var(--primary);
+  background-color: var(--dark);
+
+  font-size: 14px;
+  line-height: 1.29;
+}
+
+@media screen and (min-width: 768px) {
+  .footer {
+    padding: 64px 0 16px;
+  }
+}
+/* footer wrapper */
+.footer-wrapper {
+  margin-bottom: 120px;
+}
+
+@media screen and (min-width: 768px) {
+  .footer-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 64px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .footer-wrapper {
+    justify-content: start;
+    gap: 158px;
+    margin-bottom: 70px;
+  }
+}
+/* footer thumb */
+.footer-thumb {
+  margin-bottom: 40px;
+}
+@media screen and (min-width: 768px) {
+  .footer-thumb {
+    margin-bottom: 0;
+  }
+}
+
+/* footer box */
+@media screen and (min-width: 1440px) {
+  .footer-box {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+  }
+}
+/* footer logo */
+.footer-logo {
+  display: inline-block;
+
+  margin-bottom: 20px;
+}
+@media screen and (min-width: 768px) {
+  .footer-logo {
+    margin-bottom: 32px;
+  }
+}
+
+/* footer slogan */
+.footer-slogan {
+  display: block;
+
+  margin-bottom: 20px;
+
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.16;
+  letter-spacing: -0.02em;
+}
+@media screen and (min-width: 768px) {
+  .footer-slogan {
+    max-width: 434px;
+    font-size: 56px;
+    line-height: 1.07;
+    letter-spacing: +0.02em;
+    margin-bottom: 32px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .footer-slogan {
+    max-width: 595px;
+  }
+}
+
+/* footer social list */
+
+.footer .social-link {
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+}
+@media screen and (min-width: 768px) {
+  .footer .social-link {
+    width: 44px;
+    height: 44px;
+  }
+}
+.footer .social-icon {
+  width: 24px;
+  height: 24px;
+}
+@media screen and (min-width: 768px) {
+  .footer .social-icon {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* footer subscribe form */
+@media screen and (min-width: 768px) {
+  .subscribe {
+    width: 352px;
+  }
+}
+
+.subscribe-slogan {
+  display: block;
+
+  margin-bottom: 20px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.29;
+}
+@media screen and (min-width: 768px) {
+  .subscribe-slogan {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+}
+
+.subscribe-label {
+  position: relative;
+  display: flex;
+  margin-bottom: 20px;
+  /* min-height: 42px; */
+}
+.subscribe-label-text {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
+  color: var(--soft-light-cl);
+}
+@media screen and (min-width: 768px) {
+  .subscribe-label-text {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+}
+.subscribe-item {
+  width: 100%;
+  min-height: 42px;
+
+  border-radius: 30px;
+
+  transform: scale(1);
+  transition: transform var(--animation-fast);
+}
+@media screen and (min-width: 768px) {
+  .subscribe-item {
+    padding: 0;
+    min-height: 48px;
+    font-size: 18px;
+    line-height: 1.33;
+  }
+}
+.subscribe-item:hover,
+.subscribe-item:focus {
+  transform: scale(1.01);
+  cursor: pointer;
+}
+.subscribe-input {
+  padding-left: 65px;
+
+  border: 1px solid currentColor;
+
+  color: var(--primary);
+  background-color: transparent;
+}
+
+.subscribe-button {
+  border: none;
+
+  background-color: var(--primary);
+}
+
+/* footer copyright */
+
+.copyright {
+  color: var(--blue-gray-cl);
+  letter-spacing: -0.02em;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+@media screen and (min-width: 768px) {
+  .copyright {
+    flex-wrap: nowrap;
+    justify-content: start;
+    align-items: center;
+  }
+}
+
+.copyright-text {
+  width: 100%;
+  margin-bottom: 10px;
+}
+@media screen and (min-width: 768px) {
+  .copyright-text {
+    margin-bottom: 0;
+    width: max-content;
+    margin-right: 78px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .copyright-text {
+    margin-right: 122px;
+  }
+}
+.copyright-list {
+  display: flex;
+}
+
+@media screen and (min-width: 768px) {
+  .copyright-list {
+    margin-right: auto;
+  }
+}
+.copyrigth-item:first-child {
+  margin-right: 8px;
+}
+.copyrigth-item:first-child::after {
+  content: '/';
+  margin-left: 8px;
+}
+.copyright-link {
+  display: inline-block;
+  transform: scale(1);
+  transition: transform var(--animation-fast);
+}
+.copyright-link:hover,
+.copyright-link:focus {
+  transform: scale(1.05);
+}
+@media screen and (min-width: 1440px) {
+  .copyright-date {
+    min-width: 352px;
+  }
 }

@@ -1,12 +1,10 @@
-// burger menu
-(() => {
+export function initBurger() {
   const mobileMenu = document.querySelector('.js-menu-container');
   const openMenuBtn = document.querySelector('.js-open-menu');
   const closeMenuBtn = document.querySelector('.js-close-menu');
   const body = document.querySelector('body');
 
   const onClickMobileMenu = event => {
-    console.log(event.target);
     if (
       event.target.classList.contains('nav__link') ||
       event.target.classList.contains('mobile-backdrop')
@@ -31,23 +29,10 @@
 
   // Close the mobile menu on wider screens if the device orientation changes
   window.matchMedia('(min-width: 768px)').addEventListener('change', e => {
-    if (!e.matches) return;
+    if (!e.matches) {
+      return;
+    }
     mobileMenu.classList.remove('is-open');
     openMenuBtn.setAttribute('aria-expanded', false);
   });
-})();
-
-// Main entry point
-import { initBurger } from './burger/burger.js';
-// Subscribe
-import { initSubscribe } from './subscribe/subscribe.js';
-import { getExerciseList } from './exerciseList/exerciseList';
-
-function start() {
-  initBurger();
-  initSubscribe();
-  getExerciseList();
 }
-
-// Execution starts here
-start();

@@ -41,32 +41,24 @@ function createBlockMarkupArr(arr) {
             <div class="exercise-card-top-info">
               <div class="exercise-card-tag">workout</div>
               <div class="exercise-card-rating">
-                ${rating}<img
-                  width="18"
-                  height="18"
-                  src="https://img.icons8.com/fluency/48/star--v1.png"
-                  alt="star--v1"
-                />
+                ${rating}
+                <svg class="exercise-card-icon" width="14" height="13">
+                  <use href="./image/icons.svg#icon-star"></use>
+                </svg>
               </div>
             </div>
             <button class="exercise-card-button remove-button-formatting">
               start
-              <img
-                width="16"
-                height="16"
-                src="https://img.icons8.com/ios/50/long-arrow-right--v1.png"
-                alt="long-arrow-right--v1"
-              />
+              <svg class="exercise-card-icon" width="16" height="16">
+                <use href="./image/icons.svg#icon-arrow"></use>
+              </svg>
             </button>
           </div>
           <div class="exercise-card-bottom">
             <div class="exercise-card-title">
-              <img
-                width="24"
-                height="24"
-                src="https://img.icons8.com/ios-filled/50/running.png"
-                alt="running"
-              />
+              <svg class="exercise-card-icon" width="24" height="24">
+                <use href="./image/icons.svg#icon-sport"></use>
+              </svg>
               <p class="exercise-card-title-text">
                 ${name}
               </p>
