@@ -12,7 +12,7 @@
   width: 100%;
   height: 100%;
   backdrop-filter: blur(3px);
-  background: rgba(4, 4, 4, 0.4);
+  background: var(--overlay-bg);
 }
 
 .hidden {
@@ -27,7 +27,7 @@
   max-height: 80vh;
   padding: 40px 20px;
   border-radius: 20px;
-  background-color: #242424;
+  background-color: var(--dark);
   transform: translate(-50%, -50%);
 }
 .modal-exercises-btn-close {
@@ -38,8 +38,8 @@
   align-items: center;
   justify-content: center;
   padding: 0;
-  stroke: #f4f4f4;
-  background-color: #242424;
+  stroke: var(--primary);
+  background-color: var(--dark);
   border: none;
 }
 .modal-exercises-img {
@@ -55,7 +55,7 @@
   font-weight: 500;
   line-height: 1;
   text-transform: none;
-  color: #f4f4f4;
+  color: var(--primary);
 }
 .modal-exercises-rating {
   display: flex;
@@ -64,7 +64,7 @@
   margin-bottom: 30px;
   font-size: 12px;
   line-height: 1.5;
-  color: rgba(244, 244, 244, 0.4);
+  color: var(--grey-forty);
 }
 .modal-exercises-block {
   margin-bottom: 40px;
@@ -81,7 +81,7 @@
   position: absolute;
   height: 1px;
   width: 100%;
-  background-color: rgba(244, 244, 244, 0.2);
+  background-color: var(--grey-twenty);
   content: '';
 }
 
@@ -99,18 +99,18 @@
   font-size: 12px;
   font-weight: 400;
   line-height: 1.5;
-  color: rgba(244, 244, 244, 0.4);
+  color: var(--grey-forty);
 }
 .modal-exercises-text {
   font-size: 14px;
   font-weight: 500;
   line-height: 1.28;
-  color: #f4f4f4;
+  color: var(--primary);
 }
 .modal-exercises-description {
   font-size: 14px;
   line-height: 1.28;
-  color: rgba(244, 244, 244, 0.6);
+  color: var(--grey-sixty);
 }
 .modal-exercises-btn-container {
   display: flex;
@@ -129,32 +129,32 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
-  border: 1px solid #f4f4f4;
-  background-color: #f4f4f4;
-  color: #242424;
+  border: 1px solid var(--primary);
+  background-color: var(--primary);
+  color: var(--dark);
 }
 .btn-favorites-icon {
-  stroke: #242424;
-  fill: #f4f4f4;
+  stroke: var(--dark);
+  fill: var(--primary);
   width: 18px;
   height: 18px;
 }
 .modal-exercises-btn-rating {
-  border: 1px solid #f4f4f4;
+  border: 1px solid var(--primary);
   background-color: transparent;
-  color: #f4f4f4;
+  color: var(--primary);
 }
 .modal-exercises-btn-favorites:hover {
-  background-color: #242424;
-  color: #f4f4f4;
+  background-color: var(--dark);
+  color: var(--primary);
 }
 
 .modal-exercises-btn-favorites:hover .btn-favorites-icon {
-  fill: #242424;
-  stroke: #f4f4f4;
+  fill: var(--dark);
+  stroke: var(--primary);
 }
 
 .modal-exercises-btn-rating:hover {
-  background-color: #f4f4f4;
-  color: #242424;
+  background-color: var(--primary);
+  color: var(--dark);
 }
