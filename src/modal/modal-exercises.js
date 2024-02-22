@@ -6,7 +6,8 @@ const modalExercises = document.querySelector('.modal-exercises');
 const overlay = document.querySelector('.overlay');
 const listItem = document.querySelector('.js-list');
 
-const exerciseData = await getExercisesById(exerciseID); // get data-id from start btn to continue
+const exerciseData = await getExercisesById(exerciseID); // TO DO:get data-id from start btn to continue
+
 const markup = createMarkup(exerciseData);
 updateModal(markup);
 
@@ -36,7 +37,7 @@ function createMarkup({
     return `src="${gifUrl}"`;
   }
 
-  const ratingStarsHTML = createRating(rating); // finish this function with rating stars
+  const ratingStarsHTML = createRating(rating); // TO DO: finish this function with rating stars
 
   return `
   <div class="modal-exercises-container" data-id="${_id}">
