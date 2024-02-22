@@ -13,8 +13,8 @@
     />
     
     <script type="module" crossorigin src="/a-team-advancedjs/assets/vendor-af062a2d.js"></script>
-    <script type="module" crossorigin src="/a-team-advancedjs/assets/main-a86e84e5.js"></script>
-    <link rel="stylesheet" href="/a-team-advancedjs/assets/main-71927e29.css">
+    <script type="module" crossorigin src="/a-team-advancedjs/assets/main-56535047.js"></script>
+    <link rel="stylesheet" href="/a-team-advancedjs/assets/main-5085d242.css">
     <link rel="stylesheet" href="/a-team-advancedjs/assets/vendor-e5212ee8.css">
   </head>
   <body>
@@ -22,16 +22,20 @@
   <div class="container header-container">
     <a href="./" class="header-logo logo link">
       <svg class="logo-icon" width="132" height="24">
-        <use href="/a-team-advancedjs/assets/icons-c40564bc.svg#icon-logo"></use>
+        <use href="/a-team-advancedjs/assets/icons-0de6107e.svg#icon-logo"></use>
       </svg>
     </a>
     <nav class="header-nav">
       <ul class="header-nav-list">
         <li class="header-nav-item">
-          <a class="header-nav-link active" href="#">Home</a>
+          <a class="header-nav-link" href="index.html" data-page="index"
+            >Home</a
+          >
         </li>
         <li class="header-nav-item">
-          <a class="header-nav-link" href="#">Favorites</a>
+          <a class="header-nav-link" href="favorites.html" data-page="favorites"
+            >Favorites</a
+          >
         </li>
       </ul>
     </nav>
@@ -45,7 +49,7 @@
           aria-label="Facebook link"
         >
           <svg class="social-icon" width="28" height="28">
-            <use href="/a-team-advancedjs/assets/icons-c40564bc.svg#icon-facebook"></use>
+            <use href="/a-team-advancedjs/assets/icons-0de6107e.svg#icon-facebook"></use>
           </svg>
         </a>
       </li>
@@ -58,7 +62,7 @@
           aria-label="Instagram link"
         >
           <svg class="social-icon" width="28" height="28">
-            <use href="/a-team-advancedjs/assets/icons-c40564bc.svg#icon-instagram"></use>
+            <use href="/a-team-advancedjs/assets/icons-0de6107e.svg#icon-instagram"></use>
           </svg>
         </a>
       </li>
@@ -71,7 +75,7 @@
           aria-label="youtube link"
         >
           <svg class="social-icon" width="28" height="28">
-            <use href="/a-team-advancedjs/assets/icons-c40564bc.svg#icon-youtube"></use>
+            <use href="/a-team-advancedjs/assets/icons-0de6107e.svg#icon-youtube"></use>
           </svg>
         </a>
       </li>
@@ -92,7 +96,7 @@
         aria-expanded="false"
         role="img"
       >
-        <use href="/a-team-advancedjs/assets/icons-c40564bc.svg#icon-burger-menu"></use>
+        <use href="/a-team-advancedjs/assets/icons-0de6107e.svg#icon-burger-menu"></use>
       </svg>
     </button>
   </div>
@@ -110,16 +114,23 @@
         data-menu-close-btn
       >
         <svg class="menu-close-icon" width="32" height="32">
-          <use href="/a-team-advancedjs/assets/icons-c40564bc.svg#icon-close-menu"></use>
+          <use href="/a-team-advancedjs/assets/icons-0de6107e.svg#icon-close-menu"></use>
         </svg>
       </button>
       <div class="mobile-nav">
         <ul class="mobile-nav-list">
           <li class="mobile-nav-item">
-            <a class="mobile-nav-link active" href="#">Home</a>
+            <a class="header-nav-link" href="index.html" data-page="index"
+              >Home</a
+            >
           </li>
           <li class="mobile-nav-item">
-            <a class="mobile-nav-link" href="#">Favorites</a>
+            <a
+              class="header-nav-link"
+              href="favorites.html"
+              data-page="favorites"
+              >Favorites</a
+            >
           </li>
         </ul>
         <ul class="social-list social-list_dark">
@@ -132,7 +143,7 @@
               aria-label="Facebook link"
             >
               <svg class="social-icon" width="28" height="28">
-                <use href="/a-team-advancedjs/assets/icons-c40564bc.svg#icon-facebook"></use>
+                <use href="/a-team-advancedjs/assets/icons-0de6107e.svg#icon-facebook"></use>
               </svg>
             </a>
           </li>
@@ -145,7 +156,7 @@
               aria-label="Instagram link"
             >
               <svg class="social-icon" width="28" height="28">
-                <use href="/a-team-advancedjs/assets/icons-c40564bc.svg#icon-instagram"></use>
+                <use href="/a-team-advancedjs/assets/icons-0de6107e.svg#icon-instagram"></use>
               </svg>
             </a>
           </li>
@@ -158,7 +169,7 @@
               aria-label="youtube link"
             >
               <svg class="social-icon" width="28" height="28">
-                <use href="/a-team-advancedjs/assets/icons-c40564bc.svg#icon-youtube"></use>
+                <use href="/a-team-advancedjs/assets/icons-0de6107e.svg#icon-youtube"></use>
               </svg>
             </a>
           </li>
@@ -222,6 +233,12 @@
   </div>
 </section>
 
+      <section>
+  <div class="categories-container">
+    <ul class="categories-list js-list"></ul>
+  </div>
+</section>
+
     </main>
     <!-- FOOTER -->
 <footer class="footer footer-fixed" id="footer">
@@ -232,7 +249,7 @@
         <!-- footer logo -->
         <a href="./index.html" class="footer-logo logo link">
           <svg class="logo-icon" width="132" height="24">
-            <use href="/a-team-advancedjs/assets/icons-c40564bc.svg#icon-logo"></use>
+            <use href="/a-team-advancedjs/assets/icons-0de6107e.svg#icon-logo"></use>
           </svg>
         </a>
         <!-- footer social list -->
@@ -246,7 +263,7 @@
               aria-label="facebook link"
             >
               <svg class="social-icon">
-                <use href="/a-team-advancedjs/assets/icons-c40564bc.svg#icon-facebook"></use>
+                <use href="/a-team-advancedjs/assets/icons-0de6107e.svg#icon-facebook"></use>
               </svg>
             </a>
           </li>
@@ -259,7 +276,7 @@
               aria-label="instagram link"
             >
               <svg class="social-icon">
-                <use href="/a-team-advancedjs/assets/icons-c40564bc.svg#icon-instagram"></use>
+                <use href="/a-team-advancedjs/assets/icons-0de6107e.svg#icon-instagram"></use>
               </svg>
             </a>
           </li>
@@ -272,7 +289,7 @@
               aria-label="youtube link"
             >
               <svg class="social-icon">
-                <use href="/a-team-advancedjs/assets/icons-c40564bc.svg#icon-youtube"></use>
+                <use href="/a-team-advancedjs/assets/icons-0de6107e.svg#icon-youtube"></use>
               </svg>
             </a>
           </li>
