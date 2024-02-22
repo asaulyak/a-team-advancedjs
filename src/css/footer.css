@@ -185,6 +185,16 @@
   color: var(--primary);
   background-color: transparent;
 }
+.subscribe-input:-webkit-autofill,
+.subscribe-input:-webkit-autofill:focus {
+  transition:
+    background-color 600000s 0s,
+    color 600000s 0s;
+}
+
+.subscribe-input[data-autocompleted] {
+  background-color: transparent !important;
+}
 
 .subscribe-button {
   border: none;
