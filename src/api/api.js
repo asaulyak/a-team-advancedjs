@@ -31,14 +31,14 @@ function preparePaginatedResponse(paginatedResponse) {
   };
 }
 
-export function getExercises() {
+export function getExercises(page = 1, limit = 12) {
   return axios
-    .get(`${API_BASE_URL}/exercises`)
-    .then(response => preparePaginatedResponse(response));
+    .get(`${API_BASE_URL}/exercises?page=${page}&limit=${limit}`)
+    .then(response => preparePaginatedResponse(response.data));
 }
 
 export function getQuote() {
-  return axios.get(`${API_BASE_URL}/quote`);
+  return axios.get(`${API_BASE_URL}/quote`).then(response => response.data);
 }
 
 export function sendSubscribe(body) {
