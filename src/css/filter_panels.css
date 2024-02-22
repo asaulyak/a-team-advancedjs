@@ -15,7 +15,7 @@ h2 {
 }
 .form-input {
   display: flex;
-  width: 335px;
+  width: 100%;
   height: 44px;
   padding: 0 14px;
   align-items: center;
@@ -40,8 +40,10 @@ h2 {
   right: 14px;
   top: 13px;
 
-  width: 18px;
-  height: 18px;
+  background-color: transparent;
+  border: none;
+  /* width: 18px; */
+  /* height: 18px; */
 }
 
 .category-list_buttons {
@@ -62,13 +64,13 @@ h2 {
   padding-bottom: 4px;
 }
 
-.category-button {
+.selected {
   position: relative;
   display: inline-block;
   cursor: pointer;
 }
 
-.category-button::after {
+.selected:after {
   content: '';
   position: absolute;
   left: 0;
@@ -76,16 +78,10 @@ h2 {
   width: 100%;
   height: 4px;
   background-color: #242424;
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.3s ease;
   border-radius: 2px;
   color: #242424;
-}
-
-.category-button:hover::after,
-.category-button:focus::after,
-.category-button:active::after {
-  opacity: 1;
 }
 
 /* response */
@@ -101,9 +97,6 @@ h2 {
   .search-form {
     width: 273px;
     margin-top: 0;
-  }
-  .form-input {
-    width: 273px;
   }
 }
 
