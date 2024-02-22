@@ -36,6 +36,11 @@ export function getExercises() {
     .get(`${API_BASE_URL}/exercises`)
     .then(response => preparePaginatedResponse(response));
 }
+export function getExercisesById(_id) {
+  return axios
+    .get(`${API_BASE_URL}/exercises/${_id}`)
+    .then(response => response.data);
+}
 
 export function getQuote() {
   return axios.get(`${API_BASE_URL}/quote`);
