@@ -7,4 +7,10 @@
   /* footer cl */
   --soft-light-cl: rgba(244, 244, 244, 0.6); /*F4F4F4 0.6*/
   --blue-gray-cl: #c6cdd1;
+
+  /* modal cl*/
+  --overlay-bg: rgba(4, 4, 4, 0.4);
+  --grey-twenty: rgba(244, 244, 244, 0.2);
+  --grey-forty: rgba(244, 244, 244, 0.4);
+  --grey-sixty: rgba(244, 244, 244, 0.6);
 }
