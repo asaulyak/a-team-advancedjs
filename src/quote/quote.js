@@ -16,8 +16,10 @@ export async function renderQuote(container) {
 
   const quote = await getQuoteText();
 
-  // TODO: Render HTML here
-  container.innerHTML = `<div>${quote.quote}</div><div>${quote.author}</div>`;
+  container.innerHTML = `
+    <blockquote class="quote-text">${quote.quote}</blockquote>
+    <cite class="quote-author">${quote.author}</cite>
+  `;
 }
 
 async function getQuoteText() {
