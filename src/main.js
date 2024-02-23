@@ -9,6 +9,8 @@ import { initSubscribe } from './subscribe/subscribe.js';
 import './categories-list/categories-list.js';
 //Modal Exercises
 import './modal/modal-exercises.js';
+//Favorites
+import './favorites/favorites.js';
 
 function start() {
   initBurger();
