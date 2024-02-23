@@ -1,15 +1,40 @@
 import { getExercisesById } from '../api/api';
+import { storage } from '../storage/storage';
 import image from '../image/modal-exercises-img.jpg';
 import icons from '../image/icons.svg';
 
 const modalExercises = document.querySelector('.modal-exercises');
 const overlay = document.querySelector('.overlay');
 const listItem = document.querySelector('.js-list');
+const btnModalFavorites = document.querySelector(
+  '.modal-exercises-btn-favorites'
+);
+const btnModalClose = document.querySelector('.modal-exercises-btn-close');
 
-// const exerciseData = await getExercisesById(exerciseID); // TO DO:get data-id from start btn to continue
+let isFavorite = false;
 
-// const markup = createMarkup(exerciseData);
-// updateModal(markup);
+listItem.addEventListener('click', handlerStartExerciseClick);
+async function handlerStartExerciseClick(event) {
+  if (!event.target.closest('.remote-button-formating')) {
+    return;
+  }
+  try {
+    const exerciseID = event.target
+      .closest('.remote-button-formatting')
+      .getAttribute('data-id');
+    const exerciseData = await getExercisesById(exerciseID);
+    const markup = createMarkup(exerciseData);
+    updateModal(markup);
+    openModalExercises();
+
+    btnModalFavorites.addEventListener('click', () =>
+      handlerToggleBtnFavorites(exerciseID)
+    );
+    btnModalClose.addEventListener('click', handlerCloseModalExercises);
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 function openModalExercises() {
   modalExercises.classList.remove('visually-hidden');
@@ -18,6 +43,7 @@ function openModalExercises() {
 
 function updateModal(markup) {
   modalExercises.innerHTML = markup;
+  toggleFavorites();
 }
 function createRating(rating) {
   const starColor = '#EEA10C';
@@ -141,3 +167,51 @@ function createMarkup({
 </div>
 `;
 }
+function toggleFavorites() {
+  const storageData = storage.get('exerciseData');
+  if (storageData?.some(item => item._id === exerciseID)) {
+    isFavorite = true;
+    btnModalFavorites.innerHTML = createRemoveFromFavoritesMarkup();
+  } else {
+    isFavorite = false;
+    btnModalFavorites.innerHTML = createAddToFavoritesMarkup();
+  }
+}
+
+function createAddToFavoritesMarkup() {
+  return `
+  Add to favorites
+  <svg class="btn-favorites-icon">
+  <use href="${icons}#icon-favorites"></use>
+  </svg>
+  `;
+}
+
+function createRemoveFromFavoritesMarkup() {
+  return `
+  Remove from favorites
+  <svg class="btn-favorites-icon">
+  <use href="${icons}#icon-trash"></use>
+  </svg>
+  `;
+}
+
+function handlerToggleBtnFavorites(exerciseID) {}
+function handlerCloseModalExercises() {
+  modalExercises.classList.add('visually-hidden');
+  overlay.classList.add('visually-hidden');
+}
+
+overlay.addEventListener('click', function (event) {
+  if (event.target === overlay) {
+    handlerCloseModalExercises();
+  }
+});
+document.addEventListener('keydown', function (event) {
+  if (
+    event.key === 'Escape' &&
+    !modalExercises.classList.contains('visually-hidden')
+  ) {
+    handlerCloseModalExercises();
+  }
+});
