@@ -1,7 +1,5 @@
 import { getExercisesById } from '../api/api';
 import { storage } from '../storage/storage';
-import image from '../image/modal-exercises-img.jpg';
-import icons from '../image/icons.svg';
 
 const modalExercises = document.querySelector('.modal-exercises');
 const overlay = document.querySelector('.overlay');
@@ -15,12 +13,12 @@ let isFavorite = false;
 
 listItem.addEventListener('click', handlerStartExerciseClick);
 async function handlerStartExerciseClick(event) {
-  if (!event.target.closest('.remote-button-formating')) {
+  if (!event.target.closest('.js-start-btn')) {
     return;
   }
   try {
     const exerciseID = event.target
-      .closest('.remote-button-formatting')
+      .closest('.js-start-btn')
       .getAttribute('data-id');
     const exerciseData = await getExercisesById(exerciseID);
     const markup = createMarkup(exerciseData);
@@ -39,12 +37,14 @@ async function handlerStartExerciseClick(event) {
 function openModalExercises() {
   modalExercises.classList.remove('visually-hidden');
   overlay.classList.remove('visually-hidden');
+  document.body.classList.add('no-scroll');
 }
 
 function updateModal(markup) {
   modalExercises.innerHTML = markup;
   toggleFavorites();
 }
+
 function createRating(rating) {
   const starColor = '#EEA10C';
   const emptyStarColor = '#F4F4F4';
@@ -59,7 +59,7 @@ function createRating(rating) {
     // Create SVG markup for each star
     const starMarkup = `
 <svg width="14" height="13">
-        <use href="${icons}#icon-star"></use>
+        <use href="./image/icons.svg#icon-star"></use>
         <linearGradient id="starGradient${i}" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" style="stop-color:${starColor};stop-opacity:1" />
           <stop offset="${fillPercentage}%" style="stop-color:${starColor};stop-opacity:1" />
@@ -79,8 +79,7 @@ function createRating(rating) {
     ? `${rating}.0`
     : rating.toFixed(1);
   // Combine rating text with stars markup
-  const ratingWithStars = `${ratingText} ${stars.join('')}`;
-  return ratingWithStars;
+  return `${ratingText} ${stars.join('')}`;
 }
 
 function createMarkup({
@@ -99,8 +98,8 @@ function createMarkup({
   const getExerciseGif = getGif(gifUrl);
   function getGif(gifUrl) {
     if (gifUrl === null || !gifUrl) {
-      return `srcset = '${image}
-      src = '${image}'`;
+      return `srcset = "./image/modal-exercises-img.jpg"
+      src = "./image/modal-exercises-img.jpg"`;
     }
     return `src="${gifUrl}"`;
   }
@@ -111,7 +110,7 @@ function createMarkup({
   <div class="modal-exercises-container" data-id="${_id}">
     <button class="modal-exercises-btn-close">
       <svg width="24" height="24">
-        <use href="${icons}#icon-close-menu"></use>
+        <use href="./image/icons.svg#icon-close-menu"></use>
       </svg>
     </button>
 
@@ -146,7 +145,7 @@ function createMarkup({
               <h3 class="modal-exercises-subtitle">Popular</h3>
               <p class="modal-exercises-text">${popularity}</p>
             </li>
-            
+
             <li class="modal-exercises-item">
               <h3 class="modal-exercises-subtitle">Burned Calories</h3>
               <p class="modal-exercises-text">${burnedCalories}/${time}</p>
@@ -160,7 +159,7 @@ function createMarkup({
   <button class="modal-exercises-btn-favorites modal-exercises-btn" type="button" data-id="${_id}">
       Add to favorites
       <svg class="btn-favorites-icon">
-        <use href="${icons}#icon-favorites"></use>
+      <use href="./image/icons.svg#icon-favorites"></use>
       </svg>
     </button>
   <button class="modal-exercises-btn-rating modal-exercises-btn" type="button" data-id="${_id}">Give a rating</button>
@@ -182,7 +181,7 @@ function createAddToFavoritesMarkup() {
   return `
   Add to favorites
   <svg class="btn-favorites-icon">
-  <use href="${icons}#icon-favorites"></use>
+  <use href="./image/icons.svg#icon-favorites"></use>
   </svg>
   `;
 }
@@ -191,22 +190,36 @@ function createRemoveFromFavoritesMarkup() {
   return `
   Remove from favorites
   <svg class="btn-favorites-icon">
-  <use href="${icons}#icon-trash"></use>
+  <use href="./image/icons.svg#icon-trash"></use>
   </svg>
   `;
 }
 
-function handlerToggleBtnFavorites(exerciseID) {}
+function handlerToggleBtnFavorites(exerciseID) {
+  const storageData = storage.get('exerciseData');
+
+  isFavorite = !isFavorite;
+
+  if (isFavorite) {
+    btnModalFavorites.innerHTML = createRemoveFromFavoritesMarkup();
+    addToFavorites(exerciseID);
+  } else {
+    btnModalFavorites.innerHTML = createAddToFavoritesMarkup();
+    removeFromFavorites(exerciseID);
+  }
+}
+
 function handlerCloseModalExercises() {
   modalExercises.classList.add('visually-hidden');
   overlay.classList.add('visually-hidden');
+  document.body.classList.remove('no-scroll');
 }
 
-overlay.addEventListener('click', function (event) {
-  if (event.target === overlay) {
-    handlerCloseModalExercises();
-  }
-});
+// overlay.addEventListener('click', function (event) {
+//   if (event.target === overlay) {
+//     handlerCloseModalExercises();
+//   }
+// });
 document.addEventListener('keydown', function (event) {
   if (
     event.key === 'Escape' &&

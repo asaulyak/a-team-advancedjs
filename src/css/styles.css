@@ -18,6 +18,9 @@
 @import url('./modal-exercises.css');
 @import url('./pagination.css');
 @import url('./favorites.css');
+@import url('./scroll-up.css');
+@import url('./exercise.css');
+@import url('./exercise-list.css');
 
 body.fixed {
   overflow: hidden;
