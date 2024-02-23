@@ -11,7 +11,8 @@
   align-items: center;
   justify-content: center;
   color: var(--dark);
-  transition: background-color var(--animation-fast),
+  transition:
+    background-color var(--animation-fast),
     color var(--animation-fast);
 }
 .social-list .social-link .social-icon {
