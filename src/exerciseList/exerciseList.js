@@ -13,14 +13,14 @@ export async function renderExerciseList() {
   const paginationContainer = section.querySelector('.tui-pagination');
 
   const options = composeFilters();
-  const data = await fetchExercises(options);
+  const data = await getExercises(options);
   populateExerciseCards(listLocation, data.results);
 
   renderPagination({
     container: paginationContainer,
     data,
     onUpdate: async page => {
-      const newData = await fetchExercises(composeFilters(page));
+      const newData = await getExercises(composeFilters(page));
       populateExerciseCards(listLocation, newData.results);
     },
   });
@@ -42,17 +42,6 @@ function populateExerciseCards(container, data) {
   if (data.length) {
     container.innerHTML = createBlockMarkupArr(data);
   }
-}
-
-async function fetchExercises(options) {
-  const response = await getExercises(options);
-
-  if (response.statusText !== 'OK') {
-    showError('Failed to load exercises');
-    return [];
-  }
-
-  return response.data;
 }
 
 function createBlockMarkupArr(arr) {
