@@ -1,5 +1,6 @@
 import { getExercises } from '../api/api';
 import { renderPagination } from '../pagination/pagination';
+import { storage } from '../storage/storage.js';
 import { showError } from '../toast/toast.js';
 
 export async function renderExerciseList() {
@@ -9,37 +10,42 @@ export async function renderExerciseList() {
     return;
   }
 
-  const exerciseBlock = section.querySelector('#exerciseSection');
+  console.log(storage.get('category'));
+
+  const exerciseBlock = document.querySelector('.exercise-section');
   const listLocation = section.querySelector('#exerciseList');
   const paginationContainer = section.querySelector('.tui-pagination');
 
   const options = composeFilters();
   const data = await getExercises(options);
 
-  if (data.length) {
+  if (data.results.length) {
     populateExerciseCards(listLocation, data.results);
+
+    renderPagination({
+      container: paginationContainer,
+      data,
+      onUpdate: async page => {
+        const newData = await getExercises(composeFilters(page));
+        populateExerciseCards(listLocation, newData.results);
+      },
+    });
   } else {
+    exerciseBlock
+      .querySelector('.tui-pagination')
+      .classList.add('visually-hidden');
     listLocation.insertAdjacentHTML(
       'beforeend',
       `<p class="exercise-noitemsmessage">It appears that there are no results that align with what you are searching for, please try again.</p>`
     );
   }
-
-  renderPagination({
-    container: paginationContainer,
-    data,
-    onUpdate: async page => {
-      const newData = await getExercises(composeFilters(page));
-      populateExerciseCards(listLocation, newData.results);
-    },
-  });
 }
 
 function composeFilters(page = 1, limit = 10) {
   // TODO: Get filters from corresponding html elements
   return {
     bodypart: undefined,
-    muscles: undefined,
+    muscles: storage.get('category'),
     equipment: undefined,
     keyword: undefined,
     page,
@@ -48,9 +54,7 @@ function composeFilters(page = 1, limit = 10) {
 }
 
 function populateExerciseCards(container, data) {
-  if (data.length) {
-    container.innerHTML = createBlockMarkupArr(data);
-  }
+  container.innerHTML = createBlockMarkupArr(data);
 }
 
 function createBlockMarkupArr(arr) {
