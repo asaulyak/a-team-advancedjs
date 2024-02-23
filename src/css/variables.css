@@ -7,6 +7,11 @@
   /* footer cl */
   --soft-light-cl: rgba(244, 244, 244, 0.6); /*F4F4F4 0.6*/
   --blue-gray-cl: #c6cdd1;
+  /* spinner cl */
+  --black: #000000;
+  --black-twenty: rgba(0, 0, 0, 0.2);
+  --black-fifty: rgba(0, 0, 0, 0.5);
+  --black-seventy: rgba(0, 0, 0, 0.7);
 
   /* modal cl*/
   --overlay-bg: rgba(4, 4, 4, 0.4);
