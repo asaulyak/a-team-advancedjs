@@ -1,6 +1,6 @@
 import { getExercisesById } from '../api/api';
-import image from '../image/modal-exercises-img.jpg';
-import icons from '../image/icons.svg';
+import image from '../public/image/modal-exercises-img.jpg';
+import icons from '../public/image/icons.svg';
 
 const modalExercises = document.querySelector('.modal-exercises');
 const overlay = document.querySelector('.overlay');
