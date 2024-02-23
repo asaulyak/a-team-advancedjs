@@ -12,6 +12,7 @@ export const hiddenStyle = 'visually-hidden';
  */
 export function onSpinner(spinnerRef) {
   if (!spinnerRef) return;
+  spinnerRef.style.animationPlayState = 'running';
   spinnerRef.classList.remove(hiddenStyle);
 }
 
@@ -27,5 +28,6 @@ export function onSpinner(spinnerRef) {
  */
 export function offSpinner(spinnerRef) {
   if (!spinnerRef) return;
+  spinnerRef.style.animationPlayState = 'paused';
   spinnerRef.classList.add(hiddenStyle);
 }
