@@ -14,7 +14,7 @@ export async function renderExerciseList() {
   const paginationContainer = section.querySelector('.tui-pagination');
 
   const options = composeFilters();
-  const data = await fetchExercises(options);
+  const data = await getExercises(options);
 
   if (data.length) {
     populateExerciseCards(listLocation, data.results);
@@ -29,7 +29,7 @@ export async function renderExerciseList() {
     container: paginationContainer,
     data,
     onUpdate: async page => {
-      const newData = await fetchExercises(composeFilters(page));
+      const newData = await getExercises(composeFilters(page));
       populateExerciseCards(listLocation, newData.results);
     },
   });
@@ -38,7 +38,7 @@ export async function renderExerciseList() {
 function composeFilters(page = 1, limit = 10) {
   // TODO: Get filters from corresponding html elements
   return {
-    bodypart: 'undefined',
+    bodypart: undefined,
     muscles: undefined,
     equipment: undefined,
     keyword: undefined,
@@ -51,17 +51,6 @@ function populateExerciseCards(container, data) {
   if (data.length) {
     container.innerHTML = createBlockMarkupArr(data);
   }
-}
-
-async function fetchExercises(options) {
-  const response = await getExercises(options);
-
-  if (response.statusText !== 'OK') {
-    showError('Failed to load exercises');
-    return [];
-  }
-
-  return response.data;
 }
 
 function createBlockMarkupArr(arr) {
