@@ -12,8 +12,16 @@
 @import url('./filter_panels.css');
 @import url('./main.css');
 @import url('./footer.css');
+@import url('./spinner.css');
 @import url('./social-list.css');
 @import url('./hero.css');
+@import url('./categories-list.css');
+@import url('./modal-exercises.css');
+@import url('./pagination.css');
+@import url('./favorites.css');
+@import url('./scroll-up.css');
+@import url('./exercise.css');
+@import url('./exercise-list.css');
 
 body.fixed {
   overflow: hidden;
@@ -39,6 +47,11 @@ body.fixed {
   padding-right: 15px;
 }
 
+.hero-section {
+  padding-top: 80px;
+  padding-bottom: 40px;
+}
+
 @media only screen and (min-width: 370px) {
   .container {
     max-width: 375px;
@@ -53,15 +66,16 @@ body.fixed {
     padding-left: 32px;
     padding-right: 32px;
   }
-}
-
-@media only screen and (min-width: 1280px) {
-  .container {
-    max-width: 1024px;
+  .hero-section {
+    padding-top: 100px;
+    padding-bottom: 64px;
   }
 }
 @media only screen and (min-width: 1440px) {
   .container {
     max-width: 1440px;
+  }
+  .hero-section {
+    padding-top: 96px;
   }
 }
