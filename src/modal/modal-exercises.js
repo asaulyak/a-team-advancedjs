@@ -1,6 +1,4 @@
 import { getExercisesById } from '../api/api';
-import image from '../public/image/modal-exercises-img.jpg';
-import icons from '../public/image/icons.svg';
 
 const modalExercises = document.querySelector('.modal-exercises');
 const overlay = document.querySelector('.overlay');
@@ -36,7 +34,7 @@ function createRating(rating) {
     // Create SVG markup for each star
     const starMarkup = `
 <svg width="14" height="13">
-        <use href="${icons}#icon-star"></use>
+        <use href="./image/icons.svg#icon-star"></use>
         <linearGradient id="starGradient${i}" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" style="stop-color:${starColor};stop-opacity:1" />
           <stop offset="${fillPercentage}%" style="stop-color:${starColor};stop-opacity:1" />
@@ -75,8 +73,8 @@ function createMarkup({
   const getExerciseGif = getGif(gifUrl);
   function getGif(gifUrl) {
     if (gifUrl === null || !gifUrl) {
-      return `srcset = '${image}
-      src = '${image}'`;
+      return `srcset = 'image/modal-exercises-img.jpg'
+      src = 'image/modal-exercises-img.jpg'`;
     }
     return `src="${gifUrl}"`;
   }
@@ -87,7 +85,7 @@ function createMarkup({
   <div class="modal-exercises-container" data-id="${_id}">
     <button class="modal-exercises-btn-close">
       <svg width="24" height="24">
-        <use href="${icons}#icon-close-menu"></use>
+        <use href="./image/icons.svg#icon-close-menu"></use>
       </svg>
     </button>
 
@@ -136,7 +134,7 @@ function createMarkup({
   <button class="modal-exercises-btn-favorites modal-exercises-btn" type="button" data-id="${_id}">
       Add to favorites
       <svg class="btn-favorites-icon">
-        <use href="${icons}#icon-favorites"></use>
+        <use href="./image/icons.svg#icon-favorites"></use>
       </svg>
     </button>
   <button class="modal-exercises-btn-rating modal-exercises-btn" type="button" data-id="${_id}">Give a rating</button>
