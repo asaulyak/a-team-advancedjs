@@ -19,25 +19,22 @@ renderSportsNorm();
 function renderSportsNorm() {
   favoritesTitle.insertAdjacentHTML(
     'beforeend',
-    '<div class="favorites-sportsnorm favorites-margin"><p>svg</p><p>110 min</p><p>Daily norm of sports</p></div>'
-  );
-}
-
-// 3. автоматичний рендер картинки
-
-renderSportsImage();
-
-function renderSportsImage() {
-  favoritesTitle.insertAdjacentHTML(
-    'beforeend',
-    '<img src="./image/favorites/sportsimage_mob.jpg" alt="sporty girls" class="favorites-sportsimage favorites-margin"/>'
+    `<div class="favorites-sportsnorm-wrapper">
+      <div class="favorites-sportsnorm favorites-margin">
+          <svg class= "favorites-sportsicon">
+            <use href="./image/icons.svg#icon-sportsnorm"></use>
+          </svg>
+        <p class="favorites-sportsnorm-number">110 min</p>
+        <p class="favorites-sportsnorm-title">Daily norm of sports</p>
+      </div>
+      <div class="favorites-sportsimage favorites-margin">
+      </div>`
   );
 }
 
 // 4. динамічний рендер карток
 renderCardsSection();
 
-// 4.1 беремо в storage айді обраних до favorite (в modalExercises) вправ
 // console.dir(storage);
 
 ////// додавання в favorites з модального вікна - кнопка з сердечком
@@ -64,7 +61,7 @@ function renderCardsSection() {
 
 // 4.4.1 рендер карток
 function renderFavoritesCards(dataForFavorites) {
-  console.log(dataForFavorites);
+  // console.log(dataForFavorites);
   favoritesTitle.insertAdjacentHTML(
     'beforeend',
     '<div><p>template favorite cards here</p></div>'
