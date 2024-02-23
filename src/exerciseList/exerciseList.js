@@ -15,7 +15,15 @@ export async function renderExerciseList() {
 
   const options = composeFilters();
   const data = await fetchExercises(options);
-  populateExerciseCards(listLocation, data.results);
+
+  if (data.length) {
+    populateExerciseCards(listLocation, data.results);
+  } else {
+    listLocation.insertAdjacentHTML(
+      'beforeend',
+      `<p class="exercise-noitemsmessage">It appears that there are no results that align with what you are searching for, please try again.</p>`
+    );
+  }
 
   renderPagination({
     container: paginationContainer,
@@ -30,7 +38,7 @@ export async function renderExerciseList() {
 function composeFilters(page = 1, limit = 10) {
   // TODO: Get filters from corresponding html elements
   return {
-    bodypart: undefined,
+    bodypart: 'undefined',
     muscles: undefined,
     equipment: undefined,
     keyword: undefined,
@@ -42,12 +50,6 @@ function composeFilters(page = 1, limit = 10) {
 function populateExerciseCards(container, data) {
   if (data.length) {
     container.innerHTML = createBlockMarkupArr(data);
-  } else {
-    container.querySelector('.tui-pagination').classList.add('visually-hidden');
-    container.insertAdjacentHTML(
-      'beforeend',
-      `<p class="exercise-noitemsmessage">It appears that there are no results that align with what you are searching for, please try again.</p>`
-    );
   }
 }
 
