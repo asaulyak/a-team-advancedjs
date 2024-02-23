@@ -21,10 +21,58 @@
           </li>
           <li>
             <div class="image-container">
-              <img
-                src="../public/image/exercise-image-desktop.jpg"
-                alt="women"
-              />
+              <picture>
+                <source
+                  srcset="
+                    ./image/exercise/exercise-image-desktop.webp    1x,
+                    ./image/exercise/exercise-image-desktop@2x.webp 2x
+                  "
+                  media="(min-width: 1440px)"
+                  type="image/webp"
+                />
+                <source
+                  srcset="
+                    ./image/exercise/exercise-image-desktop.jpg    1x,
+                    ./image/exercise/exercise-image-desktop@2x.jpg 2x
+                  "
+                  media="(min-width: 1440px)"
+                />
+                <source
+                  srcset="
+                    ./image/exercise/exercise-image-tablet.webp    1x,
+                    ./image/exercise/exercise-image-tablet@2x.webp 2x
+                  "
+                  media="(min-width: 768px)"
+                  type="image/webp"
+                />
+                <source
+                  srcset="
+                    ./image/exercise/exercise-image-tablet.jpg    1x,
+                    ./image/exercise/exercise-image-tablet@2x.jpg 2x
+                  "
+                  media="(min-width: 768px)"
+                />
+                <source
+                  srcset="
+                    ./image/exercise/exercise-image-mobile.webp    1x,
+                    ./image/exercise/exercise-image-mobile@2x.webp 2x
+                  "
+                  media="(min-width: 375px)"
+                  type="image/webp"
+                />
+                <source
+                  srcset="
+                    ./image/exercise/exercise-image-mobile.jpg    1x,
+                    ./image/exercise/exercise-image-mobile@2x.jpg 2x
+                  "
+                  media="(min-width: 375px)"
+                />
+                <img
+                  class="teacher-icon"
+                  src="./image/exercise/exercise-image-mobile.jpg"
+                  alt="beautiful womens talking"
+                />
+              </picture>
             </div>
           </li>
           <li>
