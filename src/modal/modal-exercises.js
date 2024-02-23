@@ -72,6 +72,9 @@ function openModalExercises(modalExercises, overlay) {
 
 function updateModal(markup) {
   const modalExercises = document.querySelector('.modal-exercises');
+  if (!modalExercises) {
+    showError('Exercise not found');
+  }
   modalExercises.innerHTML = markup;
 }
 //**************Rating stars********* */
