@@ -66,7 +66,7 @@ function createBlockMarkupArr(arr) {
               <div class="exercise-card-rating">
                 ${rating}
                 <svg class="exercise-card-icon" width="14" height="13">
-                  <use href="./image/icons.svg#icon-star"></use>
+                  <use href="./public/image/icons.svg#icon-exercise-star"></use>
                 </svg>
               </div>
             </div>
@@ -76,14 +76,14 @@ function createBlockMarkupArr(arr) {
             >
               start
               <svg class="exercise-card-icon" width="16" height="16">
-                <use href="./image/icons.svg#icon-exercise-arrow"></use>
+                <use href="./public/image/icons.svg#icon-exercise-arrow"></use>
               </svg>
             </button>
           </div>
           <div class="exercise-card-bottom">
             <div class="exercise-card-title">
               <svg class="exercise-card-icon" width="24" height="24">
-                <use href="./image/icons.svg#icon-sport"></use>
+                <use href="./public/image/icons.svg#icon-sport"></use>
               </svg>
               <p class="exercise-card-title-text">
                 ${name}
@@ -94,7 +94,7 @@ function createBlockMarkupArr(arr) {
                 <div class="exercise-card-info-element-heading">
                   Burned calories:
                 </div>
-                <div class="exercise-card-info-element-content-no-overflow">${burnedCalories} / ${time} minutes</div>
+                <div class="exercise-card-info-element-content-no-overflow">${burnedCalories} / ${time} min</div>
               </div>
               <div class="exercise-card-info-element">
                 <div class="exercise-card-info-element-heading">Body part:</div>

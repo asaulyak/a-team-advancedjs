@@ -60,10 +60,6 @@
     width: 442px;
   }
 }
-@media only screen and (min-width: 1440px) {
-  .exercise-card {
-  }
-}
 
 .exercise-card-top {
   display: flex;
@@ -130,9 +126,31 @@
   white-space: nowrap;
 }
 
+@media only screen and (min-width: 1280px) {
+  .exercise-card-title-text {
+    max-width: 325px;
+  }
+}
+
 .exercise-card-info {
   display: flex;
   justify-content: space-between;
+}
+
+@media only screen and (min-width: 768px) {
+  .exercise-card-info {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .exercise-card-info {
+    display: flex;
+    justify-content: flex-start;
+    gap: 16px;
+  }
 }
 
 .exercise-card-info-element {
@@ -158,4 +176,24 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+@media only screen and (min-width: 768px) {
+  .exercise-card-info-element-content-no-overflow {
+    max-width: 38px;
+  }
+
+  .exercise-card-info-element-content-target-no-overflow {
+    max-width: 25px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .exercise-card-info-element-content-no-overflow {
+    max-width: 65px;
+  }
+
+  .exercise-card-info-element-content-target-no-overflow {
+    max-width: 65px;
+  }
 }
