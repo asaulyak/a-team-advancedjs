@@ -9,12 +9,21 @@ export async function renderExerciseList() {
     return;
   }
 
+  const exerciseBlock = section.querySelector('#exerciseSection');
   const listLocation = section.querySelector('#exerciseList');
   const paginationContainer = section.querySelector('.tui-pagination');
 
   const options = composeFilters();
   const data = await getExercises(options);
-  populateExerciseCards(listLocation, data.results);
+
+  if (data.length) {
+    populateExerciseCards(listLocation, data.results);
+  } else {
+    listLocation.insertAdjacentHTML(
+      'beforeend',
+      `<p class="exercise-noitemsmessage">It appears that there are no results that align with what you are searching for, please try again.</p>`
+    );
+  }
 
   renderPagination({
     container: paginationContainer,
