@@ -60,17 +60,21 @@ async function handlerStartExerciseClick(
       handlerCloseModalExercises(modalExercises, overlay)
     );
   } catch (error) {
-    showError(error);
+    showError('Information not found');
   }
 }
 
 function openModalExercises(modalExercises, overlay) {
   modalExercises.classList.remove('visually-hidden');
   overlay.classList.remove('visually-hidden');
-  document.body.classList.add('no-scroll');
+  document.body.classList.add('fixed');
 }
 
 function updateModal(markup) {
+  const modalExercises = document.querySelector('.modal-exercises');
+  if (!modalExercises) {
+    return;
+  }
   modalExercises.innerHTML = markup;
 }
 //**************Rating stars********* */
@@ -303,5 +307,5 @@ async function removeFromFavorites(exerciseID) {
 function handlerCloseModalExercises(modalExercises, overlay) {
   modalExercises.classList.add('visually-hidden');
   overlay.classList.add('visually-hidden');
-  document.body.classList.remove('no-scroll');
+  document.body.classList.remove('fixed');
 }

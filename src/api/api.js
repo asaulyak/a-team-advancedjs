@@ -24,7 +24,7 @@ function preparePaginatedResponse(paginatedResponse) {
   const { page, perPage, totalPages } = paginatedResponse.data;
 
   return {
-    ...paginatedResponse,
+    ...paginatedResponse.data,
     page: +page,
     perPage: +perPage,
     totalPages: totalPages ?? 0,
@@ -55,4 +55,12 @@ export function sendSubscribe(body) {
   return axios
     .post(`${API_BASE_URL}/subscription`, body)
     .then(response => response.data);
+}
+
+export function getFilters(filter = 'Muscles', page = 1, limit = 12) {
+  return axios
+    .get(
+      `${API_BASE_URL}/filters?filter=${encodeURIComponent(filter)}&page=${page}&limit=${limit}`
+    )
+    .then(response => preparePaginatedResponse(response));
 }
