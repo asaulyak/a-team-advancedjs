@@ -93,4 +93,4 @@ var M=(e,t,s)=>{if(!t.has(e))throw TypeError("Cannot "+s)};var w=(e,t,s)=>(M(e,t
         <p class="categories-card-title">${r}</p>
         <p class="categories-card-text">${s}</p>
       </li>`).join("")}function q(e,t){const s=e.querySelector(".categories-list");s&&(s.innerHTML=pe(t))}function he(e){e.querySelector(".categories-list").addEventListener("click",t=>{const s=t.target.closest(".categories-card-item");if(!s)return;const r=s.dataset.name;g.set("category",r),T(e)})}async function ve(e="Muscles",t=1){const s=document.querySelector(".categories-container");if(!s)return;he(s);const r=await k(e,t);q(s,r.results);const i=document.querySelector(".categories.tui-pagination");i&&ge({container:i,data:r,onUpdate:async o=>{const n=await k(e,o);q(s,n.results)}})}function be(){H(),J(),W(),te(),re(),ve()}be();
-//# sourceMappingURL=main-ab90fcc3.js.map
+//# sourceMappingURL=main-64c56f51.js.map
