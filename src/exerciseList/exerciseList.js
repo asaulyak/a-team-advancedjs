@@ -9,6 +9,7 @@ export async function renderExerciseList() {
     return;
   }
 
+  const exerciseBlock = section.querySelector('#exerciseSection');
   const listLocation = section.querySelector('#exerciseList');
   const paginationContainer = section.querySelector('.tui-pagination');
 
@@ -29,7 +30,7 @@ export async function renderExerciseList() {
 function composeFilters(page = 1, limit = 10) {
   // TODO: Get filters from corresponding html elements
   return {
-    bodypart: 'undefined',
+    bodypart: undefined,
     muscles: undefined,
     equipment: undefined,
     keyword: undefined,
@@ -42,7 +43,7 @@ function populateExerciseCards(container, data) {
   if (data.length) {
     container.innerHTML = createBlockMarkupArr(data);
   } else {
-    document.querySelector('.tui-pagination').classList.add('visually-hidden');
+    container.querySelector('.tui-pagination').classList.add('visually-hidden');
     container.insertAdjacentHTML(
       'beforeend',
       `<p class="exercise-noitemsmessage">It appears that there are no results that align with what you are searching for, please try again.</p>`
