@@ -41,6 +41,11 @@ function composeFilters(page = 1, limit = 10) {
 function populateExerciseCards(container, data) {
   if (data.length) {
     container.innerHTML = createBlockMarkupArr(data);
+  } else {
+    container.insertAdjacentHTML(
+      'beforeend',
+      `<p class="exercise-noitemsmessage">It appears that there are no results that align with what you are searching for, please try again.</p>`
+    );
   }
 }
 
