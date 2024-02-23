@@ -33,6 +33,14 @@
   }
 }
 
+.exercise-noitemsmessage {
+  max-width: 100%;
+  display: flex;
+  margin: 0 auto;
+  justify-items: center;
+  margin-bottom: 20px;
+}
+
 .exercise-card {
   display: flex;
   flex-direction: column;
