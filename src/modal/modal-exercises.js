@@ -67,7 +67,7 @@ async function handlerStartExerciseClick(
 function openModalExercises(modalExercises, overlay) {
   modalExercises.classList.remove('visually-hidden');
   overlay.classList.remove('visually-hidden');
-  document.body.classList.add('no-scroll');
+  document.body.classList.add('fixed');
 }
 
 function updateModal(markup) {
@@ -307,5 +307,5 @@ async function removeFromFavorites(exerciseID) {
 function handlerCloseModalExercises(modalExercises, overlay) {
   modalExercises.classList.add('visually-hidden');
   overlay.classList.add('visually-hidden');
-  document.body.classList.remove('no-scroll');
+  document.body.classList.remove('fixed');
 }
