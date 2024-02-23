@@ -60,7 +60,7 @@ async function handlerStartExerciseClick(
       handlerCloseModalExercises(modalExercises, overlay)
     );
   } catch (error) {
-    showError(error);
+    showError('Information not found');
   }
 }
 
@@ -71,6 +71,7 @@ function openModalExercises(modalExercises, overlay) {
 }
 
 function updateModal(markup) {
+  const modalExercises = document.querySelector('.modal-exercises');
   modalExercises.innerHTML = markup;
 }
 //**************Rating stars********* */
