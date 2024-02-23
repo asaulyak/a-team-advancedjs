@@ -4,22 +4,21 @@ import { getQuote } from '../api/api.js';
 const TODAY_KEY = 'today';
 const QUOTE_KEY = 'quote-of-the-day';
 
-/**
- * Usage
- * const quoteContainer = document.querySelector('.home-quote');
- * await renderQuote(quoteContainer);
- * */
-export async function renderQuote(container) {
-  if (!container) {
-    return;
-  }
 
-  const quote = await getQuoteText();
+ export async function renderQuote(container) {
+	console.log('Hello');
+	const quoteContainer = document.querySelector('#quote'); // Виправлено тут
+	if (!quoteContainer) {
+		console.log('Quote container not found');
+		return;
+	}
 
-  container.innerHTML = `
-    <blockquote class="quote-text">${quote.quote}</blockquote>
-    <cite class="quote-author">${quote.author}</cite>
-  `;
+	const quote = await getQuoteText();
+	console.log(quote);
+	quoteContainer.innerHTML = `
+		<blockquote class="quote-text">${quote.quote}</blockquote>
+		<cite class="quote-author">${quote.author}</cite>
+	`;
 }
 
 async function getQuoteText() {

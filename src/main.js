@@ -14,11 +14,13 @@ import { initScrollUp } from './scroll-up/scroll-up.js';
 
 import { renderExerciseList } from './exerciseList/exerciseList';
 
+import { renderQuote } from './quote/quote.js';
 function start() {
   initBurger();
   headerHighlighting();
   initSubscribe();
-  renderExerciseList(); // TODO: Move to the corresponding parent component
+	renderExerciseList(); // TODO: Move to the corresponding parent component
+	renderQuote();
   initScrollUp();
 }
 

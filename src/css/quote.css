@@ -1,0 +1,229 @@
+.exercise-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.pagination-container {
+  order: 1;
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 1440px) {
+  .content-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .sidebar-container {
+    order: 1;
+    flex: 1;
+  }
+
+  .pagination-container {
+    order: 2;
+    flex: 1;
+  }
+}
+
+.sidebar-container {
+  width: 100%;
+  padding-top: 80px;
+}
+
+@media screen and (min-width: 768px) {
+  .sidebar-container {
+    padding-top: 64px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .sidebar-container {
+    width: 444px;
+    padding-top: 0;
+  }
+}
+
+.sidebar-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .sidebar-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}
+
+.daily-quote-container {
+  cursor: initial;
+  position: relative;
+  padding: 20px 20px 20px 72px;
+  width: 100%;
+  min-height: 209px;
+  border-radius: 20px;
+  background-color: #000;
+	}
+@media screen and (min-width: 768px) {
+  .daily-quote-container {
+    width: 400px;
+    min-height: 249px;
+    padding: 40px 40px 40px 90px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .daily-quote-container {
+    width: 444px;
+    min-height: 242px;
+  }
+}
+
+.icon-circle {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(244, 244, 244, 0.2);
+}
+
+@media screen and (min-width: 768px) {
+  .icon-circle {
+    top: 59px;
+    left: 50px;
+  }
+}
+
+.icon-svg {
+  fill: #fff; 
+}
+
+.daily-quote-title,
+.card-title {
+  margin-bottom: 8px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1em;
+  color: #fff; 
+}
+
+.commas-svg,
+.aside__commas-svg {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 15px;
+  height: 15px;
+  fill: #fff; 
+}
+
+@media screen and (min-width: 768px) {
+  .daily-quote-title,
+  .card-title {
+    font-size: 24px;
+    line-height: 1.3em;
+  }
+
+  .commas-svg,
+  .aside__commas-svg {
+    top: 40px;
+    right: 40px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.quote-wrapper,
+.aside-quote__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 141px;
+}
+
+.image-container {
+  position: relative;
+}
+
+.image-bg {
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(17, 17, 17, 0) 0%, rgba(17, 17, 17, 0.4) 100%), url('../img/exercise-image-mobile.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: brightness(0.6);
+  width: 100%;
+  height: 242px;
+}
+
+.image-bg:hover,
+.image-bg:focus {
+  filter: brightness(0.8);
+}
+
+.link-block {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bmi-link {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1em;
+  color: #fff; 
+}
+
+.info-card {
+  cursor: initial;
+  position:relative;
+  width: 100%;
+  min-height: 201px;
+  padding: 20px 20px 20px 70px;
+  border-radius: 20px;
+  background-color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+  .info-card {
+    width: 400px;
+    min-height: 249px;
+    padding: 40px 40px 40px 90px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .info-card {
+    width: 444px;
+    min-height: 315px;
+  }
+}
+
+.card-icon-svg {
+  fill: #000; 
+}
+
+.card-title {
+  color: #000; 
+}
+
+.card-subtitle,
+.card-text {
+  font-size: 14px;
+  color: rgba(4, 4, 4, 0.7);
+}
