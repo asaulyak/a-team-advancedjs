@@ -36,7 +36,7 @@
   width: 100%;
   border-radius: 20px;
   background-color: var(--dark);
-  min-height: 200px;
+  min-height: 210px;
 }
 
 @media screen and (min-width: 768px) {
@@ -51,6 +51,7 @@
 @media screen and (min-width: 1440px) {
   .daily-quote-container {
     max-width: 100%;
+    min-height: 242px;
   }
 }
 
@@ -66,12 +67,6 @@
   background: var(--grey-twenty);
 }
 
-@media screen and (min-width: 768px) {
-  .icon-circle {
-    top: 59px;
-    left: 50px;
-  }
-}
 .quote-text {
   margin-bottom: 16px;
   color: var(--grey-sixty);
@@ -149,6 +144,7 @@
 @media screen and (min-width: 768px) {
   .image-container {
     margin-bottom: 0;
+    max-height: 249px;
   }
 }
 
@@ -230,6 +226,7 @@
 .card-subtitle {
   font-size: 14px;
   line-height: 1.29;
+  letter-spacing: 0;
 }
 .card-subtitle {
   color: var(--dark-sixty);
@@ -313,6 +310,7 @@
   background-color: transparent;
   width: 20px;
   height: 20px;
+  margin-bottom: 15px;
 }
 
 .favorites .card-icon-svg {
@@ -322,6 +320,7 @@
   margin-bottom: 6px;
 }
 .favorites .card-subtitle {
+  letter-spacing: -0.02em;
   margin-bottom: 0;
 }
 .favorites .daily-quote-container {
@@ -333,5 +332,11 @@
 @media screen and (min-width: 768px) {
   .favorites .daily-quote-container {
     max-width: 100%;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .favorites .daily-quote-container {
+    max-width: 100%;
+    min-height: 230px;
   }
 }
