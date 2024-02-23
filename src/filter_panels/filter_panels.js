@@ -4,6 +4,7 @@ import {
   getSubCategoriesByCategory,
 } from '../api/api';
 import { storage } from '../storage/storage';
+
 const section = document.querySelector('.filter_panel');
 const exercises_title = `<h2 class="exercises-title">Exercises</h2>`;
 const form_buttons = `
@@ -16,7 +17,7 @@ const form_buttons = `
     </button>
   </form>
   <ul class="category-list_buttons">
-    <li><button class="category-button selected"type="button" id="Muscles"aria-label="category button">Muscles</button></li>
+    <li><button class="category-button "type="button" id="Muscles"aria-label="category button">Muscles</button></li>
     <li><button class="category-button " type="button" id="Body parts"aria-label=" category button">Body parts</button></li>
     <li><button class="category-button "type="button"id="Equipment"aria-label="category button">Equipment</button>
     </li>
@@ -27,6 +28,7 @@ function getFilterPanels() {
   if (!section) {
     return;
   }
+
   section.insertAdjacentHTML('afterbegin', `${exercises_title}${form_buttons}`);
   const elements = {
     form: document.querySelector('.search-form'),
@@ -43,67 +45,95 @@ function getFilterPanels() {
   };
 
   const { searchIcon, closeIcon } = searchAndCloseIcons;
-  searchButton.addEventListener('click', handlerClickReset);
+  searchButton.addEventListener('click', handlerClickResetForm);
 
-  function handlerClickReset() {
-    input.value = '';
-    closeIcon.classList.add('visually-hidden');
-    searchIcon.classList.remove('visually-hidden');
-  }
+  let storageValue = storage.get('filter') || 'Muscles';
+  categoryButtons.forEach(button => {
+    if (button.id === storageValue) {
+      button.classList.add('selected');
+    }
+  });
 
-  getSubCategoriesByCategory({ category: 'Muscles' }).then(
+  // document.querySelectorAll(`#Body parts`).classList.add('selected');
+
+  getSubCategoriesByCategory({ category: storageValue }).then(
     ({ data: { results } }) => {
       // markupCategories(results)виклик функції для рендеру підкатегорій
-      console.log(data);
+      //cl-масив категорій
     }
   );
   //---------------------------------------------
 
   list.addEventListener('click', handleClickCategory);
-  function handleClickCategory(e) {
-    categoryButtons.forEach(button => button.classList.remove('selected'));
-    e.target.classList.add('selected'); // підкреслення для кнопки
 
-    form.classList.remove('visually-hidden'); //показ форми(змінити на add)
-    storage.set('filter', e.target.id);
-    getSubCategoriesByCategory({ category: e.target.id }).then(({ data }) => {
-      //виклик функції для рендеру підкатегорій
-      console.log(data);
-    });
-  }
-
-  function onShowSearchForm() {
-    form.classList.remove('visually-hidden'); //показ форми
-  }
   //---------------------------------------------
 
   input.addEventListener('input', handlerSubmit);
-  function handlerSubmit(e) {
-    e.preventDefault();
+}
 
-    const valueInput = e.target.value;
-    if (valueInput) {
-      closeIcon.classList.remove('visually-hidden');
-      searchIcon.classList.add('visually-hidden');
+// Функції
+
+function handlerClickResetForm() {
+  const input = document.querySelector('.form-input');
+  const closeIcon = document.querySelector('.close-icon');
+  const searchIcon = document.querySelector('.search-icon');
+
+  input.value = '';
+  closeIcon.classList.add('visually-hidden');
+  searchIcon.classList.remove('visually-hidden');
+}
+
+function handleClickCategory(e) {
+  const categoryButtons = document.querySelectorAll('.category-button');
+  const form = document.querySelector('.search-form');
+  const storageValue = storage.get('filter');
+
+  form.classList.remove('visually-hidden');
+  storage.set('filter', e.target.id);
+  getSubCategoriesByCategory({ category: e.target.id }).then(
+    ({ data: { results } }) => {
+      //виклик функції для рендеру підкатегорій
+      categoryButtons.forEach(button => button.classList.remove('selected'));
+      e.target.classList.add('selected');
+      // cl-(data);
     }
-    const StorageCategory =
-      storage.get('filter') === 'Muscles'
-        ? 'muscles'
-        : storage.get('filter') === 'Body parts'
-          ? 'bodypart'
-          : 'equipment';
+  );
+}
 
-    //Потрібно записати вибрану частину тіла в LS.
-    e.target.value !== '' &&
-      getExercisesByCategory({
-        keyword: e.target.value,
-        category: StorageCategory,
-        subCategory: storage.get('subCategory'),
-      }).then(({ data }) => {
-        //Виклик функції для рендеру вправ по ключовому слові
-        console.log(data);
-      });
+function onShowSearchForm() {
+  const form = document.querySelector('.search-form');
+  form.classList.remove('visually-hidden'); //показ форми
+}
+
+function handlerSubmit(e) {
+  e.preventDefault();
+
+  const input = document.querySelector('.form-input');
+  const closeIcon = document.querySelector('.close-icon');
+  const searchIcon = document.querySelector('.search-icon');
+  const valueInput = e.target.value;
+
+  if (valueInput) {
+    closeIcon.classList.remove('visually-hidden');
+    searchIcon.classList.add('visually-hidden');
   }
+  const StorageCategory =
+    storage.get('filter') === 'Muscles'
+      ? 'muscles'
+      : storage.get('filter') === 'Body parts'
+        ? 'bodypart'
+        : 'equipment';
+
+  //Потрібно записати вибрану частину тіла (ключове слово) в LS.
+  e.target.value !== '' &&
+    getExercisesByCategory({
+      keyword: e.target.value,
+      category: StorageCategory,
+      subCategory: storage.get('subCategory'),
+    }).then(({ data }) => {
+      //Виклик функції для рендеру вправ по ключовому слові A.B
+      // cl-data);
+    });
 }
 
 getFilterPanels();
