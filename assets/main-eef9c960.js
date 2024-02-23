@@ -8,7 +8,7 @@ var E=(e,t,s)=>{if(!t.has(e))throw TypeError("Cannot "+s)};var M=(e,t,s)=>(E(e,t
               <div class="exercise-card-rating">
                 ${o}
                 <svg class="exercise-card-icon" width="14" height="13">
-                  <use href="./image/icons.svg#icon-star"></use>
+                  <use href="./image/icons.svg#icon-exercise-star"></use>
                 </svg>
               </div>
             </div>
@@ -36,7 +36,7 @@ var E=(e,t,s)=>{if(!t.has(e))throw TypeError("Cannot "+s)};var M=(e,t,s)=>(E(e,t
                 <div class="exercise-card-info-element-heading">
                   Burned calories:
                 </div>
-                <div class="exercise-card-info-element-content-no-overflow">${r} / ${i} minutes</div>
+                <div class="exercise-card-info-element-content-no-overflow">${r} / ${i} min</div>
               </div>
               <div class="exercise-card-info-element">
                 <div class="exercise-card-info-element-heading">Body part:</div>
@@ -133,4 +133,4 @@ var E=(e,t,s)=>{if(!t.has(e))throw TypeError("Cannot "+s)};var M=(e,t,s)=>(E(e,t
   <use href="./image/icons.svg#icon-trash"></use>
   </svg>
   `}function pe(e,t){if(t=!t,t){const s=document.querySelector(".modal-exercises-btn-favorites");s.innerHTML=ve(),he(e)}else{const s=document.querySelector(".modal-exercises-btn-favorites");s.innerHTML=ge(),xe(e)}}async function he(e){try{const t=h.get("exerciseData")||[];if(!t.find(r=>typeof r=="string"?JSON.parse(r)._id===e:typeof r=="object"&&r._id?r._id===e:!1)){const r=await F(e),i=JSON.stringify(r);t.push(i),h.set("exerciseData",t)}}catch{d("Error fetching or storing exercise data")}}async function xe(e){try{if(!e){d("Invalid exerciseID");return}const t=h.get("exerciseData")||[],s=t.findIndex(r=>{try{return typeof r=="string"?JSON.parse(r)._id===e:typeof r=="object"&&r._id?r._id===e:!1}catch{return d("Error parsing stored exercise data"),!1}});s!==-1&&(t.splice(s,1),h.set("exerciseData",t))}catch{d("Error removing exercise from favorites")}}function S(e,t){e.classList.add("visually-hidden"),t.classList.add("visually-hidden"),document.body.classList.remove("no-scroll")}function be(){H(),J(),ee(),ne(),ie(),ce()}be();
-//# sourceMappingURL=main-e13110d6.js.map
+//# sourceMappingURL=main-eef9c960.js.map
