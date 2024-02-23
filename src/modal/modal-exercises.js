@@ -1,5 +1,6 @@
 import { getExercisesById } from '../api/api';
 import { storage } from '../storage/storage';
+import { showError } from '../toast/toast';
 
 const modalExercises = document.querySelector('.modal-exercises');
 const overlay = document.querySelector('.overlay');
@@ -32,7 +33,7 @@ async function handlerStartExerciseClick(event) {
     const btnModalClose = document.querySelector('.modal-exercises-btn-close');
     btnModalClose.addEventListener('click', handlerCloseModalExercises);
   } catch (error) {
-    console.error(error);
+    showError(error);
   }
 }
 
@@ -44,7 +45,6 @@ function openModalExercises() {
 
 function updateModal(markup) {
   modalExercises.innerHTML = markup;
-  // toggleFavorites();
 }
 //**************Rating stars********* */
 
@@ -171,19 +171,6 @@ function createMarkup({
 </div>
 `;
 }
-// function toggleFavorites() {
-//   const storageData = storage.get('exerciseData');
-//   const btnModalFavorites = document.querySelector(
-//     '.modal-exercises-btn-favorites'
-//   );
-//   if (storageData?.some(item => item._id === exerciseID)) {
-//     isFavorite = true;
-//     btnModalFavorites.innerHTML = createRemoveFromFavoritesMarkup();
-//   } else {
-//     isFavorite = false;
-//     btnModalFavorites.innerHTML = createAddToFavoritesMarkup();
-//   }
-// }
 
 //**********Add to favorites*******/
 
@@ -246,7 +233,7 @@ async function addToFavorites(exerciseID) {
       storage.set('exerciseData', storageData);
     }
   } catch (error) {
-    console.error('Error fetching or storing exercise data:', error);
+    showError('Error fetching or storing exercise data');
   }
 }
 
@@ -269,7 +256,7 @@ async function removeFromFavorites(exerciseID) {
         }
         return false;
       } catch (error) {
-        console.error('Error parsing stored exercise data:', error);
+        showError('Error parsing stored exercise data');
         return false;
       }
     });
@@ -280,7 +267,7 @@ async function removeFromFavorites(exerciseID) {
       storage.set('exerciseData', storageData);
     }
   } catch (error) {
-    console.error('Error removing exercise from favorites:', error);
+    showError('Error removing exercise from favorites');
   }
 }
 
