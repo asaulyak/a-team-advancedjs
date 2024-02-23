@@ -70,7 +70,7 @@
   min-height: 209px;
   border-radius: 20px;
   background-color: #000;
-	}
+}
 @media screen and (min-width: 768px) {
   .daily-quote-container {
     width: 400px;
@@ -106,9 +106,20 @@
     left: 50px;
   }
 }
-
+.quote-text {
+  color: #f4f4f499;
+  font-family: DM Sans;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0px;
+  text-align: left;
+}
+.quote-author {
+  color: #f4f4f499;
+}
 .icon-svg {
-  fill: #fff; 
+  fill: #fff;
 }
 
 .daily-quote-title,
@@ -117,7 +128,7 @@
   font-size: 20px;
   font-weight: 500;
   line-height: 1em;
-  color: #fff; 
+  color: #fff;
 }
 
 .commas-svg,
@@ -127,7 +138,7 @@
   right: 20px;
   width: 15px;
   height: 15px;
-  fill: #fff; 
+  fill: #fff;
 }
 
 @media screen and (min-width: 768px) {
@@ -155,12 +166,19 @@
 }
 
 .image-container {
-  position: relative;
+  min-height: 209px;
+  border-radius: 20px;
+  overflow: 'hidden';
 }
 
 .image-bg {
   border-radius: 20px;
-  background: linear-gradient(180deg, rgba(17, 17, 17, 0) 0%, rgba(17, 17, 17, 0.4) 100%), url('../img/exercise-image-mobile.jpg');
+  background: linear-gradient(
+      180deg,
+      rgba(17, 17, 17, 0) 0%,
+      rgba(17, 17, 17, 0.4) 100%
+    ),
+    url('../img/exercise-image-mobile.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -186,12 +204,12 @@
   font-size: 24px;
   font-weight: 400;
   line-height: 1em;
-  color: #fff; 
+  color: #fff;
 }
 
 .info-card {
   cursor: initial;
-  position:relative;
+  position: relative;
   width: 100%;
   min-height: 201px;
   padding: 20px 20px 20px 70px;
@@ -215,11 +233,11 @@
 }
 
 .card-icon-svg {
-  fill: #000; 
+  fill: #000;
 }
 
 .card-title {
-  color: #000; 
+  color: #000;
 }
 
 .card-subtitle,

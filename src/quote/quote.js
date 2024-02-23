@@ -7,7 +7,7 @@ const QUOTE_KEY = 'quote-of-the-day';
 
  export async function renderQuote(container) {
 	console.log('Hello');
-	const quoteContainer = document.querySelector('#quote'); // Виправлено тут
+	const quoteContainer = document.querySelector('.js-quote-content');
 	if (!quoteContainer) {
 		console.log('Quote container not found');
 		return;
@@ -16,10 +16,11 @@ const QUOTE_KEY = 'quote-of-the-day';
 	const quote = await getQuoteText();
 	console.log(quote);
 	quoteContainer.innerHTML = `
-		<blockquote class="quote-text">${quote.quote}</blockquote>
+		<div class="quote-text">${quote.quote}</div>
 		<cite class="quote-author">${quote.author}</cite>
 	`;
 }
+	//	<blockquote class="quote-text">${quote.quote}</blockquote>
 
 async function getQuoteText() {
   const lastDayStored = storage.get(TODAY_KEY);
