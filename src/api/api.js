@@ -24,7 +24,7 @@ function preparePaginatedResponse(paginatedResponse) {
   const { page, perPage, totalPages } = paginatedResponse.data;
 
   return {
-    ...paginatedResponse,
+    ...paginatedResponse.data,
     page: +page,
     perPage: +perPage,
     totalPages: totalPages ?? 0,
@@ -75,6 +75,14 @@ export function getExercisesByCategory({
   return axios
     .get(
       `${API_BASE_URL}/exercises?${[category]}=${subCategory}&keyword=${keyword}&page=${page}&limit=${limit}`
+     )
+    .then(response => preparePaginatedResponse(response));
+}
+
+export function getFilters(filter = 'Muscles', page = 1, limit = 12) {
+  return axios
+    .get(
+      `${API_BASE_URL}/filters?filter=${encodeURIComponent(filter)}&page=${page}&limit=${limit}`
     )
     .then(response => preparePaginatedResponse(response));
 }

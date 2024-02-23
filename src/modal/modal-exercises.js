@@ -2,17 +2,42 @@ import { getExercisesById } from '../api/api';
 import { storage } from '../storage/storage';
 import { showError } from '../toast/toast';
 
-const modalExercises = document.querySelector('.modal-exercises');
-const overlay = document.querySelector('.overlay');
-const listItem = document.querySelector('.exercise-list');
+export function initModalExercises() {
+  const modalExercises = document.querySelector('.modal-exercises');
+  const overlay = document.querySelector('.overlay');
+  const listItem = document.querySelector('.exercise-list');
 
-let isFavorite = false;
+  if (!modalExercises || !overlay || !listItem) {
+    return;
+  }
 
-//*****************Start button click***** */
+  let isFavorite = false;
 
-listItem.addEventListener('click', handlerStartExerciseClick);
+  listItem.addEventListener('click', event =>
+    handlerStartExerciseClick(event, modalExercises, overlay, isFavorite)
+  );
 
-async function handlerStartExerciseClick(event) {
+  overlay.addEventListener('click', function (event) {
+    if (event.target === overlay) {
+      handlerCloseModalExercises(modalExercises, overlay);
+    }
+  });
+  document.addEventListener('keydown', function (event) {
+    if (
+      event.key === 'Escape' &&
+      !modalExercises.classList.contains('visually-hidden')
+    ) {
+      handlerCloseModalExercises(modalExercises, overlay);
+    }
+  });
+}
+
+async function handlerStartExerciseClick(
+  event,
+  modalExercises,
+  overlay,
+  isFavorite
+) {
   if (!event.target.closest('.js-start-btn')) {
     return;
   }
@@ -23,27 +48,33 @@ async function handlerStartExerciseClick(event) {
     const exerciseData = await getExercisesById(exerciseID);
     const markup = createMarkup(exerciseData);
     updateModal(markup);
-    openModalExercises();
+    openModalExercises(modalExercises, overlay);
     const btnModalFavorites = document.querySelector(
       '.modal-exercises-btn-favorites'
     );
     btnModalFavorites.addEventListener('click', () =>
-      handlerToggleBtnFavorites(exerciseID)
+      handlerToggleBtnFavorites(exerciseID, isFavorite)
     );
     const btnModalClose = document.querySelector('.modal-exercises-btn-close');
-    btnModalClose.addEventListener('click', handlerCloseModalExercises);
+    btnModalClose.addEventListener('click', () =>
+      handlerCloseModalExercises(modalExercises, overlay)
+    );
   } catch (error) {
-    showError(error);
+    showError('Information not found');
   }
 }
 
-function openModalExercises() {
+function openModalExercises(modalExercises, overlay) {
   modalExercises.classList.remove('visually-hidden');
   overlay.classList.remove('visually-hidden');
-  document.body.classList.add('no-scroll');
+  document.body.classList.add('fixed');
 }
 
 function updateModal(markup) {
+  const modalExercises = document.querySelector('.modal-exercises');
+  if (!modalExercises) {
+    return;
+  }
   modalExercises.innerHTML = markup;
 }
 //**************Rating stars********* */
@@ -192,7 +223,7 @@ function createRemoveFromFavoritesMarkup() {
   `;
 }
 
-function handlerToggleBtnFavorites(exerciseID) {
+function handlerToggleBtnFavorites(exerciseID, isFavorite) {
   isFavorite = !isFavorite;
 
   if (isFavorite) {
@@ -273,22 +304,8 @@ async function removeFromFavorites(exerciseID) {
 
 //*********** close modal********* */
 
-function handlerCloseModalExercises() {
+function handlerCloseModalExercises(modalExercises, overlay) {
   modalExercises.classList.add('visually-hidden');
   overlay.classList.add('visually-hidden');
-  document.body.classList.remove('no-scroll');
+  document.body.classList.remove('fixed');
 }
-
-overlay.addEventListener('click', function (event) {
-  if (event.target === overlay) {
-    handlerCloseModalExercises();
-  }
-});
-document.addEventListener('keydown', function (event) {
-  if (
-    event.key === 'Escape' &&
-    !modalExercises.classList.contains('visually-hidden')
-  ) {
-    handlerCloseModalExercises();
-  }
-});

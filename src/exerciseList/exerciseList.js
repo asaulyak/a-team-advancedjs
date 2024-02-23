@@ -9,18 +9,27 @@ export async function renderExerciseList() {
     return;
   }
 
+  const exerciseBlock = section.querySelector('#exerciseSection');
   const listLocation = section.querySelector('#exerciseList');
   const paginationContainer = section.querySelector('.tui-pagination');
 
   const options = composeFilters();
-  const data = await fetchExercises(options);
-  populateExerciseCards(listLocation, data.results);
+  const data = await getExercises(options);
+
+  if (data.length) {
+    populateExerciseCards(listLocation, data.results);
+  } else {
+    listLocation.insertAdjacentHTML(
+      'beforeend',
+      `<p class="exercise-noitemsmessage">It appears that there are no results that align with what you are searching for, please try again.</p>`
+    );
+  }
 
   renderPagination({
     container: paginationContainer,
     data,
     onUpdate: async page => {
-      const newData = await fetchExercises(composeFilters(page));
+      const newData = await getExercises(composeFilters(page));
       populateExerciseCards(listLocation, newData.results);
     },
   });
@@ -44,17 +53,6 @@ function populateExerciseCards(container, data) {
   }
 }
 
-async function fetchExercises(options) {
-  const response = await getExercises(options);
-
-  if (response.statusText !== 'OK') {
-    showError('Failed to load exercises');
-    return [];
-  }
-
-  return response.data;
-}
-
 function createBlockMarkupArr(arr) {
   return arr
     .map(
@@ -66,7 +64,7 @@ function createBlockMarkupArr(arr) {
               <div class="exercise-card-rating">
                 ${rating}
                 <svg class="exercise-card-icon" width="14" height="13">
-                  <use href="./image/icons.svg#icon-star"></use>
+                  <use href="./image/icons.svg#icon-exercise-star"></use>
                 </svg>
               </div>
             </div>
@@ -94,7 +92,7 @@ function createBlockMarkupArr(arr) {
                 <div class="exercise-card-info-element-heading">
                   Burned calories:
                 </div>
-                <div class="exercise-card-info-element-content-no-overflow">${burnedCalories} / ${time} minutes</div>
+                <div class="exercise-card-info-element-content-no-overflow">${burnedCalories} / ${time} min</div>
               </div>
               <div class="exercise-card-info-element">
                 <div class="exercise-card-info-element-heading">Body part:</div>
