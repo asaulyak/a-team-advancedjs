@@ -54,8 +54,6 @@ function getFilterPanels() {
     }
   });
 
-  // document.querySelectorAll(`#Body parts`).classList.add('selected');
-
   getSubCategoriesByCategory({ category: storageValue }).then(
     ({ data: { results } }) => {
       // markupCategories(results)виклик функції для рендеру підкатегорій
@@ -92,7 +90,7 @@ function handleClickCategory(e) {
   storage.set('filter', e.target.id);
   getSubCategoriesByCategory({ category: e.target.id }).then(
     ({ data: { results } }) => {
-      //виклик функції для рендеру підкатегорій
+      //markupCategories(results)виклик функції для рендеру карток категорій
       categoryButtons.forEach(button => button.classList.remove('selected'));
       e.target.classList.add('selected');
       // cl-(data);
@@ -102,7 +100,7 @@ function handleClickCategory(e) {
 
 function onShowSearchForm() {
   const form = document.querySelector('.search-form');
-  form.classList.remove('visually-hidden'); //показ форми
+  form.classList.remove('visually-hidden'); //показ форми(змінити на add) (викликати A.B)
 }
 
 function handlerSubmit(e) {
@@ -124,15 +122,16 @@ function handlerSubmit(e) {
         ? 'bodypart'
         : 'equipment';
 
-  //Потрібно записати вибрану частину тіла (ключове слово) в LS.
-  e.target.value !== '' &&
+  //Потрібно записати вибрану частину тіла в LS.
+  valueInput !== '' &&
     getExercisesByCategory({
-      keyword: e.target.value,
+      keyword: valueInput,
       category: StorageCategory,
-      subCategory: storage.get('subCategory'),
+      subCategory: storage.get('subCategory'), //'abs'
     }).then(({ data }) => {
       //Виклик функції для рендеру вправ по ключовому слові A.B
       // cl-data);
+      console.log(data);
     });
 }
 
