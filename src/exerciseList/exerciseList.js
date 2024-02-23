@@ -1,51 +1,61 @@
 import { getExercises } from '../api/api';
 import { renderPagination } from '../pagination/pagination';
+import { showError } from '../toast/toast.js';
 
-export function getExerciseList() {
-  populateExerciseCards();
+export async function renderExerciseList() {
+  const section = document.getElementById('exerciseSection');
+
+  if (!section) {
+    return;
+  }
+
+  const listLocation = section.querySelector('#exerciseList');
+  const paginationContainer = section.querySelector('.tui-pagination');
+
+  const options = composeFilters();
+  const data = await fetchExercises(options);
+  populateExerciseCards(listLocation, data.results);
+
+  renderPagination({
+    container: paginationContainer,
+    data,
+    onUpdate: async page => {
+      const newData = await fetchExercises(composeFilters(page));
+      populateExerciseCards(listLocation, newData.results);
+    },
+  });
 }
 
-const listLocation = document.querySelector('#exerciseList');
-const paginationContainer = document.querySelector('.tui-pagination');
-let page = 1;
-let itemsLimit = 10;
+function composeFilters(page = 1, limit = 10) {
+  // TODO: Get filters from corresponding html elements
+  return {
+    bodypart: undefined,
+    muscles: undefined,
+    equipment: undefined,
+    keyword: undefined,
+    page,
+    limit,
+  };
+}
 
-console.log(paginationContainer);
-
-renderPagination({
-  container: paginationContainer,
-  data: await fetchExercises(page, itemsLimit),
-  onUpdate: async page => {
-    const newData = await fetchExercises(page, itemsLimit);
-    populateExerciseCards(newData.results);
-  },
-});
-
-async function populateExerciseCards() {
-  const data = await fetchExercises(page, itemsLimit);
-
-  const exerciseInfo = data.results;
-
-  if (exerciseInfo.length) {
-    listLocation.insertAdjacentHTML(
-      'afterbegin',
-      createBlockMarkupArr(exerciseInfo)
-    );
+function populateExerciseCards(container, data) {
+  if (data.length) {
+    container.innerHTML = createBlockMarkupArr(data);
   }
 }
 
-async function fetchExercises(page, limit) {
-  const response = await getExercises(page, limit);
+async function fetchExercises(options) {
+  const response = await getExercises(options);
 
-  if (!response.statusText === 'OK') {
-    throw new Error(response.statusText);
+  if (response.statusText !== 'OK') {
+    showError('Failed to load exercises');
+    return [];
   }
 
-  return await response.data;
+  return response.data;
 }
 
 function createBlockMarkupArr(arr) {
-  console.log(arr);
   return arr
     .map(
       ({ _id, bodyPart, burnedCalories, time, name, rating, target }) => `
