@@ -12,7 +12,6 @@ export async function renderQuote(container) {
   }
 
   const quote = await getQuoteText();
-  // console.log(quote);
   quoteContainer.innerHTML = `
 <blockquote class="blockquote" cite="https://your-energy.b.goit.study/api/quote">
           <p
