@@ -1,15 +1,17 @@
 import { getExercisesById } from '../api/api';
-import image from '../image/modal-exercises-img.jpg';
-import icons from '../image/icons.svg';
+import image from '../public/image/modal-exercises-img.jpg';
+import icons from '../public/image/icons.svg';
 
 const modalExercises = document.querySelector('.modal-exercises');
 const overlay = document.querySelector('.overlay');
 const listItem = document.querySelector('.js-list');
 
-const exerciseData = await getExercisesById(exerciseID); // TO DO:get data-id from start btn to continue
+export async function showModal(exerciseID) {
+  const exerciseData = await getExercisesById(exerciseID); // TO DO:get data-id from start btn to continue
 
-const markup = createMarkup(exerciseData);
-updateModal(markup);
+  const markup = createMarkup(exerciseData);
+  updateModal(markup);
+}
 
 function openModalExercises() {
   modalExercises.classList.remove('visually-hidden');
@@ -19,6 +21,7 @@ function openModalExercises() {
 function updateModal(markup) {
   modalExercises.innerHTML = markup;
 }
+
 function createRating(rating) {
   const starColor = '#EEA10C';
   const emptyStarColor = '#F4F4F4';
@@ -53,8 +56,7 @@ function createRating(rating) {
     ? `${rating}.0`
     : rating.toFixed(1);
   // Combine rating text with stars markup
-  const ratingWithStars = `${ratingText} ${stars.join('')}`;
-  return ratingWithStars;
+  return `${ratingText} ${stars.join('')}`;
 }
 
 function createMarkup({
@@ -120,7 +122,7 @@ function createMarkup({
               <h3 class="modal-exercises-subtitle">Popular</h3>
               <p class="modal-exercises-text">${popularity}</p>
             </li>
-            
+
             <li class="modal-exercises-item">
               <h3 class="modal-exercises-subtitle">Burned Calories</h3>
               <p class="modal-exercises-text">${burnedCalories}/${time}</p>

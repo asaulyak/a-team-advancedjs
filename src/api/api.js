@@ -31,9 +31,14 @@ function preparePaginatedResponse(paginatedResponse) {
   };
 }
 
-export function getExercises(page = 1, limit = 12) {
+export function getExercises(options) {
+  const searchParams = Object.keys(options)
+    .filter(key => !!options[key])
+    .map(key => `${key}=${options[key]}`)
+    .join('&');
+
   return axios
-    .get(`${API_BASE_URL}/exercises?page=${page}&limit=${limit}`)
+    .get(`${API_BASE_URL}/exercises?${searchParams}`)
     .then(response => preparePaginatedResponse(response));
 }
 export function getExercisesById(_id) {
@@ -47,5 +52,7 @@ export function getQuote() {
 }
 
 export function sendSubscribe(body) {
-  return axios.post(`${API_BASE_URL}/subscription`, body);
+  return axios
+    .post(`${API_BASE_URL}/subscription`, body)
+    .then(response => response.data);
 }

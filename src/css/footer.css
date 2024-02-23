@@ -197,9 +197,21 @@
 }
 
 .subscribe-button {
+  position: relative;
   border: none;
 
   background-color: var(--primary);
+}
+.subscribe-button:disabled {
+  transform: scale(1);
+  cursor: default;
+}
+/* spinner */
+.footer .spinner {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* footer copyright */
@@ -244,15 +256,15 @@
     margin-right: auto;
   }
 }
-.copyrigth-item:first-child {
+.copyright-item:first-child {
   margin-right: 6px;
 }
-.copyrigth-item:first-child::after {
+.copyright-item:first-child::after {
   content: '/';
   margin-left: 8px;
 }
 @media screen and (min-width: 768px) {
-  .copyrigth-item:first-child::after {
+  .copyright-item:first-child::after {
     margin-left: 6px;
   }
 }
@@ -264,7 +276,7 @@
 }
 .copyright-link:hover,
 .copyright-link:focus {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 @media screen and (min-width: 1440px) {
   .copyright-date {

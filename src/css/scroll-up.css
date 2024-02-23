@@ -1,0 +1,38 @@
+.scroll-up-button {
+  display: flex;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  height: 40px;
+  width: 40px;
+
+  opacity: 60%;
+  transition: opacity 300ms ease-in-out;
+}
+
+@media only screen and (min-width: 370px) {
+  .scroll-up-button {
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .scroll-up-button {
+    bottom: 32px;
+    right: 32px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .scroll-up-button {
+    height: 100px;
+    width: 100px;
+  }
+}
+
+.scroll-up-button:focus,
+.scroll-up-button:hover {
+  cursor: pointer;
+  opacity: 100%;
+}
