@@ -4,6 +4,7 @@ import {
   getSubCategoriesByCategory,
 } from '../api/api';
 import { storage } from '../storage/storage';
+import { markupCategories } from '../categories-list/categories-list.js';
 
 const section = document.querySelector('.filter_panel');
 const exercises_title = `<h2 class="exercises-title">Exercises</h2>`;
@@ -24,7 +25,7 @@ const form_buttons = `
   </ul>
 </div>`;
 
-function getFilterPanels() {
+export function getFilterPanels() {
   if (!section) {
     return;
   }
@@ -56,8 +57,10 @@ function getFilterPanels() {
 
   getSubCategoriesByCategory({ category: storageValue }).then(
     ({ data: { results } }) => {
-      // markupCategories(results)виклик функції для рендеру підкатегорій
-      //cl-масив категорій
+      const marcupCategoryList = markupCategories(results); //виклик функції для рендеру підкатегорій
+      const categoriesList = document.querySelector('.categories-list');
+      categoriesList.innerHTML = marcupCategoryList;
+      console.log(results);
     }
   );
   //---------------------------------------------
@@ -70,6 +73,11 @@ function getFilterPanels() {
 }
 
 // Функції
+
+export function setSubtitle(subtitle) {
+  const titles = document.querySelector('.exercises-title');
+  titles.innerHTML = `Exersise / <span class="subtitle">${subtitle}</span>`;
+}
 
 function handlerClickResetForm() {
   const input = document.querySelector('.form-input');
@@ -86,19 +94,22 @@ function handleClickCategory(e) {
   const form = document.querySelector('.search-form');
   const storageValue = storage.get('filter');
 
-  form.classList.remove('visually-hidden');
+  // form.classList.remove('visually-hidden');
   storage.set('filter', e.target.id);
   getSubCategoriesByCategory({ category: e.target.id }).then(
     ({ data: { results } }) => {
-      //markupCategories(results)виклик функції для рендеру карток категорій
+      const marcupCategoryList = markupCategories(results); //виклик функції для рендеру підкатегорій
+      const categoriesList = document.querySelector('.categories-list');
+      categoriesList.innerHTML = marcupCategoryList;
+
       categoryButtons.forEach(button => button.classList.remove('selected'));
       e.target.classList.add('selected');
-      // cl-(data);
+      console.log(results);
     }
   );
 }
 
-function onShowSearchForm() {
+export function onShowSearchForm() {
   const form = document.querySelector('.search-form');
   form.classList.remove('visually-hidden'); //показ форми(змінити на add) (викликати A.B)
 }
@@ -134,5 +145,3 @@ function handlerSubmit(e) {
       console.log(data);
     });
 }
-
-getFilterPanels();

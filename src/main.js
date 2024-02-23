@@ -2,7 +2,7 @@
 import { initBurger } from './burger/burger.js';
 
 // filter_panels
-import './filter_panels/filter_panels.js';
+import { getFilterPanels, setSubtitle } from './filter_panels/filter_panels.js';
 
 // Header highlighting
 import { headerHighlighting } from './header-highlighting/header-highlighting.js';
@@ -18,6 +18,7 @@ import { initScrollUp } from './scroll-up/scroll-up.js';
 import { renderExerciseList } from './exerciseList/exerciseList';
 
 function start() {
+  getFilterPanels();
   initBurger();
   headerHighlighting();
   initSubscribe();
