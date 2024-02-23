@@ -1,5 +1,16 @@
 :root {
-    --dark: #242424;
-    --primary: #F4F4F4;
-    --animation-fast: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --dark: #242424;
+  --primary: #f4f4f4;
+  --grey: #d4d4d4;
+  --animation-fast: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* footer cl */
+  --soft-light-cl: rgba(244, 244, 244, 0.6); /*F4F4F4 0.6*/
+  --blue-gray-cl: #c6cdd1;
+
+  /* modal cl*/
+  --overlay-bg: rgba(4, 4, 4, 0.4);
+  --grey-twenty: rgba(244, 244, 244, 0.2);
+  --grey-forty: rgba(244, 244, 244, 0.4);
+  --grey-sixty: rgba(244, 244, 244, 0.6);
 }

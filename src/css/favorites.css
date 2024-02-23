@@ -1,0 +1,11 @@
+.favorites-title {
+  font-size: 28px;
+  line-height: 1.35em;
+  letter-spacing: -0.07;
+  font-weight: 400;
+}
+@media only screen and (min-width: 768px) {
+  .favorites-title {
+    font-size: 44px;
+  }
+}

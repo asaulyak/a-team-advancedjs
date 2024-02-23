@@ -21,7 +21,7 @@ const API_BASE_URL = 'https://your-energy.b.goit.study/api';
  * }
  */
 function preparePaginatedResponse(paginatedResponse) {
-  const { page, perPage, totalPages } = paginatedResponse;
+  const { page, perPage, totalPages } = paginatedResponse.data;
 
   return {
     ...paginatedResponse,
@@ -31,18 +31,28 @@ function preparePaginatedResponse(paginatedResponse) {
   };
 }
 
-export function getExercises() {
+export function getExercises(options) {
+  const searchParams = Object.keys(options)
+    .filter(key => !!options[key])
+    .map(key => `${key}=${options[key]}`)
+    .join('&');
+
   return axios
-    .get(`${API_BASE_URL}/exercises`)
+    .get(`${API_BASE_URL}/exercises?${searchParams}`)
     .then(response => preparePaginatedResponse(response));
 }
+export function getExercisesById(_id) {
+  return axios
+    .get(`${API_BASE_URL}/exercises/${_id}`)
+    .then(response => response.data);
+}
 
-export async function getQuote() {
-  try {
-    const response = await axios.get(`${API_BASE_URL}/quote`);
-    return response.data; 
-  } catch (error) {
-    console.error(error);
-    return null; 
-  }
+export function getQuote() {
+  return axios.get(`${API_BASE_URL}/quote`).then(response => response.data);
+}
+
+export function sendSubscribe(body) {
+  return axios
+    .post(`${API_BASE_URL}/subscription`, body)
+    .then(response => response.data);
 }

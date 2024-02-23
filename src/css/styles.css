@@ -5,28 +5,24 @@
   |============================
 */
 @import '../../node_modules/modern-normalize/modern-normalize.css';
+@import url('./fonts.css');
 @import url('./reset.css');
 @import url('./variables.css');
 @import url('./header.css');
+@import url('./main.css');
 @import url('./footer.css');
+@import url('./spinner.css');
 @import url('./social-list.css');
+@import url('./hero.css');
+@import url('./categories-list.css');
+@import url('./modal-exercises.css');
+@import url('./pagination.css');
+@import url('./favorites.css');
+@import url('./scroll-up.css');
+@import url('./exercise.css');
+@import url('./exercise-list.css');
 
-:root {
-  font-family: 'DM Sans', Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
-
-  color: var(--dark);
-  background-color: var(--primary);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-body.fixed{
+body.fixed {
   overflow: hidden;
 }
 .visually-hidden {
@@ -50,6 +46,10 @@ body.fixed{
   padding-right: 15px;
 }
 
+.hero-section {
+  padding-top: 80px;
+  padding-bottom: 40px;
+}
 
 @media only screen and (min-width: 370px) {
   .container {
@@ -65,15 +65,16 @@ body.fixed{
     padding-left: 32px;
     padding-right: 32px;
   }
-}
-
-@media only screen and (min-width: 1280px) {
-  .container {
-    max-width: 1024px;
+  .hero-section {
+    padding-top: 100px;
+    padding-bottom: 64px;
   }
 }
 @media only screen and (min-width: 1440px) {
   .container {
     max-width: 1440px;
+  }
+  .hero-section {
+    padding-top: 96px;
   }
 }

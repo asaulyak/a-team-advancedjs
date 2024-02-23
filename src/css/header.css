@@ -1,19 +1,32 @@
 .header {
   padding: 20px 0;
 }
-.header-container{
+.header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.header-nav{
+
+.logo {
+  transform: scale(1);
+  transition: transform var(--animation-fast);
+}
+.logo:hover,
+.logo:focus {
+  transform: scale(1.05);
+}
+.logo-icon {
+  fill: currentColor;
+}
+
+.header-nav {
   display: none;
   background-color: var(--dark);
   max-width: 233px;
   border-radius: 60px;
   padding: 8px 34px;
 }
-.header-open-button{
+.header-open-button {
   border: none;
   background-color: transparent;
 }
@@ -31,15 +44,15 @@
   display: inline-block;
   color: var(--primary);
 }
-.header-nav-link.active{
+.header-nav-link.active {
   border-radius: 30px;
   background-color: var(--primary);
-  color: var(--dark)
+  color: var(--dark);
 }
-.header-social-list.social-list{
+.header-social-list.social-list {
   display: none;
 }
-.header-social-link{
+.header-social-link {
   border-radius: 8px;
   border: 1px solid rgba(36, 36, 36, 0.1);
   width: 44px;
@@ -57,7 +70,7 @@
   height: 100%;
   width: 100%;
 
-  background-color: var(--soft-black);
+  background-color: rgb(4, 4, 4, 0.4);
 
   transition:
     opacity var(--animation-fast),
@@ -90,20 +103,20 @@
   transition: transform var(--animation-fast);
   transition-delay: 200ms;
 }
-.mobile-nav-list{
+.mobile-nav-list {
   position: absolute;
   top: 35%;
   left: 50%;
   transform: translateX(-50%);
 }
-.mobile-nav-item{
+.mobile-nav-item {
   margin-bottom: 16px;
   text-align: center;
 }
-.mobile-nav-list:last-child{
+.mobile-nav-list:last-child {
   margin-bottom: 0;
 }
-.mobile-nav-link{
+.mobile-nav-link {
   font-size: 14px;
   line-height: 1.28em;
   color: var(--primary);
@@ -125,25 +138,25 @@
 }
 /* response */
 @media only screen and (min-width: 768px) {
-  .header{
+  .header {
     padding: 24px 0;
   }
-  .header-open-button{
+  .header-open-button {
     display: none;
   }
-  .header-nav{
+  .header-nav {
     display: flex;
   }
-  .header-social-list.social-list{
+  .header-social-list.social-list {
     display: flex;
   }
 }
 
-@media only screen and (min-width: 1280px) {
-  .header{
+@media only screen and (min-width: 1440px) {
+  .header {
     padding: 28px 0;
   }
-  .header-nav{
+  .header-nav {
     padding: 8px 50px;
     max-width: 265px;
   }
