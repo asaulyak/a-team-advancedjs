@@ -15,8 +15,13 @@ export async function renderQuote(container) {
   const quote = await getQuoteText();
   console.log(quote);
   quoteContainer.innerHTML = `
-		<div class="quote-text">${quote.quote}</div>
-		<cite class="quote-author">${quote.author}</cite>
+<blockquote class="blockquote" cite="https://your-energy.b.goit.study/api/quote">
+          <p
+            class="quote-text">${quote.quote}
+          </p>
+          <footer class="quote-author">${quote.author} </footer>
+        </blockquote>
+
 	`;
 }
 //	<blockquote class="quote-text">${quote.quote}</blockquote>
