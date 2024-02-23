@@ -240,7 +240,7 @@ async function addToFavorites(exerciseID) {
 async function removeFromFavorites(exerciseID) {
   try {
     if (!exerciseID) {
-      console.error('Invalid exerciseID');
+      showError('Invalid exerciseID');
       return;
     }
 
