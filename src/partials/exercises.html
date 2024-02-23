@@ -2,101 +2,101 @@
   <div class="container">
     <div id="exerciseList" class="exercise-list"></div>
     <div id="exercises" class="tui-pagination"></div>
-    <div class="content-container main-container">
-      <div class="sidebar-container">
-        <!-- quote -->
-        <div class="daily-quote-container">
-          <div class="icon-circle">
-            <svg class="icon-svg" width="18" height="18">
-              <use href="./image/icons.svg#icon-pedastrian"></use>
-            </svg>
-          </div>
+    <!-- quote container -->
+    <div class="quote-container">
+      <!-- quote -->
+      <div class="daily-quote-container">
+        <div class="icon-circle">
+          <svg class="icon-svg" width="18" height="18">
+            <use href="./image/icons.svg#icon-pedastrian"></use>
+          </svg>
+        </div>
 
-          <div class="quote-thumb">
-            <div class="quote-tittle-box">
-              <h3 id="quote" class="daily-quote-title">Quote of the day</h3>
-              <svg class="commas-svg">
-                <use href="./image/icons.svg#icon-inverted-commas"></use>
-              </svg>
-            </div>
-            <div class="quote-wrapper js-quote-content"></div>
-          </div>
-        </div>
-        <!-- image -->
-        <div class="image-container">
-          <picture>
-            <source
-              srcset="
-                ./image/exercise/exercise-image-desktop.webp    1x,
-                ./image/exercise/exercise-image-desktop@2x.webp 2x
-              "
-              media="(min-width: 1440px)"
-              type="image/webp"
-            />
-            <source
-              srcset="
-                ./image/exercise/exercise-image-desktop.jpg    1x,
-                ./image/exercise/exercise-image-desktop@2x.jpg 2x
-              "
-              media="(min-width: 1440px)"
-            />
-            <source
-              srcset="
-                ./image/exercise/exercise-image-tablet.webp    1x,
-                ./image/exercise/exercise-image-tablet@2x.webp 2x
-              "
-              media="(min-width: 768px)"
-              type="image/webp"
-            />
-            <source
-              srcset="
-                ./image/exercise/exercise-image-tablet.jpg    1x,
-                ./image/exercise/exercise-image-tablet@2x.jpg 2x
-              "
-              media="(min-width: 768px)"
-            />
-            <source
-              srcset="
-                ./image/exercise/exercise-image-mobile.webp    1x,
-                ./image/exercise/exercise-image-mobile@2x.webp 2x
-              "
-              media="(min-width: 375px)"
-              type="image/webp"
-            />
-            <source
-              srcset="
-                ./image/exercise/exercise-image-mobile.jpg    1x,
-                ./image/exercise/exercise-image-mobile@2x.jpg 2x
-              "
-              media="(min-width: 375px)"
-            />
-            <img
-              class="teacher-icon"
-              src="./image/exercise/exercise-image-mobile.jpg"
-              alt="beautiful womens talking"
-            />
-          </picture>
-        </div>
-        <!-- info -->
-        <div class="info-card">
-          <div class="icon-wrapper">
-            <svg class="card-icon-svg" width="20" height="20">
-              <use href="./image/icons.svg#icon-gym"></use>
+        <div class="quote-thumb">
+          <div class="quote-tittle-box">
+            <h3 id="quote" class="daily-quote-title">Quote of the day</h3>
+            <svg class="commas-svg">
+              <use href="./image/icons.svg#icon-inverted-commas"></use>
             </svg>
           </div>
-          <div class="info-card-thumb">
-            <h3 class="card-title">110 min</h3>
-            <h4 class="card-subtitle">Daily norm of sports</h4>
-            <p class="card-text">
-              The World Health Organization recommends at least 150 minutes of
-              moderate-intensity aerobic physical activity throughout the week
-              for adults aged 18-64. However, what happens if we adjust that
-              number to 110 minutes every day? While it might seem like a high
-              number to hit, dedicating 110 minutes daily to sporting activities
-              may offer unparalleled benefits to physical health, mental
-              well-being, and overall quality of life.
-            </p>
-          </div>
+          <div class="quote-wrapper js-quote-content"></div>
+        </div>
+      </div>
+      <!-- image -->
+      <div class="image-container">
+        <picture>
+          <source
+            srcset="
+              ./image/exercise/exercise-image-desktop.webp    1x,
+              ./image/exercise/exercise-image-desktop@2x.webp 2x
+            "
+            media="(min-width: 1440px)"
+            type="image/webp"
+          />
+          <source
+            srcset="
+              ./image/exercise/exercise-image-desktop.jpg    1x,
+              ./image/exercise/exercise-image-desktop@2x.jpg 2x
+            "
+            media="(min-width: 1440px)"
+          />
+          <source
+            srcset="
+              ./image/exercise/exercise-image-tablet.webp    1x,
+              ./image/exercise/exercise-image-tablet@2x.webp 2x
+            "
+            media="(min-width: 768px)"
+            type="image/webp"
+          />
+          <source
+            srcset="
+              ./image/exercise/exercise-image-tablet.jpg    1x,
+              ./image/exercise/exercise-image-tablet@2x.jpg 2x
+            "
+            media="(min-width: 768px)"
+          />
+          <source
+            srcset="
+              ./image/exercise/exercise-image-mobile.webp    1x,
+              ./image/exercise/exercise-image-mobile@2x.webp 2x
+            "
+            media="(min-width: 375px)"
+            type="image/webp"
+          />
+          <source
+            srcset="
+              ./image/exercise/exercise-image-mobile.jpg    1x,
+              ./image/exercise/exercise-image-mobile@2x.jpg 2x
+            "
+            media="(min-width: 375px)"
+          />
+          <img
+            class="teacher-icon"
+            src="./image/exercise/exercise-image-mobile.jpg"
+            alt="beautiful women talking"
+            loading="lazy"
+          />
+        </picture>
+      </div>
+      <!-- info -->
+      <div class="info-card">
+        <div class="icon-wrapper">
+          <svg class="card-icon-svg" width="20" height="20">
+            <use href="./image/icons.svg#icon-gym"></use>
+          </svg>
+        </div>
+        <div class="info-card-thumb">
+          <h3 class="card-title">110 min</h3>
+          <h4 class="card-subtitle">Daily norm of sports</h4>
+          <p class="card-text">
+            The World Health Organization recommends at least 150 minutes of
+            moderate-intensity aerobic physical activity throughout the week for
+            adults aged 18-64. However, what happens if we adjust that number to
+            110 minutes every day? While it might seem like a high number to
+            hit, dedicating 110 minutes daily to sporting activities may offer
+            unparalleled benefits to physical health, mental well-being, and
+            overall quality of life.
+          </p>
         </div>
       </div>
     </div>

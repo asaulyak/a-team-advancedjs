@@ -5,7 +5,6 @@ const TODAY_KEY = 'today';
 const QUOTE_KEY = 'quote-of-the-day';
 
 export async function renderQuote(container) {
-  console.log('Hello');
   const quoteContainer = document.querySelector('.js-quote-content');
   if (!quoteContainer) {
     console.log('Quote container not found');
@@ -13,7 +12,7 @@ export async function renderQuote(container) {
   }
 
   const quote = await getQuoteText();
-  console.log(quote);
+  // console.log(quote);
   quoteContainer.innerHTML = `
 <blockquote class="blockquote" cite="https://your-energy.b.goit.study/api/quote">
           <p
@@ -24,7 +23,6 @@ export async function renderQuote(container) {
 
 	`;
 }
-//	<blockquote class="quote-text">${quote.quote}</blockquote>
 
 async function getQuoteText() {
   const lastDayStored = storage.get(TODAY_KEY);
