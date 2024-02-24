@@ -93,13 +93,13 @@
   padding-bottom: 4px;
 }
 
-.active {
+.category-button.active {
   position: relative;
   display: inline-block;
   cursor: pointer;
 }
 
-.active:after {
+.category-button.active:after {
   content: '';
   position: absolute;
   left: 0;
