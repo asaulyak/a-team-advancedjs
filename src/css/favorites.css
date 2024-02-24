@@ -21,7 +21,7 @@
   width: 100%;
   max-width: 335px;
   height: auto;
-  background-color: #ffffff;
+  background-color: --white-cl;
   padding: 20px;
 }
 
@@ -125,7 +125,7 @@
   max-width: 335px;
   height: auto;
   height: 119px;
-  background-color: #ffffff;
+  background-color: --white-cl;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
