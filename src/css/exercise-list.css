@@ -6,6 +6,11 @@
   font: inherit;
   cursor: pointer;
   outline: inherit;
+  transition: all var(--animation-fast);
+}
+.remove-button-formatting:hover {
+  scale: 1.06;
+  font-weight: 700;
 }
 
 .exercise-list {
@@ -53,8 +58,11 @@
   width: 335px;
   height: 141px;
   padding: 16px;
+  transition: scale var(--animation-fast);
 }
-
+.exercise-card:hover {
+  scale: 1.03;
+}
 @media only screen and (min-width: 768px) {
   .exercise-card {
     width: 344px;
