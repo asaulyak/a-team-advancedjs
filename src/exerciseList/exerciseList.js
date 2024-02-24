@@ -32,9 +32,6 @@ export async function renderExerciseList() {
       },
     });
   } else {
-    exerciseBlock
-      .querySelector('.tui-pagination')
-      .classList.add('visually-hidden');
     listLocation.insertAdjacentHTML(
       'beforeend',
       `<p class="exercise-noitemsmessage">It appears that there are no results that align with what you are searching for, please try again.</p>`

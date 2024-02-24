@@ -1,4 +1,5 @@
 import Pagination from 'tui-pagination';
+import { hideElement, showElement } from '../common/common.js';
 
 /**
  * Pagination renderer
@@ -26,6 +27,11 @@ export function renderPagination({ container, data, onUpdate }) {
   }
 
   const { perPage, totalPages } = data;
+
+  if (totalPages < 2) {
+    hideElement(container);
+    return;
+  }
 
   const renderMoveButton = (type, disabled) => {
     const iconSource = `<svg width="7" height=12>
@@ -58,6 +64,8 @@ export function renderPagination({ container, data, onUpdate }) {
 
     return `<a href="#" class="tui-page-btn tui-${type} ${moreClasses.join(' ')}">${icon}</a>`;
   };
+
+  showElement(container);
 
   const instance = new Pagination(container, {
     totalItems: totalPages * perPage,
