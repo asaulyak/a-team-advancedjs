@@ -1,7 +1,7 @@
 import { getExercises } from '../api/api';
 import { renderPagination } from '../pagination/pagination';
 import { storage } from '../storage/storage.js';
-import { showError } from '../toast/toast.js';
+import { showElement } from '../common/common.js';
 
 export async function renderExerciseList() {
   const section = document.getElementById('exerciseSection');
@@ -10,7 +10,8 @@ export async function renderExerciseList() {
     return;
   }
 
-  console.log(storage.get('category'));
+  showElement(section);
+  showElement(document.querySelector('.search-form'));
 
   const exerciseBlock = document.querySelector('.exercise-section');
   const listLocation = section.querySelector('#exerciseList');
@@ -42,12 +43,22 @@ export async function renderExerciseList() {
 }
 
 function composeFilters(page = 1, limit = 10) {
-  // TODO: Get filters from corresponding html elements
+  const filter = storage.get('filter');
+  const category = storage.get('category');
+  const keyword = storage.get('keyword');
+
+  // API is freaking awesome
+  const filtersMap = {
+    ['Body parts']: 'bodypart',
+    ['Muscles']: 'muscles',
+    ['Equipment']: 'equipment',
+  };
+
+  const filterKey = filtersMap[filter];
+
   return {
-    bodypart: undefined,
-    muscles: storage.get('category'),
-    equipment: undefined,
-    keyword: undefined,
+    [filterKey]: category,
+    keyword,
     page,
     limit,
   };

@@ -8,7 +8,6 @@ export async function renderQuote() {
   const quoteBlockContainer = document.querySelector('#quoteContainer');
 
   if (!quoteBlockContainer) {
-    console.log('Quote container not found');
     return;
   }
   // check page
@@ -20,22 +19,26 @@ export async function renderQuote() {
 }
 
 async function getQuoteText() {
-  const lastDayStored = storage.get(TODAY_KEY);
+  const lastDayStored = storage.get(TODAY_KEY) ?? '';
+  let quote = storage.get(QUOTE_KEY) ?? '';
+
   const today = getTodayFormatted();
 
-  let quote = storage.get(QUOTE_KEY);
   if (lastDayStored !== today || !quote) {
-    quote = await getQuote();
+    try {
+      quote = await getQuote();
+      storage.set(QUOTE_KEY, quote);
+      storage.set(TODAY_KEY, today);
+    } catch (error) {
+      showError(error.message);
+    }
   }
-
-  storage.set(QUOTE_KEY, quote);
-  storage.set(TODAY_KEY, today);
 
   return quote;
 }
 
 function getTodayFormatted() {
-  const today = new Date();
+  const today = new Date(Date.now());
   const year = today.getFullYear();
   const month = today.getMonth();
   const day = today.getDate();

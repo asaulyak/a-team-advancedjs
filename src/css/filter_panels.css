@@ -2,7 +2,6 @@
   padding-bottom: 32px;
 }
 h2 {
-  font-family: 'DM Sans';
   font-size: 28px;
   font-style: normal;
   font-weight: 400;
@@ -11,7 +10,6 @@ h2 {
 }
 .subtitle {
   color: rgba(36, 36, 36, 0.5);
-  font-family: 'DM Sans';
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
@@ -40,7 +38,6 @@ h2 {
 }
 .form-input[type='text']::placeholder {
   color: var(--dark);
-  font-family: 'DM Sans';
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -61,7 +58,6 @@ h2 {
 }
 .category-button {
   color: rgba(36, 36, 36, 0.6);
-  font-family: 'DM Sans';
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -73,13 +69,13 @@ h2 {
   padding-bottom: 4px;
 }
 
-.selected {
+.active {
   position: relative;
   display: inline-block;
   cursor: pointer;
 }
 
-.selected:after {
+.active:after {
   content: '';
   position: absolute;
   left: 0;
