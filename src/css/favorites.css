@@ -45,6 +45,9 @@
   height: 20px;
   margin-bottom: 15px;
 }
+.favcards-container .exercise-card-top-info {
+  gap: 8px;
+}
 
 @media only screen and (min-width: 768px) {
   .favorites-sportsnorm {
@@ -158,6 +161,24 @@
   }
   .fav-desk-wrapper .quote-container {
     margin-right: 32px;
+  }
+  .favcards-container .exercise-card {
+    width: 405px;
+  }
+  .fav-desk-wrapper .wrapper-container {
+    max-height: 487px;
+    overflow: auto;
+    padding-right: 16px;
+  }
+  .fav-desk-wrapper .wrapper-container::-webkit-scrollbar {
+    width: 8px;
+    background-color: rgba(36, 36, 36, 0.1);
+    border-radius: 12px;
+  }
+
+  .fav-desk-wrapper .wrapper-container::-webkit-scrollbar-thumb {
+    background-color: var(--dark);
+    border-radius: 12px;
   }
 }
 

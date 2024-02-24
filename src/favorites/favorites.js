@@ -12,7 +12,7 @@ export function initFavoritesPage() {
 
   bindEvents();
 
-  const exerciseIds = storage.get('exerciseData');
+  const exerciseIds = storage.get('exerciseData') ?? [];
   if (exerciseIds.length === 0) {
     renderNoItemsMessage(document.querySelector('.fav-desk-wrapper'));
   }

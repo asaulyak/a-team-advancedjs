@@ -3,7 +3,11 @@ import { showElement, hideElement } from '../common/common';
 
 export function initScrollUp() {
   const scrollUpBtn = document.querySelector('.scroll-up-button');
-
+  if (window.location.pathname.includes('favorites')) {
+    hideElement(scrollUpBtn);
+    return;
+  }
+  // showElement(scrollUpBtn);
   function goToTop() {
     window.scrollTo({
       top: 0,

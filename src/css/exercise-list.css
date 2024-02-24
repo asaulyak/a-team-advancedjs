@@ -152,7 +152,6 @@
   .exercise-card-info {
     display: flex;
     justify-content: flex-start;
-    gap: 16px;
   }
 }
 
