@@ -35,6 +35,10 @@ function fillCategoriesList(container, data) {
 export function bindCategoriesEvents() {
   const container = document.querySelector('.categories-container');
 
+  if (!container) {
+    return;
+  }
+
   container
     .querySelector('.categories-list')
     .addEventListener('click', event => {

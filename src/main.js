@@ -16,6 +16,7 @@ import {
 } from './categories/categories.js';
 
 import { renderQuote } from './quote/quote.js';
+import { initFavoritesPage } from './favorites/favorites.js';
 function start() {
   getFilterPanels();
   initBurger();
@@ -26,6 +27,7 @@ function start() {
   initModalExercises();
   bindCategoriesEvents();
   renderCategories();
+  initFavoritesPage();
 }
 
 // Execution starts here
