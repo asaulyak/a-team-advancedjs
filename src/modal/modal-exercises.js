@@ -1,26 +1,95 @@
 import { getExercisesById } from '../api/api';
-import image from '../public/image/modal-exercises-img.jpg';
-import icons from '../public/image/icons.svg';
+import { storage } from '../storage/storage';
+import { showError } from '../toast/toast';
 
-const modalExercises = document.querySelector('.modal-exercises');
-const overlay = document.querySelector('.overlay');
-const listItem = document.querySelector('.js-list');
+export function initModalExercises() {
+  const modalExercises = document.querySelector('.modal-exercises');
+  const overlay = document.querySelector('.overlay');
+  const listItem = document.querySelector('.exercise-list');
 
-export async function showModal(exerciseID) {
-  const exerciseData = await getExercisesById(exerciseID); // TO DO:get data-id from start btn to continue
+  if (!modalExercises || !overlay || !listItem) {
+    return;
+  }
 
-  const markup = createMarkup(exerciseData);
-  updateModal(markup);
+  let isFavorite = false;
+
+  listItem.addEventListener('click', event =>
+    handlerStartExerciseClick(event, modalExercises, overlay, isFavorite)
+  );
+
+  overlay.addEventListener('click', function (event) {
+    if (event.target === overlay) {
+      handlerCloseModalExercises(modalExercises, overlay);
+    }
+  });
+  document.addEventListener('keydown', function (event) {
+    if (
+      event.key === 'Escape' &&
+      !modalExercises.classList.contains('visually-hidden')
+    ) {
+      handlerCloseModalExercises(modalExercises, overlay);
+    }
+  });
 }
 
-function openModalExercises() {
+async function handlerStartExerciseClick(
+  event,
+  modalExercises,
+  overlay,
+  isFavorite
+) {
+  if (!event.target.closest('.js-start-btn')) {
+    return;
+  }
+  try {
+    const exerciseID = event.target
+      .closest('.js-start-btn')
+      .getAttribute('data-id');
+    const exerciseData = await getExercisesById(exerciseID);
+    const markup = createMarkup(exerciseData);
+    updateModal(markup);
+
+    isFavorite = (storage.get('exerciseData') || []).includes(exerciseID);
+
+    const btnModalFavorites = document.querySelector(
+      '.modal-exercises-btn-favorites'
+    );
+
+    btnModalFavorites.innerHTML = isFavorite
+      ? createRemoveFromFavoritesMarkup()
+      : createAddToFavoritesMarkup();
+
+    btnModalFavorites.dataset.toggle = isFavorite ? 'remove' : 'add';
+
+    openModalExercises(modalExercises, overlay);
+
+    btnModalFavorites.addEventListener('click', e =>
+      handlerToggleBtnFavorites(exerciseID, e.target.dataset.toggle)
+    );
+    const btnModalClose = document.querySelector('.modal-exercises-btn-close');
+
+    btnModalClose.addEventListener('click', () =>
+      handlerCloseModalExercises(modalExercises, overlay)
+    );
+  } catch (error) {
+    showError('Information not found');
+  }
+}
+
+function openModalExercises(modalExercises, overlay) {
   modalExercises.classList.remove('visually-hidden');
   overlay.classList.remove('visually-hidden');
+  document.body.classList.add('fixed');
 }
 
 function updateModal(markup) {
+  const modalExercises = document.querySelector('.modal-exercises');
+  if (!modalExercises) {
+    return;
+  }
   modalExercises.innerHTML = markup;
 }
+//**************Rating stars********* */
 
 function createRating(rating) {
   const starColor = '#EEA10C';
@@ -36,7 +105,7 @@ function createRating(rating) {
     // Create SVG markup for each star
     const starMarkup = `
 <svg width="14" height="13">
-        <use href="${icons}#icon-star"></use>
+        <use href="./image/icons.svg#icon-star"></use>
         <linearGradient id="starGradient${i}" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" style="stop-color:${starColor};stop-opacity:1" />
           <stop offset="${fillPercentage}%" style="stop-color:${starColor};stop-opacity:1" />
@@ -59,6 +128,8 @@ function createRating(rating) {
   return `${ratingText} ${stars.join('')}`;
 }
 
+//**************Modal markup****** */
+
 function createMarkup({
   _id,
   bodyPart,
@@ -75,8 +146,8 @@ function createMarkup({
   const getExerciseGif = getGif(gifUrl);
   function getGif(gifUrl) {
     if (gifUrl === null || !gifUrl) {
-      return `srcset = '${image}
-      src = '${image}'`;
+      return `srcset = "./image/modal-coming-soon.jpg"
+      src = "./image/modal-coming-soon.jpg"`;
     }
     return `src="${gifUrl}"`;
   }
@@ -87,7 +158,7 @@ function createMarkup({
   <div class="modal-exercises-container" data-id="${_id}">
     <button class="modal-exercises-btn-close">
       <svg width="24" height="24">
-        <use href="${icons}#icon-close-menu"></use>
+        <use href="./image/icons.svg#icon-close-menu"></use>
       </svg>
     </button>
 
@@ -136,10 +207,93 @@ function createMarkup({
   <button class="modal-exercises-btn-favorites modal-exercises-btn" type="button" data-id="${_id}">
       Add to favorites
       <svg class="btn-favorites-icon">
-        <use href="${icons}#icon-favorites"></use>
+      <use href="./image/icons.svg#icon-favorites"></use>
       </svg>
     </button>
   <button class="modal-exercises-btn-rating modal-exercises-btn" type="button" data-id="${_id}">Give a rating</button>
 </div>
 `;
+}
+
+//**********Add to favorites*******/
+
+function createAddToFavoritesMarkup() {
+  return `
+  Add to favorites
+  <svg class="btn-favorites-icon">
+  <use href="./image/icons.svg#icon-favorites"></use>
+  </svg>
+  `;
+}
+
+function createRemoveFromFavoritesMarkup() {
+  return `
+  Remove from favorites
+  <svg class="btn-favorites-icon">
+  <use href="./image/icons.svg#icon-trash"></use>
+  </svg>
+  `;
+}
+
+function handlerToggleBtnFavorites(exerciseID, toggle) {
+  if (toggle === 'add') {
+    const btnModalFavorites = document.querySelector(
+      '.modal-exercises-btn-favorites'
+    );
+    btnModalFavorites.dataset.toggle = 'remove';
+    btnModalFavorites.innerHTML = createRemoveFromFavoritesMarkup();
+    addToFavorites(exerciseID);
+  } else {
+    const btnModalFavorites = document.querySelector(
+      '.modal-exercises-btn-favorites'
+    );
+    btnModalFavorites.dataset.toggle = 'add';
+    btnModalFavorites.innerHTML = createAddToFavoritesMarkup();
+    removeFromFavorites(exerciseID);
+  }
+}
+
+async function addToFavorites(exerciseID) {
+  try {
+    if (!exerciseID) {
+      showError('Invalid exerciseID');
+      return;
+    }
+    const storageData = storage.get('exerciseData') || [];
+
+    if (storageData.includes(exerciseID)) {
+      showError('Already added');
+      return;
+    }
+    storageData.push(exerciseID);
+
+    storage.set('exerciseData', storageData);
+  } catch (error) {
+    showError('Error fetching or storing exercise data');
+  }
+}
+
+async function removeFromFavorites(exerciseID) {
+  try {
+    if (!exerciseID) {
+      showError('Invalid exerciseID');
+      return;
+    }
+
+    const storageData = (storage.get('exerciseData') || []).filter(
+      item => item !== exerciseID
+    );
+
+    storage.set('exerciseData', storageData);
+  } catch (error) {
+    showError('Error removing exercise from favorites');
+  }
+}
+
+//*********** close modal********* */
+
+function handlerCloseModalExercises(modalExercises, overlay) {
+  modalExercises.classList.add('visually-hidden');
+  overlay.classList.add('visually-hidden');
+  document.body.classList.remove('fixed');
 }

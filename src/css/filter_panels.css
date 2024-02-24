@@ -1,0 +1,119 @@
+.filter_panel {
+  padding-bottom: 32px;
+}
+h2 {
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 38px;
+  letter-spacing: -0.56px;
+}
+.subtitle {
+  color: rgba(36, 36, 36, 0.5);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px; /* 133.333% */
+  letter-spacing: -0.48px;
+}
+.search-form {
+  max-width: 335px;
+  max-height: 48px;
+  position: relative;
+  margin-top: 40px;
+}
+.form-input {
+  display: flex;
+  width: 100%;
+  height: 44px;
+  padding: 0 14px;
+  align-items: center;
+  gap: 10px;
+  outline: none;
+  border-radius: 30px;
+  border: 1px solid var(--dark);
+}
+.form-input:active {
+  border: 1px solid var(--dark);
+}
+.form-input[type='text']::placeholder {
+  color: var(--dark);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+.search-button {
+  position: absolute;
+  right: 14px;
+  top: 13px;
+
+  background-color: transparent;
+  border: none;
+}
+
+.category-list_buttons {
+  display: flex;
+  gap: 20px;
+}
+.category-button {
+  color: rgba(36, 36, 36, 0.6);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 142.857% */
+
+  background-color: transparent;
+  border: none;
+  padding: 10px 0;
+  padding-bottom: 4px;
+}
+
+.active {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.active:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 4px;
+  background-color: var(--dark);
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  border-radius: 2px;
+  color: var(--dark);
+}
+
+/* response */
+@media only screen and (min-width: 768px) {
+  .category-elements {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 32px;
+  }
+  .category-list_buttons {
+    max-height: 48px;
+  }
+  .search-form {
+    width: 273px;
+    margin-top: 0;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .filter_panel {
+    display: flex;
+    justify-content: space-between;
+  }
+  .category-elements {
+    margin-top: 0;
+  }
+  .search-form {
+    margin-right: 30px;
+  }
+}
