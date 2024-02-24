@@ -69,7 +69,7 @@ h2 {
   padding-bottom: 4px;
 }
 
-.active {
+.category-button .active {
   position: relative;
   display: inline-block;
   cursor: pointer;
