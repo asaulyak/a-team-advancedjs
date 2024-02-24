@@ -64,7 +64,10 @@ async function handlerStartExerciseClick(
     openModalExercises(modalExercises, overlay);
 
     btnModalFavorites.addEventListener('click', e =>
-      handlerToggleBtnFavorites(exerciseID, e.target.dataset.toggle)
+      handlerToggleBtnFavorites(
+        exerciseID,
+        e.target.closest('button').dataset.toggle
+      )
     );
     const btnModalClose = document.querySelector('.modal-exercises-btn-close');
 
