@@ -3,6 +3,10 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
+  height: 28px;
+  line-height: normal;
+  text-align: center;
+  font-size: 0;
 }
 
 .tui-page-btn {
@@ -47,14 +51,6 @@
 .tui-ico-next,
 .tui-ico-prev {
   overflow: hidden;
-}
-
-.tui-pagination {
-  height: 28px;
-  margin: 14px 0 12px;
-  line-height: normal;
-  text-align: center;
-  font-size: 0;
 }
 
 .tui-more {

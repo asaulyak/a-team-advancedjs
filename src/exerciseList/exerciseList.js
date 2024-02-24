@@ -5,10 +5,13 @@ import { hideElement, showElement } from '../common/common.js';
 
 export async function renderExerciseList() {
   const section = document.getElementById('exerciseSection');
+  const sectionCategory = document.getElementById('categoriesSection');
 
   if (!section) {
     return;
   }
+
+  hideElement(sectionCategory);
 
   showElement(section);
   showElement(document.querySelector('.search-form'));
