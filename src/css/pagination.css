@@ -44,6 +44,9 @@
   min-width: 32px;
   color: var(--dark);
 }
+strong.tui-is-selected {
+  font-weight: 400;
+}
 
 .tui-ico-ellipsis,
 .tui-ico-first,
