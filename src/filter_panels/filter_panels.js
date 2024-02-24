@@ -10,8 +10,12 @@ const form_buttons = `
   <form class="search-form visually-hidden">
     <input class="form-input" type="text" placeholder="Search" />
     <button class="search-button" type="button" aria-label="search button">
-      <img class="search-icon" src="../image/icons_filter_panels/search.svg" alt="icon">
-      <img class="close-icon visually-hidden" src="../image/icons_filter_panels/x.svg" alt="icon">
+    <svg class="search-icon" width="18" height="18">
+      <use href="./image/icons.svg#icon-search"></use>
+    </svg>
+    <svg class="search-icon" width="18" height="18">
+      <use href="./image/icons.svg#icon-close-search"></use>
+    </svg>      
     </button>
   </form>
   <ul class="category-list_buttons">
