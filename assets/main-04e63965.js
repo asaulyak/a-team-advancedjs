@@ -87,8 +87,8 @@ var E=(e,t,s)=>{if(!t.has(e))throw TypeError("Cannot "+s)};var M=(e,t,s)=>(E(e,t
           fill-opacity="1"
         />
       </svg>
-    `;o.push(m)}return`${Number.isInteger(e)?`${e}.0`:e.toFixed(1)} ${o.join("")}`}function Be({_id:e,bodyPart:t,equipment:s,gifUrl:i,name:o,target:r,description:a,rating:c,burnedCalories:m,time:l,popularity:d}){const g=U(i);function U($){return $===null||!$?`srcset = "./image/modal-exercises-img.jpg"
-      src = "./image/modal-exercises-img.jpg"`:`src="${$}"`}const J=Ce(c);return`
+    `;o.push(m)}return`${Number.isInteger(e)?`${e}.0`:e.toFixed(1)} ${o.join("")}`}function Be({_id:e,bodyPart:t,equipment:s,gifUrl:i,name:o,target:r,description:a,rating:c,burnedCalories:m,time:l,popularity:d}){const g=U(i);function U($){return $===null||!$?`srcset = "./image/modal-coming-soon.jpg"
+      src = "./image/modal-coming-soon.jpg"`:`src="${$}"`}const J=Ce(c);return`
   <div class="modal-exercises-container" data-id="${e}">
     <button class="modal-exercises-btn-close">
       <svg width="24" height="24">
@@ -256,4 +256,4 @@ var E=(e,t,s)=>{if(!t.has(e))throw TypeError("Cannot "+s)};var M=(e,t,s)=>(E(e,t
           </p>
         </div>
       </div>`}function Oe(){ue(),te(),ve(),Le(),Ie(),qe(),ke(),ne(),N()}Oe();
-//# sourceMappingURL=main-33593f75.js.map
+//# sourceMappingURL=main-04e63965.js.map
