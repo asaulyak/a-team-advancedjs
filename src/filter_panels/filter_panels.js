@@ -4,16 +4,17 @@ import { hideElement, showElement } from '../common/common.js';
 import { renderExerciseList } from '../exerciseList/exerciseList.js';
 
 const section = document.querySelector('.filter_panel');
+
 const exercises_title = `<h2 class="exercises-title">Exercises</h2>`;
 const form_buttons = `
 <div class="category-elements">
   <form class="search-form visually-hidden">
-    <input class="form-input" type="text" placeholder="Search" />
+    <input class="form-input" type="text" placeholder="Search"  />
     <button class="search-button" type="button" aria-label="search button">
     <svg class="search-icon" width="18" height="18">
       <use href="./image/icons.svg#icon-search"></use>
     </svg>
-    <svg class="search-icon" width="18" height="18">
+    <svg class="close-icon visually-hidden" width="18" height="18">
       <use href="./image/icons.svg#icon-close-search"></use>
     </svg>      
     </button>
@@ -49,10 +50,7 @@ export function getFilterPanels() {
 
   const { list, searchButton, form } = elements;
 
-  const searchAndCloseIcons = {
-    searchIcon: document.querySelector('.search-icon'),
-    closeIcon: document.querySelector('.close-icon'),
-  };
+  elements.input.addEventListener('input', handleInput);
 
   searchButton.addEventListener('click', handlerClickResetForm);
 
@@ -62,6 +60,16 @@ export function getFilterPanels() {
 }
 
 // Функції
+
+function handleInput(e) {
+  if (!e.target.value) return;
+  const searchAndCloseIcons = {
+    searchIcon: document.querySelector('.search-icon'),
+    closeIcon: document.querySelector('.close-icon'),
+  };
+  hideElement(searchAndCloseIcons.searchIcon);
+  showElement(searchAndCloseIcons.closeIcon);
+}
 
 function setCategoryButtonActive(filter) {
   const categoryButtons = document.querySelectorAll('.category-button');
@@ -80,8 +88,9 @@ function setCategoryButtonActive(filter) {
 }
 
 export function setSubtitle(subtitle) {
+  const preparedSubtitle = subtitle[0].toUpperCase() + subtitle.slice(1);
   const titles = document.querySelector('.exercises-title');
-  titles.innerHTML = `Exersise / <span class="subtitle">${subtitle}</span>`;
+  titles.innerHTML = `Exersise / <span class="subtitle">${preparedSubtitle}</span>`;
 }
 
 function handlerClickResetForm() {
@@ -120,4 +129,11 @@ function handlerSubmit(e) {
   storage.set('keyword', keyword);
 
   renderExerciseList();
+  e.target.reset();
+  const searchAndCloseIcons = {
+    searchIcon: document.querySelector('.search-icon'),
+    closeIcon: document.querySelector('.close-icon'),
+  };
+  showElement(searchAndCloseIcons.searchIcon);
+  hideElement(searchAndCloseIcons.closeIcon);
 }

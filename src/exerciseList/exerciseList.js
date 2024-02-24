@@ -2,6 +2,7 @@ import { getExercises } from '../api/api';
 import { renderPagination } from '../pagination/pagination';
 import { storage } from '../storage/storage.js';
 import { hideElement, showElement } from '../common/common.js';
+import { setSubtitle } from '../filter_panels/filter_panels.js';
 
 export async function renderExerciseList() {
   const section = document.getElementById('exerciseSection');
@@ -23,6 +24,7 @@ export async function renderExerciseList() {
   const data = await getExercises(options);
 
   if (data.results.length) {
+    setSubtitle(storage.get('category'));
     populateExerciseCards(listLocation, data.results);
 
     renderPagination({
