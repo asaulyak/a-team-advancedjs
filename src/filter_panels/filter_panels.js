@@ -105,6 +105,8 @@ function handlerClickResetForm() {
 
 function handleClickCategory(e) {
   const filter = e.target.dataset.filter;
+  const titles = document.querySelector('.exercises-title');
+  titles.innerHTML = `Exersise`;
 
   setCategoryButtonActive(filter);
 
