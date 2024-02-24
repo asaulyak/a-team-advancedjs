@@ -1,12 +1,36 @@
 .filter_panel {
-  padding-bottom: 32px;
+  margin-bottom: 20px;
 }
-h2 {
+@media screen and (min-width: 768px) {
+  .filter_panel {
+    margin-bottom: 32px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .filter_panel {
+    margin-bottom: 0;
+    order: 0;
+    flex-grow: 1;
+    width: 100%;
+  }
+}
+.exercises-title {
   font-size: 28px;
   font-style: normal;
   font-weight: 400;
   line-height: 38px;
   letter-spacing: -0.56px;
+  margin-bottom: 20px;
+}
+@media screen and (min-width: 768px) {
+  .exercises-title {
+    margin-bottom: 32px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .exercises-title {
+    margin-bottom: 0;
+  }
 }
 .subtitle {
   color: rgba(36, 36, 36, 0.5);
@@ -69,13 +93,13 @@ h2 {
   padding-bottom: 4px;
 }
 
-.active {
+.category-button.active {
   position: relative;
   display: inline-block;
   cursor: pointer;
 }
 
-.active:after {
+.category-button.active:after {
   content: '';
   position: absolute;
   left: 0;
@@ -94,7 +118,6 @@ h2 {
   .category-elements {
     display: flex;
     justify-content: space-between;
-    margin-top: 32px;
   }
   .category-list_buttons {
     max-height: 48px;
@@ -105,7 +128,7 @@ h2 {
   }
 }
 
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 1440px) {
   .filter_panel {
     display: flex;
     justify-content: space-between;

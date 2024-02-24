@@ -1,6 +1,6 @@
 import { storage } from '../storage/storage';
 import { renderCategories } from '../categories/categories.js';
-import { hideElement } from '../common/common.js';
+import { hideElement, showElement } from '../common/common.js';
 import { renderExerciseList } from '../exerciseList/exerciseList.js';
 
 const section = document.querySelector('.filter_panel');
@@ -21,6 +21,9 @@ const form_buttons = `
     </li>
   </ul>
 </div>`;
+
+const sectionExercises = document.getElementById('exerciseSection');
+const sectionCategory = document.getElementById('categoriesSection');
 
 export function getFilterPanels() {
   if (!section) {
@@ -95,7 +98,8 @@ function handleClickCategory(e) {
   storage.set('filter', filter);
 
   renderCategories();
-  hideElement(document.getElementById('exerciseSection'));
+  showElement(sectionCategory);
+  hideElement(sectionExercises);
   hideElement(document.querySelector('.search-form'));
 }
 
@@ -112,6 +116,4 @@ function handlerSubmit(e) {
   storage.set('keyword', keyword);
 
   renderExerciseList();
-
-  input.value = '';
 }

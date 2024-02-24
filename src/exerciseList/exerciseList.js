@@ -1,19 +1,21 @@
 import { getExercises } from '../api/api';
 import { renderPagination } from '../pagination/pagination';
 import { storage } from '../storage/storage.js';
-import { showElement } from '../common/common.js';
+import { hideElement, showElement } from '../common/common.js';
 
 export async function renderExerciseList() {
   const section = document.getElementById('exerciseSection');
+  const sectionCategory = document.getElementById('categoriesSection');
 
   if (!section) {
     return;
   }
 
+  hideElement(sectionCategory);
+
   showElement(section);
   showElement(document.querySelector('.search-form'));
 
-  const exerciseBlock = document.querySelector('.exercise-section');
   const listLocation = section.querySelector('#exerciseList');
   const paginationContainer = section.querySelector('.tui-pagination');
 
@@ -32,10 +34,8 @@ export async function renderExerciseList() {
       },
     });
   } else {
-    listLocation.insertAdjacentHTML(
-      'beforeend',
-      `<p class="exercise-noitemsmessage">It appears that there are no results that align with what you are searching for, please try again.</p>`
-    );
+    hideElement(paginationContainer);
+    listLocation.innerHTML = `<p class="exercise-noitemsmessage">It appears that there are no results that align with what you are searching for, please try again.</p>`;
   }
 }
 

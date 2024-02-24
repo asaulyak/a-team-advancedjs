@@ -11,6 +11,8 @@
     max-width: 444px;
     row-gap: 32px;
     column-gap: 0;
+    order: 1;
+    align-self: flex-start;
   }
 }
 

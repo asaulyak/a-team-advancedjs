@@ -1,0 +1,17 @@
+.home-wrapper {
+  padding-bottom: 80px;
+}
+@media screen and (min-width: 768px) {
+  .home-wrapper {
+    padding-bottom: 100px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .home-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    padding-bottom: 132px;
+  }
+}
