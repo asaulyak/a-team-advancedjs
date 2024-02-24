@@ -21,6 +21,7 @@
 @import url('./scroll-up.css');
 @import url('./exercise.css');
 @import url('./exercise-list.css');
+@import url('./quote.css');
 
 body.fixed {
   overflow: hidden;
