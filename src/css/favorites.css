@@ -90,6 +90,11 @@
     padding: 68px 0;
   }
 }
+@media only screen and (min-width: 1440px) {
+  .favorites-noitemsmessage {
+    padding-left: 180px;
+  }
+}
 
 /* ============================== */
 
@@ -147,11 +152,12 @@
 }
 
 @media only screen and (min-width: 1440px) {
-  .favorites {
+  .fav-desk-wrapper {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row-reverse;
+  }
+  .fav-desk-wrapper .quote-container {
+    margin-right: 32px;
   }
 }
 

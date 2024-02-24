@@ -12,6 +12,8 @@ export function initFavoritesPage() {
 
   bindEvents();
 
+  renderNoItemsMessage(document.querySelector('.fav-desk-wrapper'));
+
   const exerciseIds = storage.get('exerciseData');
 
   let cardsArray = [];
@@ -22,7 +24,7 @@ export function initFavoritesPage() {
       getDataForFavorites(cardsArray);
     });
   } else {
-    renderNoItemsMessage(document.querySelector('.favorites-title'));
+    renderNoItemsMessage(document.querySelector('.fav-desk-wrapper'));
   }
 
   async function getDataForFavorites(exerciseIds) {
@@ -36,11 +38,12 @@ export function initFavoritesPage() {
   function renderFavoritesCards(dataForFavorites) {
     favcardsContainer.innerHTML = dataForFavorites
       ? createBlockMarkupArr(dataForFavorites, true)
-      : renderNoItemsMessage(document.querySelector('.favorites-title'));
+      : renderNoItemsMessage(document.querySelector('fav-desk-wrapper'));
   }
 }
 
 function renderNoItemsMessage(container) {
+  // favcardsContainer.removeClasslist('favcardsContainer');
   container.insertAdjacentHTML(
     'beforeend',
     `<p class="favorites-noitemsmessage">It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future.</p>`
@@ -77,7 +80,7 @@ function bindEvents() {
     cardContainer?.remove();
 
     if (!favoritesSaved.length) {
-      renderNoItemsMessage(document.querySelector('.favorites-title'));
+      renderNoItemsMessage(document.querySelector('.fav-desk-wrapper'));
     }
   });
 }
