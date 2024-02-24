@@ -31,5 +31,7 @@ button {
 img {
   display: block;
   max-width: 100%;
+  /* must have for responsive content images */
+  width: 100%;
   height: auto;
 }

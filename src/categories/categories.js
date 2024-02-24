@@ -2,6 +2,7 @@ import { getFilters } from '../api/api.js';
 import { renderPagination } from '../pagination/pagination.js';
 import { storage } from '../storage/storage.js';
 import { hideElement } from '../common/common.js';
+import { renderExerciseList } from '../exerciseList/exerciseList.js';
 
 function getCategoriesMarkup(data) {
   return data
@@ -45,6 +46,8 @@ function bindEvents(container) {
       storage.set('category', categoryName);
 
       hideElement(container);
+
+      renderExerciseList();
     });
 }
 
