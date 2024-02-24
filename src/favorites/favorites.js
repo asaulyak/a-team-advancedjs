@@ -12,9 +12,10 @@ export function initFavoritesPage() {
 
   bindEvents();
 
-  renderNoItemsMessage(document.querySelector('.fav-desk-wrapper'));
-
   const exerciseIds = storage.get('exerciseData');
+  if (exerciseIds.length === 0) {
+    renderNoItemsMessage(document.querySelector('.fav-desk-wrapper'));
+  }
 
   let cardsArray = [];
 
