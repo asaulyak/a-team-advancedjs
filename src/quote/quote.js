@@ -8,7 +8,6 @@ export async function renderQuote() {
   const quoteBlockContainer = document.querySelector('#quoteContainer');
 
   if (!quoteBlockContainer) {
-    console.log('Quote container not found');
     return;
   }
   // check page
