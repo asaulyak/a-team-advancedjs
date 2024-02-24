@@ -1,7 +1,7 @@
 import { initBurger } from './burger/burger.js';
 
 // filter_panels
-import { getFilterPanels, setSubtitle } from './filter_panels/filter_panels.js';
+import { getFilterPanels } from './filter_panels/filter_panels.js';
 
 // Header highlighting
 import { headerHighlighting } from './header-highlighting/header-highlighting.js';
