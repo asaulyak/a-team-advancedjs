@@ -20,6 +20,7 @@ import { initFavoritesPage } from './favorites/favorites.js';
 import { closeBodyLoader } from './spinner/loader.js';
 
 async function start() {
+  getFilterPanels();
   initBurger();
   headerHighlighting();
   initSubscribe();
