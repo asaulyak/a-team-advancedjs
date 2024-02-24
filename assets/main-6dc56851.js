@@ -20,7 +20,7 @@ var M=(e,t,s)=>{if(!t.has(e))throw TypeError("Cannot "+s)};var C=(e,t,s)=>(M(e,t
               class="exercise-card-button js-start-btn remove-button-formatting"
               data-id=${s}
             >
-              start
+              Start
               <svg class="exercise-card-icon" width="16" height="16">
                 <use href="./image/icons.svg#icon-exercise-arrow"></use>
               </svg>
@@ -264,4 +264,4 @@ var M=(e,t,s)=>{if(!t.has(e))throw TypeError("Cannot "+s)};var C=(e,t,s)=>(M(e,t
           </p>
         </div>
       </div>`}function Qe(){const e=document.querySelector(".favorites-title"),t=document.querySelector("#favcardsContainer");if(!e)return;Re();const s=n.get("exerciseData")??[];s.length===0&&S(document.querySelector(".fav-desk-wrapper"));let i=[];s?s.map(a=>{i.push(a),o(i)}):S(document.querySelector(".fav-desk-wrapper"));async function o(a){const c=await Promise.all(a.map(l=>N(l)));r(c)}function r(a){t.innerHTML=a?R(a,!0):S(document.querySelector("fav-desk-wrapper"))}}function S(e){e.insertAdjacentHTML("beforeend",`<p class="favorites-noitemsmessage">It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future.</p>`)}function Re(){const e=document.querySelector(".favcards-container");e&&e.addEventListener("click",t=>{if(!t.target.classList.contains("exercise-card-removeIcon"))return;const s=t.target,i=s.closest(".exercise-card"),o=s.dataset.id;if(!o)return;let r=n.get("exerciseData")||[];r=r.filter(a=>a!==o),n.set("exerciseData",r),i==null||i.remove(),r.length||S(document.querySelector(".fav-desk-wrapper"))})}function Ue(){fe(),oe(),we(),Ce(),_e(),Ie(),je(),le(),U(),Qe()}Ue();
-//# sourceMappingURL=main-c0a0c314.js.map
+//# sourceMappingURL=main-6dc56851.js.map
