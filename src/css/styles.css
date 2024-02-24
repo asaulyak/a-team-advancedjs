@@ -23,6 +23,7 @@
 @import url('./exercise.css');
 @import url('./exercise-list.css');
 @import url('./quote.css');
+@import url('./home-wrapper.css');
 
 body.fixed {
   overflow: hidden;

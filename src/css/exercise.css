@@ -1,9 +1,9 @@
 .exercise-section {
   max-width: 100%;
-  display: flex;
+  /* display: flex;
   flex-direction: column;
 
-  align-items: center;
+  align-items: center; */
   margin-bottom: 80px;
 }
 
@@ -13,8 +13,9 @@
   }
 }
 
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 1440px) {
   .exercise-section {
-    margin-bottom: 132px;
+    margin-bottom: 0;
+    order: 3;
   }
 }
