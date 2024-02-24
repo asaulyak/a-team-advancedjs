@@ -28,27 +28,15 @@ export function initFavoritesPage() {
 
   renderCardsSection();
 
-  // const exerciseId = storage.get('key');
-
   function renderCardsSection() {
-    //   if (exerciseId) {
-    //     const dataForFavorites = getDataForFavorites(exerciseId);
-    //     renderFavoritesCards(dataForFavorites);
-    //   } else {
-    renderNoItemsMessage();
-    //   }
+    const exerciseId = storage.get('key');
+    if (exerciseId) {
+      const dataForFavorites = getDataForFavorites(exerciseId);
+      renderFavoritesCards(dataForFavorites);
+    } else {
+      renderNoItemsMessage();
+    }
   }
-
-  // function getDataForFavorites(exerciseId) {
-  //   return getExercisesById(exerciseId);
-  // }
-
-  // function renderFavoritesCards(dataForFavorites) {
-  //   favoritesTitle.insertAdjacentHTML(
-  //     'beforeend',
-  //     '<div><p>template favorite cards here</p></div>'
-  //   );
-  // }
 
   function renderNoItemsMessage() {
     favoritesTitle.insertAdjacentHTML(
@@ -56,9 +44,4 @@ export function initFavoritesPage() {
       `<p class="favorites-noitemsmessage">It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future.</p>`
     );
   }
-
-  // const deleteCardBtn = document.querySelector('.favorites-iconBin');
-  // deleteCardBtn.addEventListener('click', removeFavoritesCard);
 }
-
-// const favoritesTitle = document.querySelector('.favorites-title');
