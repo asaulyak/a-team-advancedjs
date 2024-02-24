@@ -26,15 +26,13 @@
 }
 
 .favorites-sportsnorm-number {
-  font-family: 'DM Sans', sans-serif;
   font-weight: 500;
   font-size: 20px;
   line-height: 1;
-  color: #242424;
+  color: var(--dark);
   margin-bottom: 6px;
 }
 .favorites-sportsnorm-title {
-  font-family: 'DM Sans', sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.28571;
@@ -77,12 +75,11 @@
 /* ============================== */
 
 .favorites-noitemsmessage {
-  font-family: 'DM Sans', sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.28571;
   text-align: center;
-  color: #242424;
+  color: var(--dark);
 }
 @media only screen and (min-width: 768px) {
   .favorites-noitemsmessage {
