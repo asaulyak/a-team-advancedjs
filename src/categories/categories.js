@@ -1,8 +1,9 @@
 import { getFilters } from '../api/api.js';
 import { renderPagination } from '../pagination/pagination.js';
 import { storage } from '../storage/storage.js';
-import { hideElement } from '../common/common.js';
+import { hideElement, showElement } from '../common/common.js';
 import { renderExerciseList } from '../exerciseList/exerciseList.js';
+import { showSearchForm } from '../filter_panels/filter_panels.js';
 
 function getCategoriesMarkup(data) {
   return data
@@ -31,12 +32,13 @@ function fillCategoriesList(container, data) {
   listContainer.innerHTML = getCategoriesMarkup(data);
 }
 
-function bindEvents(container) {
+export function bindCategoriesEvents() {
+  const container = document.querySelector('.categories-container');
+
   container
     .querySelector('.categories-list')
     .addEventListener('click', event => {
       const listElement = event.target.closest('.categories-card-item');
-
       if (!listElement) {
         return;
       }
@@ -44,22 +46,24 @@ function bindEvents(container) {
       const categoryName = listElement.dataset.name;
 
       storage.set('category', categoryName);
+      storage.remove('keyword');
 
       hideElement(container);
 
+      showSearchForm();
       renderExerciseList();
     });
 }
 
-export async function renderCategories(filter = 'Muscles', page = 1) {
+export async function renderCategories(page = 1) {
+  const filter = storage.get('filter');
   const container = document.querySelector('.categories-container');
 
   if (!container) {
     return;
   }
 
-  bindEvents(container);
-
+  showElement(container);
   const filters = await getFilters(filter, page);
 
   fillCategoriesList(container, filters.results);
