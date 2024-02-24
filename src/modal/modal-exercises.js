@@ -146,8 +146,8 @@ function createMarkup({
   const getExerciseGif = getGif(gifUrl);
   function getGif(gifUrl) {
     if (gifUrl === null || !gifUrl) {
-      return `srcset = "./image/modal-exercises-img.jpg"
-      src = "./image/modal-exercises-img.jpg"`;
+      return `srcset = "./image/modal-coming-soon.jpg"
+      src = "./image/modal-coming-soon.jpg"`;
     }
     return `src="${gifUrl}"`;
   }

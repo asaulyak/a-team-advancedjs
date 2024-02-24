@@ -20,7 +20,8 @@
   left: 50%;
   z-index: 100;
   overflow: auto;
-  max-height: 80vh;
+  max-height: calc(100% - 40px);
+  height: auto;
   padding: 40px 20px;
   border-radius: 20px;
   background-color: var(--dark);
@@ -130,6 +131,7 @@
   border: 1px solid var(--primary);
   background-color: var(--primary);
   color: var(--dark);
+  transition: color var(--animation-fast);
 }
 .btn-favorites-icon {
   stroke: var(--dark);
@@ -141,6 +143,7 @@
   border: 1px solid var(--primary);
   background-color: transparent;
   color: var(--primary);
+  transition: color var(--animation-fast);
 }
 .modal-exercises-btn-favorites,
 .modal-exercises-btn-rating {
