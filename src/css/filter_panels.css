@@ -75,7 +75,7 @@ h2 {
   cursor: pointer;
 }
 
-.active:after {
+.category-button.active:after {
   content: '';
   position: absolute;
   left: 0;
