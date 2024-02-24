@@ -94,7 +94,7 @@ export function createBlockMarkupArr(arr, showDelete) {
               class="exercise-card-button js-start-btn remove-button-formatting"
               data-id=${_id}
             >
-              start
+              Start
               <svg class="exercise-card-icon" width="16" height="16">
                 <use href="./image/icons.svg#icon-exercise-arrow"></use>
               </svg>
