@@ -177,6 +177,9 @@
   transform: scale(1.01);
   cursor: pointer;
 }
+.subscribe-item:focus-visible {
+  outline: none;
+}
 .subscribe-input {
   padding-left: 65px;
 
