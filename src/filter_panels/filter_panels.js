@@ -4,7 +4,6 @@ import {
   getSubCategoriesByCategory,
 } from '../api/api';
 import { storage } from '../storage/storage';
-import { markupCategories } from '../categories-list/categories-list.js';
 
 const section = document.querySelector('.filter_panel');
 const exercises_title = `<h2 class="exercises-title">Exercises</h2>`;
@@ -72,7 +71,7 @@ export function getFilterPanels() {
   } else if (storageValue) {
     getSubCategoriesByCategory({ category: storageValue }).then(
       ({ data: { results } }) => {
-        const marcupCategoryList = markupCategories(results);
+        const marcupCategoryList = '';
         const categoriesList = document.querySelector('.categories-list');
         categoriesList.innerHTML = marcupCategoryList;
       }
