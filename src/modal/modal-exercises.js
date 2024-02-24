@@ -48,13 +48,23 @@ async function handlerStartExerciseClick(
     const exerciseData = await getExercisesById(exerciseID);
     const markup = createMarkup(exerciseData);
     updateModal(markup);
-    openModalExercises(modalExercises, overlay);
+
+    isFavorite = (storage.get('exerciseData') || []).includes(exerciseID);
+
     const btnModalFavorites = document.querySelector(
       '.modal-exercises-btn-favorites'
     );
 
-    btnModalFavorites.addEventListener('click', () =>
-      handlerToggleBtnFavorites(exerciseID, isFavorite)
+    btnModalFavorites.innerHTML = isFavorite
+      ? createRemoveFromFavoritesMarkup()
+      : createAddToFavoritesMarkup();
+
+    btnModalFavorites.dataset.toggle = isFavorite ? 'remove' : 'add';
+
+    openModalExercises(modalExercises, overlay);
+
+    btnModalFavorites.addEventListener('click', e =>
+      handlerToggleBtnFavorites(exerciseID, e.target.dataset.toggle)
     );
     const btnModalClose = document.querySelector('.modal-exercises-btn-close');
 
@@ -225,26 +235,24 @@ function createRemoveFromFavoritesMarkup() {
   `;
 }
 
-function handlerToggleBtnFavorites(exerciseID, isFavorite) {
-  console.log('Initial isFavorite:', isFavorite);
-  isFavorite = !isFavorite;
-  console.log('Toggled isFavorite:', isFavorite);
-
-  if (!isFavorite) {
+function handlerToggleBtnFavorites(exerciseID, toggle) {
+  if (toggle === 'add') {
     const btnModalFavorites = document.querySelector(
       '.modal-exercises-btn-favorites'
     );
-    btnModalFavorites.innerHTML = createAddToFavoritesMarkup();
-    removeFromFavorites(exerciseID);
-    storage.clear();
+    btnModalFavorites.dataset.toggle = 'remove';
+    btnModalFavorites.innerHTML = createRemoveFromFavoritesMarkup();
+    addToFavorites(exerciseID);
   } else {
     const btnModalFavorites = document.querySelector(
       '.modal-exercises-btn-favorites'
     );
-    btnModalFavorites.innerHTML = createRemoveFromFavoritesMarkup();
-    addToFavorites(exerciseID);
+    btnModalFavorites.dataset.toggle = 'add';
+    btnModalFavorites.innerHTML = createAddToFavoritesMarkup();
+    removeFromFavorites(exerciseID);
   }
 }
+
 async function addToFavorites(exerciseID) {
   try {
     if (!exerciseID) {
@@ -253,12 +261,13 @@ async function addToFavorites(exerciseID) {
     }
     const storageData = storage.get('exerciseData') || [];
 
-    const isExerciseInFavorites = storageData.includes(exerciseID);
-
-    if (!isExerciseInFavorites) {
-      storageData.push(exerciseID);
-      storage.set('exerciseData', storageData);
+    if (storageData.includes(exerciseID)) {
+      showError('Already added');
+      return;
     }
+    storageData.push(exerciseID);
+
+    storage.set('exerciseData', storageData);
   } catch (error) {
     showError('Error fetching or storing exercise data');
   }

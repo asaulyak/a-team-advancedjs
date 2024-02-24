@@ -36,7 +36,6 @@ export function getExercises(options) {
     .filter(key => !!options[key])
     .map(key => `${key}=${options[key]}`)
     .join('&');
-
   return axios
     .get(`${API_BASE_URL}/exercises?${searchParams}`)
     .then(response => preparePaginatedResponse(response));
