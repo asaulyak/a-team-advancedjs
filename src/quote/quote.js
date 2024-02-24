@@ -1,5 +1,6 @@
 import { storage } from '../storage/storage.js';
 import { getQuote } from '../api/api.js';
+import { showError } from '../toast/toast.js';
 
 const TODAY_KEY = 'today';
 const QUOTE_KEY = 'quote-of-the-day';

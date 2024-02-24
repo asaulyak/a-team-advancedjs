@@ -9,3 +9,183 @@
     font-size: 44px;
   }
 }
+
+.favorites-margin {
+  margin-bottom: 20px;
+}
+
+/* ========SPORTSNORM BLOCK====================== */
+
+.favorites-sportsnorm {
+  border-radius: 20px;
+  width: 100%;
+  max-width: 335px;
+  height: auto;
+  background-color: var(--white-cl);
+  padding: 20px;
+}
+
+.favorites-sportsnorm-number {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--dark);
+  margin-bottom: 6px;
+}
+.favorites-sportsnorm-title {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28571;
+  color: rgba(36, 36, 36, 0.6);
+}
+
+.favorites-sportsicon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin-bottom: 15px;
+}
+.favcards-container .exercise-card-top-info {
+  gap: 8px;
+}
+
+@media only screen and (min-width: 768px) {
+  .favorites-sportsnorm {
+    width: 344px;
+    margin-right: 16px;
+  }
+
+  .favorites-sportsnorm-number {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.33;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .favorites-sportsnorm {
+    width: 239px;
+    padding: 25px;
+  }
+
+  .favorites-sportsnorm-number {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.33;
+  }
+}
+
+/* ============================== */
+
+.favorites-noitemsmessage {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28571;
+  text-align: center;
+  color: var(--dark);
+}
+@media only screen and (min-width: 768px) {
+  .favorites-noitemsmessage {
+    font-size: 18px;
+    line-height: 1.33333;
+    max-width: 554px;
+    margin: 0 auto;
+    padding: 68px 0;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .favorites-noitemsmessage {
+    padding-left: 180px;
+  }
+}
+
+/* ============================== */
+
+.favorites-sportsnorm-wrapper {
+  margin-top: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+  .favorites-sportsnorm-wrapper {
+    display: flex;
+    margin-bottom: 64px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .favorites-sportsnorm-wrapper {
+    width: 494px;
+  }
+}
+
+/* ============================== */
+
+.favorites-iconBin {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+.favorites-sportsimage {
+  background-image: url('../image/favorites/sportsimage_mob.jpg');
+  border-radius: 20px;
+  width: 100%;
+  max-width: 335px;
+  height: auto;
+  height: 119px;
+  background-color: var(--white-cl);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media only screen and (min-width: 768px) {
+  .favorites-sportsimage {
+    background-image: url('../image/favorites/sportsimage_tab.jpg');
+    width: 344px;
+    height: 141px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .favorites-sportsimage {
+    background-image: url('../image/favorites/sportsimage_desk.jpg');
+    width: 239px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .fav-desk-wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  .fav-desk-wrapper .quote-container {
+    margin-right: 32px;
+  }
+  .favcards-container .exercise-card {
+    width: 405px;
+  }
+  .fav-desk-wrapper .wrapper-container {
+    max-height: 487px;
+    overflow: auto;
+    padding-right: 16px;
+  }
+  .fav-desk-wrapper .wrapper-container::-webkit-scrollbar {
+    width: 8px;
+    background-color: rgba(36, 36, 36, 0.1);
+    border-radius: 12px;
+  }
+
+  .fav-desk-wrapper .wrapper-container::-webkit-scrollbar-thumb {
+    background-color: var(--dark);
+    border-radius: 12px;
+  }
+}
+
+.exercise-card-removeIcon {
+  cursor: pointer;
+}
+
+.exercise-card-removeIcon > svg {
+  pointer-events: none;
+}

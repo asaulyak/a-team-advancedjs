@@ -17,10 +17,20 @@
     <load ="partials/header.html" />
     <main>
       <section class="container favorites hero-section">
-        <h1 class="favorites-title">Favorites</h1>
+        <h1 class="favorites-title favorites-margin">Favorites</h1>
         <!-- quote container -->
-        <div class="quote-container" id="quoteContainer"></div>
+        <div class="fav-desk-wrapper">
+          <div class="quote-container" id="quoteContainer"></div>
+          <div class="wrapper-container">
+            <div
+              class="favcards-container exercise-list"
+              id="favcardsContainer"
+            ></div>
+          </div>
+        </div>
       </section>
+
+      <load ="partials/modal-exercises.html" />
     </main>
     <load ="partials/scroll-up.html" />
 
