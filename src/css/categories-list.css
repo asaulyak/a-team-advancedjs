@@ -8,6 +8,7 @@
 }
 @media screen and (min-width: 1440px) {
   .categories-section {
+    flex-grow: 1;
     margin-bottom: 0;
     order: 2;
   }
