@@ -17,9 +17,11 @@ export function initScrollUp() {
 
   const onScroll = throttle(() => {
     if (window.scrollY >= 100) {
-      showElement(scrollUpBtn);
+      scrollUpBtn.classList.remove('scroll-up-button--hidden');
+      // showElement(scrollUpBtn);
     } else {
-      hideElement(scrollUpBtn);
+      scrollUpBtn.classList.add('scroll-up-button--hidden');
+      // hideElement(scrollUpBtn);
     }
   }, 500);
 
