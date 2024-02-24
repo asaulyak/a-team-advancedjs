@@ -17,8 +17,9 @@ import {
 
 import { renderQuote } from './quote/quote.js';
 import { initFavoritesPage } from './favorites/favorites.js';
-function start() {
-  getFilterPanels();
+import { closeBodyLoader } from './spinner/loader.js';
+
+async function start() {
   initBurger();
   headerHighlighting();
   initSubscribe();
@@ -28,6 +29,7 @@ function start() {
   bindCategoriesEvents();
   renderCategories();
   initFavoritesPage();
+  closeBodyLoader();
 }
 
 // Execution starts here
