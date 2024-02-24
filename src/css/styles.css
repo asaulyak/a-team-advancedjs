@@ -9,6 +9,7 @@
 @import url('./reset.css');
 @import url('./variables.css');
 @import url('./header.css');
+@import url('./filter_panels.css');
 @import url('./main.css');
 @import url('./footer.css');
 @import url('./spinner.css');
@@ -21,6 +22,7 @@
 @import url('./scroll-up.css');
 @import url('./exercise.css');
 @import url('./exercise-list.css');
+@import url('./quote.css');
 
 body.fixed {
   overflow: hidden;

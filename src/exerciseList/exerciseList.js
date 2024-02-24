@@ -1,6 +1,7 @@
 import { getExercises } from '../api/api';
 import { renderPagination } from '../pagination/pagination';
-import { showError } from '../toast/toast.js';
+import { storage } from '../storage/storage.js';
+import { hideElement, showElement } from '../common/common.js';
 
 export async function renderExerciseList() {
   const section = document.getElementById('exerciseSection');
@@ -9,50 +10,56 @@ export async function renderExerciseList() {
     return;
   }
 
+  showElement(section);
+  showElement(document.querySelector('.search-form'));
+
   const listLocation = section.querySelector('#exerciseList');
   const paginationContainer = section.querySelector('.tui-pagination');
 
   const options = composeFilters();
-  const data = await fetchExercises(options);
-  populateExerciseCards(listLocation, data.results);
+  const data = await getExercises(options);
 
-  renderPagination({
-    container: paginationContainer,
-    data,
-    onUpdate: async page => {
-      const newData = await fetchExercises(composeFilters(page));
-      populateExerciseCards(listLocation, newData.results);
-    },
-  });
+  if (data.results.length) {
+    populateExerciseCards(listLocation, data.results);
+
+    renderPagination({
+      container: paginationContainer,
+      data,
+      onUpdate: async page => {
+        const newData = await getExercises(composeFilters(page));
+        populateExerciseCards(listLocation, newData.results);
+      },
+    });
+  } else {
+    hideElement(paginationContainer);
+    listLocation.innerHTML = `<p class="exercise-noitemsmessage">It appears that there are no results that align with what you are searching for, please try again.</p>`;
+  }
 }
 
 function composeFilters(page = 1, limit = 10) {
-  // TODO: Get filters from corresponding html elements
+  const filter = storage.get('filter');
+  const category = storage.get('category');
+  const keyword = storage.get('keyword');
+
+  // API is freaking awesome
+  const filtersMap = {
+    ['Body parts']: 'bodypart',
+    ['Muscles']: 'muscles',
+    ['Equipment']: 'equipment',
+  };
+
+  const filterKey = filtersMap[filter];
+
   return {
-    bodypart: undefined,
-    muscles: undefined,
-    equipment: undefined,
-    keyword: undefined,
+    [filterKey]: category,
+    keyword,
     page,
     limit,
   };
 }
 
 function populateExerciseCards(container, data) {
-  if (data.length) {
-    container.innerHTML = createBlockMarkupArr(data);
-  }
-}
-
-async function fetchExercises(options) {
-  const response = await getExercises(options);
-
-  if (response.statusText !== 'OK') {
-    showError('Failed to load exercises');
-    return [];
-  }
-
-  return response.data;
+  container.innerHTML = createBlockMarkupArr(data);
 }
 
 function createBlockMarkupArr(arr) {
@@ -66,7 +73,7 @@ function createBlockMarkupArr(arr) {
               <div class="exercise-card-rating">
                 ${rating}
                 <svg class="exercise-card-icon" width="14" height="13">
-                  <use href="./image/icons.svg#icon-star"></use>
+                  <use href="./image/icons.svg#icon-exercise-star"></use>
                 </svg>
               </div>
             </div>
@@ -94,7 +101,7 @@ function createBlockMarkupArr(arr) {
                 <div class="exercise-card-info-element-heading">
                   Burned calories:
                 </div>
-                <div class="exercise-card-info-element-content-no-overflow">${burnedCalories} / ${time} minutes</div>
+                <div class="exercise-card-info-element-content-no-overflow">${burnedCalories} / ${time} min</div>
               </div>
               <div class="exercise-card-info-element">
                 <div class="exercise-card-info-element-heading">Body part:</div>

@@ -14,21 +14,20 @@
   backdrop-filter: blur(3px);
   background: var(--overlay-bg);
 }
-
-.hidden {
-  display: none;
-}
 .modal-exercises {
   position: absolute;
   top: 50%;
   left: 50%;
   z-index: 100;
   overflow: auto;
-  max-height: 80vh;
+  max-height: calc(100% - 40px);
+  height: auto;
   padding: 40px 20px;
   border-radius: 20px;
   background-color: var(--dark);
   transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 375px;
 }
 .modal-exercises-btn-close {
   position: absolute;
@@ -119,7 +118,7 @@
   gap: 10px;
 }
 .modal-exercises-btn {
-  padding: 12px 19px;
+  padding: 12px 8px;
   font-size: 14px;
   line-height: 1.28;
   border-radius: 30px;
@@ -132,6 +131,7 @@
   border: 1px solid var(--primary);
   background-color: var(--primary);
   color: var(--dark);
+  transition: color var(--animation-fast);
 }
 .btn-favorites-icon {
   stroke: var(--dark);
@@ -143,6 +143,11 @@
   border: 1px solid var(--primary);
   background-color: transparent;
   color: var(--primary);
+  transition: color var(--animation-fast);
+}
+.modal-exercises-btn-favorites,
+.modal-exercises-btn-rating {
+  width: 100%;
 }
 .modal-exercises-btn-favorites:hover {
   background-color: var(--dark);
@@ -157,4 +162,41 @@
 .modal-exercises-btn-rating:hover {
   background-color: var(--primary);
   color: var(--dark);
+}
+@media only screen and (min-width: 768px) {
+  .modal-exercises {
+    max-width: 704px;
+    padding: 32px;
+  }
+  .modal-exercises-container {
+    display: flex;
+    gap: 32px;
+  }
+  .modal-exercises-img {
+    width: 270px;
+  }
+  .modal-exercises-card {
+    max-width: 338px;
+  }
+  .modal-exercises-name {
+    font-size: 24px;
+  }
+  .modal-exercises-btn-container {
+    max-width: 338px;
+    flex-direction: row;
+    margin-left: auto;
+  }
+  .modal-exercises-btn-favorites {
+    width: 194px;
+  }
+  .modal-exercises-btn-rating {
+    width: 141px;
+  }
+  .modal-exercises-block .modal-exercises-description {
+    margin-bottom: 64px;
+  }
+  .modal-exercises-btn-close {
+    top: 16px;
+    right: 16px;
+  }
 }
