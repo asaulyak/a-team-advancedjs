@@ -14,10 +14,6 @@
   backdrop-filter: blur(3px);
   background: var(--overlay-bg);
 }
-
-.hidden {
-  display: none;
-}
 .modal-exercises {
   position: absolute;
   top: 50%;
