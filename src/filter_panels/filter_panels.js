@@ -112,6 +112,4 @@ function handlerSubmit(e) {
   storage.set('keyword', keyword);
 
   renderExerciseList();
-
-  input.value = '';
 }
