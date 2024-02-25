@@ -1,6 +1,8 @@
 import { storage } from '../storage/storage';
 import { showError } from '../toast/toast';
 import { ratingSchema } from '../validation/rating.schema';
+import { showElement, hideElement } from '../common/common';
+import throttle from 'lodash.throttle';
 
 export function initModalRating() {
   const modalRating = document.querySelector('.modal-rating');
@@ -12,6 +14,12 @@ export function initModalRating() {
   }
 
   modalExercises.addEventListener('click', handlerOpenRating);
+  // //
+  showElement(overlay);
+  showElement(modalRating);
+  hideElement(modalExercises);
+  modalRating.innerHTML = markup();
+  document.body.classList.add('fixed');
 }
 
 function handlerOpenRating(event) {
@@ -25,12 +33,12 @@ function handlerOpenRating(event) {
   modalExercises.classList.add('visually-hidden');
   modalRating.classList.remove('visually-hidden');
   document.body.classList.add('fixed');
-  modalRating.innerHTML = markup;
+  modalRating.innerHTML = markup();
   handlerCloseModalRating(modalRating, overlay);
 }
 
 function markup() {
-  `<button class="modal-rating-btn-close">
+  return `<button class="modal-rating-btn-close">
     <svg width="24" height="24">
       <use href="./image/icons.svg#icon-close-menu"></use>
     </svg>
@@ -38,7 +46,7 @@ function markup() {
   <h4 class="title">Rating</h4>
   <div class="wrapper">
     <p class="rating" data-rating name="rating">0.0</p>
-    <ul class="list">
+    <ul class="list rating-list">
       <li class="item">
         <div class="item-star">
           <svg width="24" height="24" class="item-star-svg">
@@ -82,12 +90,15 @@ function markup() {
       name="email"
       type="email"
       placeholder="Email"
+      required
       pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
     />
     <textarea
       class="rating-textarea"
       name="comment"
       placeholder="Your comment"
+      required
+      minlength="5"
     ></textarea>
     <button class="rating-send-btn" type="submit">Send</button>
   </form>`;
@@ -123,10 +134,17 @@ function handlerCloseModalRating(modalRating, overlay) {
 //to do
 const ratingStar = document.getElementsByClassName('item-star');
 
+function handeHover(e) {
+  console.log(e.target);
+}
+
 function executeRating(stars) {
-  const ratingTitleRef = document.querySelector('rating');
+  const ratingTitleRef = document.querySelector('.rating');
   const activeStarClass = 'active-star';
   const inactiveStarClass = 'inactive-star';
+  const ratingList = document.querySelector('.rating-list');
+  console.log(ratingList);
+  // ratingList.addEventListener('mouseover', throttle(handeHover, 500));
 
   for (const star of stars) {
     star.addEventListener('click');
@@ -152,8 +170,12 @@ function executeRating(stars) {
     };
   }
 }
+//---------------------------------------
 
 executeRating(ratingStar);
+
+//---------------------------------------
+
 //To do
 async function handleRatingSubmit(event) {
   event.preventDefault();
