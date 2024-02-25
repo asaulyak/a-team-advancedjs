@@ -292,12 +292,15 @@ function closeModalExercises(modalExercises, overlay) {
 }
 function handlerCloseModalExercises(modalExercises, overlay) {
   const btnModalClose = document.querySelector('.modal-exercises-btn-close');
+  const ratingModal = document.querySelector('.modal-rating');
+
   btnModalClose.addEventListener('click', () => {
     closeModalExercises(modalExercises, overlay);
   });
 
   overlay.addEventListener('click', function (event) {
     if (event.target === overlay) {
+      if (!ratingModal.classList.contains('visually-hidden')) return;
       closeModalExercises(modalExercises, overlay);
     }
   });
@@ -307,6 +310,7 @@ function handlerCloseModalExercises(modalExercises, overlay) {
       event.key === 'Escape' &&
       !modalExercises.classList.contains('visually-hidden')
     ) {
+      if (!ratingModal.classList.contains('visually-hidden')) return;
       closeModalExercises(modalExercises, overlay);
     }
   });

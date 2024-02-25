@@ -1,8 +1,5 @@
-import { storage } from '../storage/storage';
 import { showError } from '../toast/toast';
 import { ratingSchema } from '../validation/rating.schema';
-import { showElement, hideElement } from '../common/common';
-import throttle from 'lodash.throttle';
 import { updateRating } from '../api/api';
 
 const modalRating = document.querySelector('.modal-rating');
