@@ -15,7 +15,7 @@ export function stopLoader() {
   setTimeout(() => {
     hideElement(bodyLoader);
     offSpinner(bodyLoader.children[0]);
-  }, 300);
+  }, 200);
 }
 
 // start page
