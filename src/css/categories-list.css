@@ -49,10 +49,10 @@
   justify-content: center;
   gap: 4px;
   cursor: pointer;
-  transition: scale var(--animation-fast);
+  transition: box-shadow var(--animation-fast);
 }
 .categories-card-item:hover {
-  scale: 1.03;
+  box-shadow: var(--box-shadow);
 }
 
 @media screen and (min-width: 768px) {
