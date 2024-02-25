@@ -59,6 +59,11 @@
   padding: 16px;
   transition: box-shadow var(--animation-fast);
 }
+@media screen and (max-width: 375px) {
+  .exercise-card {
+    width: 100%;
+  }
+}
 .exercise-card:hover {
   border-radius: 15px;
   box-shadow: var(--box-shadow);
