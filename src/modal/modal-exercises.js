@@ -1,4 +1,5 @@
 import { getExercisesById } from '../api/api';
+import { showLoader, stopLoader } from '../spinner/loader';
 import { storage } from '../storage/storage';
 import { showError } from '../toast/toast';
 
@@ -27,6 +28,7 @@ async function handlerStartExerciseClick(
   if (!event.target.closest('.js-start-btn')) {
     return;
   }
+  showLoader();
   try {
     const exerciseID = event.target
       .closest('.js-start-btn')
@@ -59,6 +61,7 @@ async function handlerStartExerciseClick(
   } catch (error) {
     showError('Information not found');
   }
+  stopLoader();
 }
 
 function openModalExercises(modalExercises, overlay) {

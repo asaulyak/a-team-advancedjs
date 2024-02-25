@@ -1,7 +1,7 @@
 import { initBurger } from './burger/burger.js';
 
 // filter_panels
-import { getFilterPanels, setSubtitle } from './filter_panels/filter_panels.js';
+import { getFilterPanels } from './filter_panels/filter_panels.js';
 
 // Header highlighting
 import { headerHighlighting } from './header-highlighting/header-highlighting.js';
@@ -17,7 +17,9 @@ import {
 
 import { renderQuote } from './quote/quote.js';
 import { initFavoritesPage } from './favorites/favorites.js';
-function start() {
+import { closeLoader } from './spinner/loader.js';
+
+async function start() {
   getFilterPanels();
   initBurger();
   headerHighlighting();
@@ -28,6 +30,7 @@ function start() {
   bindCategoriesEvents();
   renderCategories();
   initFavoritesPage();
+  closeLoader();
 }
 
 // Execution starts here
