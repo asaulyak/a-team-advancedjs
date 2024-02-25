@@ -62,7 +62,7 @@ export function renderPagination({ container, data, onUpdate }) {
         break;
     }
 
-    return `<a href="#" class="tui-page-btn tui-${type} ${moreClasses.join(' ')}">${icon}</a>`;
+    return `<a href="#" class="tui-page-btn tui-${type} ${moreClasses.join(' ')}" aria-label="pagination">${icon}</a>`;
   };
 
   showElement(container);
