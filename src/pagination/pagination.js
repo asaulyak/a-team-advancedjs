@@ -1,5 +1,6 @@
 import Pagination from 'tui-pagination';
 import { hideElement, showElement } from '../common/common.js';
+import { showLoader, stopLoader } from '../spinner/loader.js';
 
 /**
  * Pagination renderer
@@ -62,7 +63,7 @@ export function renderPagination({ container, data, onUpdate }) {
         break;
     }
 
-    return `<a href="#" class="tui-page-btn tui-${type} ${moreClasses.join(' ')}">${icon}</a>`;
+    return `<a href="#" class="tui-page-btn tui-${type} ${moreClasses.join(' ')}" aria-label="pagination">${icon}</a>`;
   };
 
   showElement(container);
@@ -79,6 +80,8 @@ export function renderPagination({ container, data, onUpdate }) {
   });
 
   instance.on('beforeMove', event => {
+    showLoader();
     onUpdate(event.page);
+    stopLoader();
   });
 }

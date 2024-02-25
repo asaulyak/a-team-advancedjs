@@ -40,6 +40,10 @@
   stroke: var(--primary);
   background-color: var(--dark);
   border: none;
+  transition: all var(--animation-fast);
+}
+.modal-exercises-btn-close:hover {
+  transform: rotate(180deg);
 }
 .modal-exercises-img {
   width: 100%;

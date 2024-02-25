@@ -33,6 +33,7 @@
   .categories-list {
     column-gap: 15px;
     row-gap: 32px;
+
     margin-bottom: 32px;
   }
 }
@@ -48,6 +49,10 @@
   justify-content: center;
   gap: 4px;
   cursor: pointer;
+  transition: scale var(--animation-fast);
+}
+.categories-card-item:hover {
+  scale: 1.03;
 }
 
 @media screen and (min-width: 768px) {

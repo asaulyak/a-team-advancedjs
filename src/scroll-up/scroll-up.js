@@ -1,5 +1,5 @@
 import throttle from 'lodash.throttle';
-import { showElement, hideElement } from '../common/common';
+import { hideElement } from '../common/common';
 
 export function initScrollUp() {
   const scrollUpBtn = document.querySelector('.scroll-up-button');
@@ -7,7 +7,6 @@ export function initScrollUp() {
     hideElement(scrollUpBtn);
     return;
   }
-  // showElement(scrollUpBtn);
   function goToTop() {
     window.scrollTo({
       top: 0,
@@ -17,9 +16,9 @@ export function initScrollUp() {
 
   const onScroll = throttle(() => {
     if (window.scrollY >= 100) {
-      showElement(scrollUpBtn);
+      scrollUpBtn.classList.remove('scroll-up-button--hidden');
     } else {
-      hideElement(scrollUpBtn);
+      scrollUpBtn.classList.add('scroll-up-button--hidden');
     }
   }, 500);
 
