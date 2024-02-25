@@ -2,19 +2,21 @@ import { onSpinner, offSpinner } from './spinner';
 import { hideElement, showElement } from '../common/common';
 const bodyLoader = document.querySelector('.body-loader-container');
 
+const homeLoader = document.querySelector('.home-loader-container');
+
 // showLoader
 export function showLoader() {
-  if (!bodyLoader) return;
-  showElement(bodyLoader);
-  onSpinner(bodyLoader.children[0]);
+  if (!homeLoader) return;
+  showElement(homeLoader);
+  onSpinner(homeLoader.children[0]);
 }
 
 // stopLoader
 export function stopLoader() {
-  if (!bodyLoader) return;
+  if (!homeLoader) return;
   setTimeout(() => {
-    hideElement(bodyLoader);
-    offSpinner(bodyLoader.children[0]);
+    hideElement(homeLoader);
+    offSpinner(homeLoader.children[0]);
   }, 200);
 }
 
