@@ -54,8 +54,8 @@ async function handlerStartExerciseClick(
 
     btnModalFavorites.addEventListener('click', e => {
       if (window.location.pathname.includes('favorites')) {
-        handleClick(e);
-        // handlerCloseModalExercises(modalExercises, overlay);
+        handleClick(e.target.closest('button'));
+        closeModalExercises(modalExercises, overlay);
         return;
       }
       handlerToggleBtnFavorites(
