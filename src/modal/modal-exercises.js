@@ -2,6 +2,7 @@ import { getExercisesById } from '../api/api';
 import { showLoader, stopLoader } from '../spinner/loader';
 import { storage } from '../storage/storage';
 import { showError } from '../toast/toast';
+import { handleClick } from '../favorites/favorites';
 
 export function initModalExercises() {
   const modalExercises = document.querySelector('.modal-exercises');
@@ -51,12 +52,17 @@ async function handlerStartExerciseClick(
 
     openModalExercises(modalExercises, overlay);
 
-    btnModalFavorites.addEventListener('click', e =>
+    btnModalFavorites.addEventListener('click', e => {
+      if (window.location.pathname.includes('favorites')) {
+        handleClick(e);
+        // handlerCloseModalExercises(modalExercises, overlay);
+        return;
+      }
       handlerToggleBtnFavorites(
         exerciseID,
         e.target.closest('button').dataset.toggle
-      )
-    );
+      );
+    });
     handlerCloseModalExercises(modalExercises, overlay);
   } catch (error) {
     showError('Information not found');
