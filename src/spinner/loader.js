@@ -2,10 +2,13 @@ import { onSpinner, offSpinner } from './spinner';
 import { hideElement, showElement } from '../common/common';
 const bodyLoader = document.querySelector('.body-loader-container');
 
-const homeLoader = document.querySelector('.home-loader-container');
-
 // showLoader
 export function showLoader() {
+  let homeLoader = document.querySelector('.home-loader-container');
+  if (window.location.pathname.includes('favorites')) {
+    homeLoader = document.querySelector('.favorites-loader-container');
+  }
+
   if (!homeLoader) return;
   showElement(homeLoader);
   onSpinner(homeLoader.children[0]);
@@ -13,6 +16,10 @@ export function showLoader() {
 
 // stopLoader
 export function stopLoader() {
+  let homeLoader = document.querySelector('.home-loader-container');
+  if (window.location.pathname.includes('favorites')) {
+    homeLoader = document.querySelector('.favorites-loader-container');
+  }
   if (!homeLoader) return;
   setTimeout(() => {
     hideElement(homeLoader);
