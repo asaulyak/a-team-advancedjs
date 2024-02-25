@@ -29,13 +29,18 @@
   --black-fifty: rgba(0, 0, 0, 0.5);
   --black-seventy: rgba(0, 0, 0, 0.7);
   --black-bg: rgba(0, 0, 0, 0.1);
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  margin: auto auto;
+
   background: transparent;
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
+}
+
+@media screen and (min-width: 1440px) {
+  .home-loader-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
 }
 
 .home-loader-container .spinner,
