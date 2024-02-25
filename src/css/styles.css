@@ -44,7 +44,7 @@ body.fixed {
 }
 
 .container {
-  max-width: 100%;
+  width: 100%;
   margin: 0 auto;
   padding-left: 15px;
   padding-right: 15px;
@@ -55,17 +55,17 @@ body.fixed {
   padding-bottom: 40px;
 }
 
-@media only screen and (min-width: 370px) {
+@media only screen and (min-width: 370px) and (max-width: 767px) {
   .container {
-    max-width: 375px;
+    width: 375px;
     padding-left: 20px;
     padding-right: 20px;
   }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 768px) and (max-width: 1439px) {
   .container {
-    max-width: 768px;
+    width: 768px;
     padding-left: 32px;
     padding-right: 32px;
   }
@@ -76,7 +76,9 @@ body.fixed {
 }
 @media only screen and (min-width: 1440px) {
   .container {
-    max-width: 1440px;
+    width: 1440px;
+    padding-left: 32px;
+    padding-right: 32px;
   }
   .hero-section {
     padding-top: 96px;

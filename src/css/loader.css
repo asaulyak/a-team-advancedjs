@@ -10,7 +10,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 999;
+  z-index: 200;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,7 +31,8 @@
   --black-bg: rgba(0, 0, 0, 0.1);
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
+  margin: auto auto;
   background: transparent;
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
