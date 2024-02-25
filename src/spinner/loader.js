@@ -4,17 +4,26 @@ const bodyLoader = document.querySelector('.body-loader-container');
 
 // showLoader
 export function showLoader() {
-  if (!bodyLoader) return;
-  showElement(bodyLoader);
-  onSpinner(bodyLoader.children[0]);
+  let homeLoader = document.querySelector('.home-loader-container');
+  if (window.location.pathname.includes('favorites')) {
+    homeLoader = document.querySelector('.favorites-loader-container');
+  }
+
+  if (!homeLoader) return;
+  showElement(homeLoader);
+  onSpinner(homeLoader.children[0]);
 }
 
 // stopLoader
 export function stopLoader() {
-  if (!bodyLoader) return;
+  let homeLoader = document.querySelector('.home-loader-container');
+  if (window.location.pathname.includes('favorites')) {
+    homeLoader = document.querySelector('.favorites-loader-container');
+  }
+  if (!homeLoader) return;
   setTimeout(() => {
-    hideElement(bodyLoader);
-    offSpinner(bodyLoader.children[0]);
+    hideElement(homeLoader);
+    offSpinner(homeLoader.children[0]);
   }, 200);
 }
 
