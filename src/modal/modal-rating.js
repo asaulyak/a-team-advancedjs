@@ -1,4 +1,4 @@
-import { showError } from '../toast/toast';
+import { showError, showInfo } from '../toast/toast';
 import { ratingSchema } from '../validation/rating.schema';
 import { updateRating } from '../api/api';
 import { showElement, hideElement } from '../common/common';
@@ -107,7 +107,7 @@ async function handleRatingSubmit(event) {
     await updateRating(id, schema);
     showInfo('Rating successfully updated');
   } catch (error) {
-    showError(error.response.data.message);
+    showError(error.message);
   } finally {
     setTimeout(() => {
       event.target.reset();
@@ -169,18 +169,18 @@ function markup(id) {
       </li>
     </ul>
   </div>
-  
-  
+
+
     <input
       class="rating-input"
       name="email"
       type="text"
-      
-      placeholder="Email"         
+      pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+      placeholder="Email"
       autocomplete="email"
       required
     />
-    
+
     <textarea
       class="rating-textarea"
       name="comment"
