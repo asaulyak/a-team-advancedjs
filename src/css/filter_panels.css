@@ -94,6 +94,7 @@
 }
 
 .category-button.active {
+  color: var(--dark);
   position: relative;
   display: inline-block;
   cursor: pointer;
