@@ -1,5 +1,5 @@
 .modal-rating {
-  z-index: 200;
+  z-index: 300;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -38,10 +38,9 @@
 
 .wrapper {
   display: flex;
-  justify-content: flex-start;
   align-items: center;
   gap: 5px;
-  margin-bottom: 32px;
+  margin-bottom: 20px;
 }
 .rating {
   font-size: 12px;
