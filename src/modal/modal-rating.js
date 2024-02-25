@@ -4,31 +4,22 @@ import { ratingSchema } from '../validation/rating.schema';
 import { showElement, hideElement } from '../common/common';
 import throttle from 'lodash.throttle';
 
-export function initModalRating() {
-  const modalRating = document.querySelector('.modal-rating');
-  const modalExercises = document.querySelector('.modal-exercises');
-  const overlay = document.querySelector('.overlay');
+const modalRating = document.querySelector('.modal-rating');
+const modalExercises = document.querySelector('.modal-exercises');
+const overlay = document.querySelector('.overlay');
 
+export function initModalRating() {
   if (!overlay || !modalExercises || !modalRating) {
     return;
   }
 
   modalExercises.addEventListener('click', handlerOpenRating);
-  // //
-  showElement(overlay);
-  showElement(modalRating);
-  hideElement(modalExercises);
-  modalRating.innerHTML = markup();
-  document.body.classList.add('fixed');
 }
 
 function handlerOpenRating(event) {
   if (!event.target.closest('.modal-exercises-btn-rating')) {
     return;
   }
-  const modalRating = document.querySelector('.modal-rating');
-  const modalExercises = document.querySelector('.modal-exercises');
-  const overlay = document.querySelector('.overlay');
 
   modalExercises.classList.add('visually-hidden');
   modalRating.classList.remove('visually-hidden');
@@ -36,13 +27,14 @@ function handlerOpenRating(event) {
   modalRating.innerHTML = markup();
   handlerCloseModalRating(modalRating, overlay);
 }
-
+// markup
 function markup() {
   return `<button class="modal-rating-btn-close">
     <svg width="24" height="24">
       <use href="./image/icons.svg#icon-close-menu"></use>
     </svg>
   </button>
+  <form class="rating-form">
   <h4 class="title">Rating</h4>
   <div class="wrapper">
     <p class="rating" data-rating name="rating">0.0</p>
@@ -84,7 +76,7 @@ function markup() {
       </li>
     </ul>
   </div>
-  <form class="rating-form">
+  
     <input
       class="rating-input"
       name="email"
@@ -104,11 +96,12 @@ function markup() {
   </form>`;
 }
 
+// closeModalRating
 function closeModalRating(modalRating, overlay) {
   modalRating.classList.add('visually-hidden');
-  overlay.classList.add('visually-hidden');
-  document.body.classList.remove('fixed');
+  modalExercises.classList.remove('visually-hidden');
 }
+
 function handlerCloseModalRating(modalRating, overlay) {
   const btnModalClose = document.querySelector('.modal-rating-btn-close');
 
@@ -131,6 +124,7 @@ function handlerCloseModalRating(modalRating, overlay) {
     }
   });
 }
+
 //to do
 const ratingStar = document.getElementsByClassName('item-star');
 
