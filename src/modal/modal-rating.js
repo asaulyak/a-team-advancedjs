@@ -6,12 +6,16 @@ export function initModalRating() {
   const modalRating = document.querySelector('.modal-rating');
   const modalExercises = document.querySelector('.modal-exercises');
   const overlay = document.querySelector('.overlay');
+  const ratingForm = document.querySelector('.rating-form');
 
   if (!overlay || !modalExercises || !modalRating) {
     return;
   }
 
   modalExercises.addEventListener('click', handlerOpenRating);
+  if (ratingForm) {
+    ratingForm.addEventListener('submit', handleRatingSubmit);
+  }
 }
 
 function handlerOpenRating(event) {
@@ -25,54 +29,56 @@ function handlerOpenRating(event) {
   modalExercises.classList.add('visually-hidden');
   modalRating.classList.remove('visually-hidden');
   document.body.classList.add('fixed');
-  modalRating.innerHTML = markup;
+  modalRating.innerHTML = markup();
+
+  console.log(modalRating);
+  const ratingStar = document.getElementsByClassName('item-star');
+
+  if (ratingStar) {
+    executeRating(ratingStar);
+  }
+
+  for (const star of ratingStar) {
+    star.addEventListener('click', () => console.log('clicked'));
+  }
+
   handlerCloseModalRating(modalRating, overlay);
 }
 
 function markup() {
-  `<button class="modal-rating-btn-close">
+  return `<button class="modal-rating-btn-close">
     <svg width="24" height="24">
       <use href="./image/icons.svg#icon-close-menu"></use>
     </svg>
   </button>
   <h4 class="title">Rating</h4>
-  <div class="wrapper">
-    <p class="rating" data-rating name="rating">0.0</p>
+  <div class="modal-star-rating wrapper">
+    <p class="rating" id="modal-star-rating" data-rating name="rating">0.0</p>
     <ul class="list">
-      <li class="item">
-        <div class="item-star">
+      <li class="item-star" data-value="1">
           <svg width="24" height="24" class="item-star-svg">
             <use href="./image/icons.svg#icon-star"></use>
           </svg>
-        </div>
       </li>
-      <li class="item">
-        <div class="item-star">
+      <li class="item-star" data-value="2">
           <svg width="24" height="24" class="item-star-svg">
             <use href="./image/icons.svg#icon-star"></use>
           </svg>
-        </div>
       </li>
-      <li class="item">
-        <div class="item-star">
+      <li class="item-star" data-value="3">
           <svg width="24" height="24" class="item-star-svg">
             <use href="./image/icons.svg#icon-star"></use>
           </svg>
-        </div>
       </li>
-      <li class="item">
-        <div class="item-star">
+      <li class="item-star" data-value="4">
           <svg width="24" height="24" class="item-star-svg">
             <use href="./image/icons.svg#icon-star"></use>
           </svg>
-        </div>
       </li>
-      <li class="item">
-        <div class="item-star" data-rating="5">
+      <li class="item-star" data-value="5">
           <svg width="24" height="24" class="item-star-svg">
             <use href="./image/icons.svg#icon-star"></use>
           </svg>
-        </div>
       </li>
     </ul>
   </div>
@@ -83,11 +89,13 @@ function markup() {
       type="email"
       placeholder="Email"
       pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+      required
     />
     <textarea
       class="rating-textarea"
       name="comment"
       placeholder="Your comment"
+      required
     ></textarea>
     <button class="rating-send-btn" type="submit">Send</button>
   </form>`;
@@ -121,43 +129,37 @@ function handlerCloseModalRating(modalRating, overlay) {
   });
 }
 //to do
-const ratingStar = document.getElementsByClassName('item-star');
-
 function executeRating(stars) {
-  const ratingTitleRef = document.querySelector('rating');
+  const starRatingField = document.querySelector('.modal-star-rating');
+  let ratingTitleRef = document.querySelector('#modal-star-rating');
   const activeStarClass = 'active-star';
   const inactiveStarClass = 'inactive-star';
 
   for (const star of stars) {
-    star.addEventListener('click');
-    star.onclick = () => {
-      const index = stars.indexOf(star);
+    star.addEventListener('click', () => {
+      const index = star.getAttribute('data-value');
 
-      if (star.className === inactiveStarClass) {
-        for (let i = index; i >= 0; --i) {
-          stars[i].className = activeStarClass;
-        }
-      } else {
-        for (let i = index; i < stars.length; ++i) {
-          stars[i].className = inactiveStarClass;
-        }
+      for (const star of stars) {
+        star.classList.contains(activeStarClass)
+          ? star.classList.remove(activeStarClass)
+          : star.classList.remove(inactiveStarClass);
       }
 
-      const activeStars = stars.filter(
-        star => star.className === activeStarClass
-      );
-      const rating = activeStars.length;
+      ratingTitleRef.innerHTML = `${index}.0`;
 
-      ratingTitleRef.innerHTML = `${rating}.0`;
-    };
+      for (let i = index - 1; i >= 0; --i) {
+        stars[i].classList.add(activeStarClass);
+      }
+    });
   }
 }
 
-executeRating(ratingStar);
 //To do
 async function handleRatingSubmit(event) {
   event.preventDefault();
   const formData = new FormData(event.target);
+
+  console.log(formData);
 
   try {
     const schema = await ratingSchema.validate({
