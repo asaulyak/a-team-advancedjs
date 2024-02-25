@@ -81,6 +81,7 @@ export function renderPagination({ container, data, onUpdate }) {
 
   instance.on('beforeMove', event => {
     showLoader();
+
     onUpdate(event.page);
     stopLoader();
   });
