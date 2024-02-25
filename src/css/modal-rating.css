@@ -50,6 +50,7 @@
   }
 }
 .rating {
+  min-width: 20px;
   font-size: 12px;
   line-height: 1.5;
   color: var(--primary);
@@ -77,6 +78,7 @@
   transition: stroke var(--animation-fast);
 }
 
+.item--active .item-star-svg,
 .item:hover .item-star-svg {
   fill: var(--star-filled);
   stroke: var(--star-filled);
@@ -132,12 +134,12 @@
 
   background-color: var(--dark);
   color: var(--grey-sixty);
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 
-/* .rating-textarea::-webkit-scrollbar {
+.rating-textarea::-webkit-scrollbar {
   display: none;
-} */
+}
 .rating-send-btn {
   width: 295px;
   height: 42px;
