@@ -51,7 +51,7 @@ body.fixed {
 }
 
 .hero-section {
-  padding-top: 80px;
+  padding-top: 60px;
   padding-bottom: 40px;
 }
 
@@ -70,7 +70,7 @@ body.fixed {
     padding-right: 32px;
   }
   .hero-section {
-    padding-top: 100px;
+    padding-top: 76px;
     padding-bottom: 64px;
   }
 }
@@ -81,6 +81,7 @@ body.fixed {
     padding-right: 32px;
   }
   .hero-section {
-    padding-top: 96px;
+    padding-top: 68px;
+    padding-bottom: 64px;
   }
 }
