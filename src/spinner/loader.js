@@ -1,37 +1,38 @@
 import { onSpinner, offSpinner } from './spinner';
-import { hideElement } from '../common/common';
+import { hideElement, showElement } from '../common/common';
+const bodyLoader = document.querySelector('.body-loader-container');
 
-export function showLoader(elementRef) {
-  if (!elementRef) return;
-  elementRef.style.overflow = 'hidden';
-
-  elementRef.insertAdjacentHTML(
-    'beforeend',
-    createMarkupLoader(elementRef.nodeName.toLowerCase())
-  );
-
-  const selector = `js-${elementRef.nodeName.toLowerCase()}-spinner`;
-
-  onSpinner(document.getElementById(selector));
+// showLoader
+export function showLoader() {
+  if (!bodyLoader) return;
+  showElement(bodyLoader);
+  onSpinner(bodyLoader.children[0]);
 }
 
-export function stopLoader(elementRef) {
-  if (!elementRef) return;
-  offSpinner(elementRef.children[0]);
+// stopLoader
+export function stopLoader() {
+  if (!bodyLoader) return;
+  setTimeout(() => {
+    hideElement(bodyLoader);
+    offSpinner(bodyLoader.children[0]);
+  }, 300);
 }
 
+// create markup
 function createMarkupLoader(name) {
-  return `<!-- loader --><div class="loader-container">
+  return `<!-- loader --><div class="${name}-loader-container">
   <span class="spinner " id="js-${name}-spinner"></span>
   </div>`;
 }
+
+// body loader
 
 export function closeBodyLoader() {
   window.addEventListener('load', handleLoad);
 }
 
 function handleLoad() {
-  const bodyLoader = document.querySelector('.body-loader-container');
+  //   const bodyLoader = document.querySelector('.body-loader-container');
   setTimeout(() => {
     stopLoader(bodyLoader);
     hideElement(bodyLoader);

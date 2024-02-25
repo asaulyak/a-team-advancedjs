@@ -4,6 +4,7 @@ import { storage } from '../storage/storage.js';
 import { hideElement, showElement } from '../common/common.js';
 import { renderExerciseList } from '../exerciseList/exerciseList.js';
 import { showSearchForm } from '../filter_panels/filter_panels.js';
+import { showLoader, stopLoader } from '../spinner/loader.js';
 
 function getCategoriesMarkup(data) {
   return data
@@ -81,10 +82,14 @@ export async function renderCategories(page = 1) {
       container: paginationContainer,
       data: filters,
       onUpdate: async newPage => {
+        showLoader();
         const newData = await getFilters(filter, newPage);
 
         fillCategoriesList(container, newData.results);
+
+        stopLoader();
       },
     });
   }
+  stopLoader();
 }

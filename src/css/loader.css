@@ -1,3 +1,4 @@
+.categories-list-wrapper-loader-container,
 .body-loader-container {
   --black: #ffffff;
   --black-twenty: rgba(255, 255, 255, 0.2);
@@ -34,6 +35,6 @@
 }
 @media screen and (min-width: 1440px) {
   .body-loader-container .spinner {
-    font-size: 36px;
+    font-size: 24px;
   }
 }
