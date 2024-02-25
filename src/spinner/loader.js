@@ -18,21 +18,12 @@ export function stopLoader() {
   }, 300);
 }
 
-// create markup
-function createMarkupLoader(name) {
-  return `<!-- loader --><div class="${name}-loader-container">
-  <span class="spinner " id="js-${name}-spinner"></span>
-  </div>`;
-}
-
-// body loader
-
-export function closeBodyLoader() {
+// start page
+export function closeLoader() {
   window.addEventListener('load', handleLoad);
 }
 
 function handleLoad() {
-  //   const bodyLoader = document.querySelector('.body-loader-container');
   setTimeout(() => {
     stopLoader(bodyLoader);
     hideElement(bodyLoader);

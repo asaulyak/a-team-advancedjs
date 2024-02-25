@@ -47,7 +47,7 @@ export function bindCategoriesEvents() {
       if (!listElement) {
         return;
       }
-
+      showLoader();
       const categoryName = listElement.dataset.name;
 
       storage.set('category', categoryName);
@@ -82,12 +82,9 @@ export async function renderCategories(page = 1) {
       container: paginationContainer,
       data: filters,
       onUpdate: async newPage => {
-        showLoader();
         const newData = await getFilters(filter, newPage);
 
         fillCategoriesList(container, newData.results);
-
-        stopLoader();
       },
     });
   }

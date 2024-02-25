@@ -1,5 +1,6 @@
 import Pagination from 'tui-pagination';
 import { hideElement, showElement } from '../common/common.js';
+import { showLoader, stopLoader } from '../spinner/loader.js';
 
 /**
  * Pagination renderer
@@ -79,6 +80,8 @@ export function renderPagination({ container, data, onUpdate }) {
   });
 
   instance.on('beforeMove', event => {
+    showLoader();
     onUpdate(event.page);
+    stopLoader();
   });
 }

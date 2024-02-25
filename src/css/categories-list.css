@@ -19,27 +19,22 @@
   justify-content: center;
   align-items: center;
 }
-.categories-list-wrapper {
-  width: 100%;
-  position: relative;
-  margin-bottom: 20px;
-}
-@media screen and (min-width: 768px) {
-  .categories-list-wrapper {
-    margin-bottom: 32px;
-  }
-}
+
 .categories-list {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   width: 100%;
   max-width: 900px;
+
+  margin-bottom: 20px;
 }
 @media screen and (min-width: 768px) {
   .categories-list {
     column-gap: 15px;
     row-gap: 32px;
+
+    margin-bottom: 32px;
   }
 }
 
