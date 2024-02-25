@@ -1,10 +1,13 @@
 import { showError } from '../toast/toast';
 import { ratingSchema } from '../validation/rating.schema';
 import { updateRating } from '../api/api';
+import { showElement, hideElement } from '../common/common';
+import { onSpinner, offSpinner } from '../spinner/spinner';
 
 const modalRating = document.querySelector('.modal-rating');
 const modalExercises = document.querySelector('.modal-exercises');
 const overlay = document.querySelector('.overlay');
+const ratingLoader = document.querySelector('.rating-loader-container');
 
 export function initModalRating() {
   if (!overlay || !modalExercises || !modalRating) {
@@ -19,6 +22,7 @@ function handlerOpenRating(event) {
   if (!event.target.closest('.modal-exercises-btn-rating')) {
     return;
   }
+
   const id = event.target.dataset.id;
 
   modalExercises.classList.add('visually-hidden');
@@ -87,6 +91,8 @@ function executeRating() {
 //To do
 async function handleRatingSubmit(event) {
   event.preventDefault();
+  showElement(ratingLoader);
+  onSpinner(ratingLoader.children[0]);
   const ratingList = document.querySelector('.rating-list');
   const text = document.querySelector('.rating');
   const formData = new FormData(event.target);
@@ -107,6 +113,8 @@ async function handleRatingSubmit(event) {
       event.target.reset();
       [...ratingList.children].map(el => el.classList.remove('item--active'));
       text.textContent = `0.0`;
+      hideElement(ratingLoader);
+      offSpinner(ratingLoader.children[0]);
     }, 500);
   }
 }

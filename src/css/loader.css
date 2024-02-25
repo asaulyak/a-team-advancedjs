@@ -1,3 +1,4 @@
+.rating-loader-container,
 .favorites-loader-container,
 .home-loader-container,
 .body-loader-container {
@@ -11,11 +12,10 @@
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 200;
+  z-index: 999;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1;
   width: 100vw;
   height: 100vh;
   backdrop-filter: blur(10px);
@@ -24,6 +24,7 @@
   opacity: 1;
   transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .favorites-loader-container,
 .home-loader-container {
   --black: #000000;
@@ -36,7 +37,12 @@
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
 }
-
+.rating-loader-container {
+  position: absolute;
+  background: transparent;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
 @media screen and (min-width: 1440px) {
   .home-loader-container {
     width: 100%;
@@ -44,6 +50,7 @@
     position: absolute;
   }
 }
+.rating-loader-container .spinner,
 .favorites-loader-container .spinner,
 .home-loader-container .spinner,
 .body-loader-container .spinner {
