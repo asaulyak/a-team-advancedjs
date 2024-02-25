@@ -14,8 +14,8 @@
     />
     
     <script type="module" crossorigin src="/a-team-advancedjs/assets/vendor-98b3cdf8.js"></script>
-    <script type="module" crossorigin src="/a-team-advancedjs/assets/main-a5d0276f.js"></script>
-    <link rel="stylesheet" href="/a-team-advancedjs/assets/main-b71f8ef4.css">
+    <script type="module" crossorigin src="/a-team-advancedjs/assets/main-cdc587f3.js"></script>
+    <link rel="stylesheet" href="/a-team-advancedjs/assets/main-82e93db6.css">
     <link rel="stylesheet" href="/a-team-advancedjs/assets/vendor-e5212ee8.css">
   </head>
   <body>
@@ -236,7 +236,8 @@
       <div class="home-wrapper container">
   <section class="filter_panel"></section>
 
-  <section class="categories-section" id="categoriesSection">
+  <div class="home-thumb">
+    <section class="categories-section" id="categoriesSection">
   <div class="categories-container">
     <ul class="categories-list"></ul>
 
@@ -244,11 +245,16 @@
   </div>
 </section>
 
-  <section id="exerciseSection" class="exercise-section visually-hidden">
+    <section id="exerciseSection" class="exercise-section visually-hidden">
   <div id="exerciseList" class="exercise-list"></div>
   <div id="exercises" class="tui-pagination"></div>
 </section>
 
+    <!-- loader -->
+    <div class="home-loader-container">
+      <span class="spinner" id="js-home-spinner"></span>
+    </div>
+  </div>
   <div id="quoteContainer" class="quote-container"></div>
 </div>
 
