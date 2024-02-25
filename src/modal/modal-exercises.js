@@ -276,21 +276,20 @@ async function removeFromFavorites(exerciseID) {
 }
 
 //*********** close modal********* */
-
+function closeModalExercises(modalExercises, overlay) {
+  modalExercises.classList.add('visually-hidden');
+  overlay.classList.add('visually-hidden');
+  document.body.classList.remove('fixed');
+}
 function handlerCloseModalExercises(modalExercises, overlay) {
   const btnModalClose = document.querySelector('.modal-exercises-btn-close');
-
   btnModalClose.addEventListener('click', () => {
-    modalExercises.classList.add('visually-hidden');
-    overlay.classList.add('visually-hidden');
-    document.body.classList.remove('fixed');
+    closeModalExercises(modalExercises, overlay);
   });
 
   overlay.addEventListener('click', function (event) {
     if (event.target === overlay) {
-      modalExercises.classList.add('visually-hidden');
-      overlay.classList.add('visually-hidden');
-      document.body.classList.remove('fixed');
+      closeModalExercises(modalExercises, overlay);
     }
   });
 
@@ -299,9 +298,7 @@ function handlerCloseModalExercises(modalExercises, overlay) {
       event.key === 'Escape' &&
       !modalExercises.classList.contains('visually-hidden')
     ) {
-      modalExercises.classList.add('visually-hidden');
-      overlay.classList.add('visually-hidden');
-      document.body.classList.remove('fixed');
+      closeModalExercises(modalExercises, overlay);
     }
   });
 }

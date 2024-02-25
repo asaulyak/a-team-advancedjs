@@ -24,6 +24,7 @@
 @import url('./exercise-list.css');
 @import url('./quote.css');
 @import url('./home-wrapper.css');
+@import url('./modal-rating.css');
 
 body.fixed {
   overflow: hidden;
