@@ -3,6 +3,7 @@ import { renderPagination } from '../pagination/pagination';
 import { storage } from '../storage/storage.js';
 import { hideElement, showElement } from '../common/common.js';
 import { setSubtitle } from '../filter_panels/filter_panels.js';
+import { stopLoader } from '../spinner/loader.js';
 
 export async function renderExerciseList() {
   const section = document.getElementById('exerciseSection');
@@ -39,6 +40,7 @@ export async function renderExerciseList() {
     hideElement(paginationContainer);
     listLocation.innerHTML = `<p class="exercise-noitemsmessage">It appears that there are no results that align with what you are searching for, please try again.</p>`;
   }
+  stopLoader();
 }
 
 function composeFilters(page = 1, limit = 10) {

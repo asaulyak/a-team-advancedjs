@@ -2,6 +2,7 @@ import { storage } from '../storage/storage';
 import { renderCategories } from '../categories/categories.js';
 import { hideElement, showElement } from '../common/common.js';
 import { renderExerciseList } from '../exerciseList/exerciseList.js';
+import { showLoader } from '../spinner/loader.js';
 
 const section = document.querySelector('.filter_panel');
 
@@ -104,6 +105,7 @@ function handlerClickResetForm() {
 }
 
 function handleClickCategory(e) {
+  showLoader();
   const filter = e.target.dataset.filter;
   const titles = document.querySelector('.exercises-title');
   titles.innerHTML = `Exersise`;
@@ -124,6 +126,7 @@ export function showSearchForm() {
 }
 
 function handlerSubmit(e) {
+  showLoader();
   e.preventDefault();
   const input = document.querySelector('.form-input');
   const keyword = input.value;

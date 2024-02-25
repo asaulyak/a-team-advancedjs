@@ -1,4 +1,5 @@
 .filter_panel {
+  min-height: 44px;
   margin-bottom: 20px;
 }
 @media screen and (min-width: 768px) {
@@ -94,6 +95,7 @@
 }
 
 .category-button.active {
+  color: var(--dark);
   position: relative;
   display: inline-block;
   cursor: pointer;

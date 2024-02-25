@@ -25,6 +25,7 @@
 @import url('./quote.css');
 @import url('./home-wrapper.css');
 @import url('./modal-rating.css');
+@import url('./loader.css');
 
 body.fixed {
   overflow: hidden;
