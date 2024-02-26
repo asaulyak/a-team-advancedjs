@@ -35,32 +35,36 @@ function handlerOpenRating(event) {
 }
 
 //listeners
+
+function closeModalRating() {
+  const form = document.querySelector('.rating-form');
+  const btnModalClose = document.querySelector('.modal-rating-btn-close');
+
+  modalRating.classList.add('visually-hidden');
+  modalExercises.classList.remove('visually-hidden');
+  btnModalClose.removeEventListener('click', handleCloseBtn);
+  overlay.removeEventListener('click', handleClickOverlay);
+  document.removeEventListener('keydown', handleKey);
+  form.removeEventListener('submit', handleRatingSubmit);
+}
+
+function handleCloseBtn() {
+  closeModalRating();
+}
+
+function handleClickOverlay(e) {
+  if (e.target !== overlay) return;
+  closeModalRating();
+}
+
+function handleKey(e) {
+  if (e.key !== 'Escape') return;
+  closeModalRating();
+}
+
 function handlerCloseModalRating() {
   const btnModalClose = document.querySelector('.modal-rating-btn-close');
   const form = document.querySelector('.rating-form');
-
-  function closeModalRating() {
-    modalRating.classList.add('visually-hidden');
-    modalExercises.classList.remove('visually-hidden');
-    btnModalClose.removeEventListener('click', handleCloseBtn);
-    overlay.removeEventListener('click', handleClickOverlay);
-    document.removeEventListener('keydown', handleKey);
-    form.removeEventListener('submit', handleRatingSubmit);
-  }
-
-  function handleCloseBtn() {
-    closeModalRating();
-  }
-
-  function handleClickOverlay(e) {
-    if (e.target !== overlay) return;
-    closeModalRating();
-  }
-
-  function handleKey(e) {
-    if (e.key !== 'Escape') return;
-    closeModalRating();
-  }
 
   btnModalClose.addEventListener('click', handleCloseBtn);
   overlay.addEventListener('click', handleClickOverlay);
@@ -88,7 +92,6 @@ function executeRating() {
 }
 //---------------------------------------
 
-//To do
 async function handleRatingSubmit(event) {
   event.preventDefault();
   showElement(ratingLoader);
@@ -106,13 +109,15 @@ async function handleRatingSubmit(event) {
     const id = event.target.dataset.id;
     await updateRating(id, schema);
     showInfo('Rating successfully updated');
+    closeModalRating();
+
+    event.target.reset();
+    [...ratingList.children].map(el => el.classList.remove('item--active'));
+    text.textContent = `0.0`;
   } catch (error) {
     showError(error.message);
   } finally {
     setTimeout(() => {
-      event.target.reset();
-      [...ratingList.children].map(el => el.classList.remove('item--active'));
-      text.textContent = `0.0`;
       hideElement(ratingLoader);
       offSpinner(ratingLoader.children[0]);
     }, 500);
@@ -175,7 +180,7 @@ function markup(id) {
       class="rating-input"
       name="email"
       type="text"
-      pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+      pattern="^\\w+(\\.\\w+)?@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}$"
       placeholder="Email"
       autocomplete="email"
       required
@@ -191,4 +196,3 @@ function markup(id) {
     <button class="rating-send-btn" type="submit">Send</button>
   </form>`;
 }
-// pattern = "^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"

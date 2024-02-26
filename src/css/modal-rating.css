@@ -134,7 +134,6 @@
 
   background-color: var(--dark);
   color: var(--grey-sixty);
-  /* overflow-y: scroll; */
 }
 
 .rating-textarea::-webkit-scrollbar {
@@ -186,7 +185,6 @@
   line-height: 1.5;
   width: 350px;
   margin-bottom: 32px;
-  line-height: 1.5;
 }
 .rating-send-btn {
   width: 350px;
