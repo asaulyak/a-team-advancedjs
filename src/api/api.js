@@ -63,3 +63,9 @@ export function getFilters(filter = 'Muscles', page = 1, limit = 12) {
     )
     .then(response => preparePaginatedResponse(response));
 }
+
+export function updateRating(id, body) {
+  return axios
+    .patch(`${API_BASE_URL}/exercises/${id}/rating`, body)
+    .then(response => response.data);
+}

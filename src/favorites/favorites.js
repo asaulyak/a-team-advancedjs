@@ -58,30 +58,31 @@ function bindEvents() {
     return;
   }
 
-  favoritesContainer.addEventListener('click', event => {
-    if (!event.target.classList.contains('exercise-card-removeIcon')) {
-      return;
-    }
+  favoritesContainer.addEventListener('click', e => handleClick(e.target));
+}
 
-    const binIconContainer = event.target;
-    const cardContainer = binIconContainer.closest('.exercise-card');
+export function handleClick(target) {
+  // filtering event
+  if (target.classList.contains('exercise-card-button')) return;
+  if (!target.dataset.id) return;
 
-    const id = binIconContainer.dataset.id;
+  const id = target.dataset.id;
+  if (!id) {
+    return;
+  }
 
-    if (!id) {
-      return;
-    }
+  const element = document.querySelector(`[data-id="${id}"]`);
+  const cardContainer = element.closest('.exercise-card');
 
-    let favoritesSaved = storage.get('exerciseData') || [];
+  let favoritesSaved = storage.get('exerciseData') || [];
 
-    favoritesSaved = favoritesSaved.filter(item => item !== id);
+  favoritesSaved = favoritesSaved.filter(item => item !== id);
 
-    storage.set('exerciseData', favoritesSaved);
+  storage.set('exerciseData', favoritesSaved);
 
-    cardContainer?.remove();
+  cardContainer?.remove();
 
-    if (!favoritesSaved.length) {
-      renderNoItemsMessage(document.querySelector('.fav-desk-wrapper'));
-    }
-  });
+  if (!favoritesSaved.length) {
+    renderNoItemsMessage(document.querySelector('.fav-desk-wrapper'));
+  }
 }

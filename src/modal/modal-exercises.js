@@ -2,6 +2,7 @@ import { getExercisesById } from '../api/api';
 import { showLoader, stopLoader } from '../spinner/loader';
 import { storage } from '../storage/storage';
 import { showError } from '../toast/toast';
+import { handleClick } from '../favorites/favorites';
 
 export function initModalExercises() {
   const modalExercises = document.querySelector('.modal-exercises');
@@ -51,12 +52,17 @@ async function handlerStartExerciseClick(
 
     openModalExercises(modalExercises, overlay);
 
-    btnModalFavorites.addEventListener('click', e =>
+    btnModalFavorites.addEventListener('click', e => {
+      if (window.location.pathname.includes('favorites')) {
+        handleClick(e.target.closest('button'));
+        closeModalExercises(modalExercises, overlay);
+        return;
+      }
       handlerToggleBtnFavorites(
         exerciseID,
         e.target.closest('button').dataset.toggle
-      )
-    );
+      );
+    });
     handlerCloseModalExercises(modalExercises, overlay);
   } catch (error) {
     showError('Information not found');
@@ -279,21 +285,23 @@ async function removeFromFavorites(exerciseID) {
 }
 
 //*********** close modal********* */
-
+function closeModalExercises(modalExercises, overlay) {
+  modalExercises.classList.add('visually-hidden');
+  overlay.classList.add('visually-hidden');
+  document.body.classList.remove('fixed');
+}
 function handlerCloseModalExercises(modalExercises, overlay) {
   const btnModalClose = document.querySelector('.modal-exercises-btn-close');
+  const ratingModal = document.querySelector('.modal-rating');
 
   btnModalClose.addEventListener('click', () => {
-    modalExercises.classList.add('visually-hidden');
-    overlay.classList.add('visually-hidden');
-    document.body.classList.remove('fixed');
+    closeModalExercises(modalExercises, overlay);
   });
 
   overlay.addEventListener('click', function (event) {
     if (event.target === overlay) {
-      modalExercises.classList.add('visually-hidden');
-      overlay.classList.add('visually-hidden');
-      document.body.classList.remove('fixed');
+      if (!ratingModal.classList.contains('visually-hidden')) return;
+      closeModalExercises(modalExercises, overlay);
     }
   });
 
@@ -302,9 +310,8 @@ function handlerCloseModalExercises(modalExercises, overlay) {
       event.key === 'Escape' &&
       !modalExercises.classList.contains('visually-hidden')
     ) {
-      modalExercises.classList.add('visually-hidden');
-      overlay.classList.add('visually-hidden');
-      document.body.classList.remove('fixed');
+      if (!ratingModal.classList.contains('visually-hidden')) return;
+      closeModalExercises(modalExercises, overlay);
     }
   });
 }

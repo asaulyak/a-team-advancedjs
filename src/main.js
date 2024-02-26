@@ -10,6 +10,7 @@ import { headerHighlighting } from './header-highlighting/header-highlighting.js
 import { initSubscribe } from './subscribe/subscribe.js';
 import { initScrollUp } from './scroll-up/scroll-up.js';
 import { initModalExercises } from './modal/modal-exercises.js';
+import { initModalRating } from './modal/modal-rating.js';
 import {
   bindCategoriesEvents,
   renderCategories,
@@ -30,6 +31,7 @@ async function start() {
   bindCategoriesEvents();
   renderCategories();
   initFavoritesPage();
+  initModalRating();
   closeLoader();
 }
 

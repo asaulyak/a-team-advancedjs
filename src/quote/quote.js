@@ -58,7 +58,7 @@ function createQuoteMarkup(quote, author, mainPage) {
 
         <div class="quote-thumb">
           <div class="quote-tittle-box">
-            <h3 id="quote" class="daily-quote-title">Quote of the day</h3>
+            <h2 id="quote" class="daily-quote-title">Quote of the day</h2>
             <svg class="commas-svg">
               <use href="./image/icons.svg#icon-inverted-commas"></use>
             </svg>
