@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/a-team-advancedjs/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="team project" author="a-team" />
+    <meta name="description" content="team project" />
     <title>YOUR ENERGY</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,9 +13,9 @@
       rel="stylesheet"
     />
     
-    <script type="module" crossorigin src="/a-team-advancedjs/assets/vendor-98b3cdf8.js"></script>
-    <script type="module" crossorigin src="/a-team-advancedjs/assets/main-e2aa059c.js"></script>
-    <link rel="stylesheet" href="/a-team-advancedjs/assets/main-0562a1c3.css">
+    <script type="module" crossorigin src="/a-team-advancedjs/assets/vendor-95c1a11e.js"></script>
+    <script type="module" crossorigin src="/a-team-advancedjs/assets/main-92713da6.js"></script>
+    <link rel="stylesheet" href="/a-team-advancedjs/assets/main-8b683dce.css">
     <link rel="stylesheet" href="/a-team-advancedjs/assets/vendor-e5212ee8.css">
   </head>
   <body>
@@ -260,6 +260,14 @@
 
       <div class="overlay visually-hidden">
   <div class="modal-exercises"></div>
+  <div class="container">
+  <div class="modal-rating visually-hidden"></div>
+  <!-- loader -->
+  <div class="rating-loader-container visually-hidden">
+    <span class="spinner" id="js-rating-spinner"></span>
+  </div>
+</div>
+
 </div>
 
     </main>
@@ -334,7 +342,7 @@
             <span class="subscribe-label-text">Email</span>
             <input
               class="subscribe-input subscribe-item"
-              type="text"
+              type="email"
               name="email"
               pattern="^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
               required
